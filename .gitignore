@@ -1,0 +1,25 @@
+# Hugo output directory
+/public/
+
+# Hugo cache
+/resources/_gen/
+Hugo-*.log
+
+# Node modules (если используешь npm/yarn)
+node_modules/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Log files
+*.log
+
+# Backup files
+*~

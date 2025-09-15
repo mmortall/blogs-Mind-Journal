@@ -9,7 +9,7 @@ tags:
 author: Sergiu Taraban
 thumbnail: attachments/image/Sytrizm%20and%20the%20ideas%20of%20Jacques%20Fresco-1757674501100.jpeg
 ---
-![](/attachments/image/Sytrizm%20and%20the%20ideas%20of%20Jacques%20Fresco-1757674501100.jpeg)
+![](attachments/image/Sytrizm%20and%20the%20ideas%20of%20Jacques%20Fresco-1757674501100.jpeg)
 
 ## 1. What Fresco was proposing
 

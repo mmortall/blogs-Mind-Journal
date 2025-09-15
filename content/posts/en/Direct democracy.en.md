@@ -7,7 +7,7 @@ tags: []
 author: Sergiu Taraban
 thumbnail: attachments/image/Direct%20democracy.en-1757959281330.jpeg
 ---
-![](/attachments/image/Direct%20democracy.en-1757959281330.jpeg)
+![](attachments/image/Direct%20democracy.en-1757959281330.jpeg)
 
 Direct Democracy: Power of the People Without Intermediaries
 

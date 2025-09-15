@@ -6,15 +6,19 @@ copyright = "Sergii Taraban"
 #theme = "diary"
 theme="hugo-clarity"
 
+[params.author]
+  name = "Sergii Taraban"
+  bio = "IT engineer, researcher"
+
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 [languages]
   [languages.en]
-    title = "Syntrizm - politico-philosophical concept and model of state organization based on the balance of three sources of power: human institutions, artificial intelligence, and collective intelligence"
+    title = "Syntrizm - politico-philosophical concept and model of state organization based on the balance of three sources of power: human institutions, artificial intelligence, and direct democracy"
     languageName = "English"
     weight = 1
   [languages.ru]
-    title = "Сайтризм — политико-философская концепция и модель государственного устройства, основанная на принципе триархии, то есть равновесии трёх источников власти: человеческих институтов, искусственного интеллекта и коллективного интеллекта"
+    title = "Сайтризм — политико-философская концепция и модель государственного устройства, основанная на равновесии человеческих институтов, искусственного интеллекта и прямой демократии"
     languageName = "Русский"
     weight = 2
 
@@ -45,6 +49,7 @@ defaultContentLanguageInSubdir = true
 subtitle = "Themed by Diary."
 enableGitalk = false
 enableGiscus = true
+showAuthor = true
 languageMenuName = "Language"
 customCSS = ["css/custom.css"] # Include custom CSS files
 

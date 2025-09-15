@@ -4,7 +4,7 @@ title: About the essence of any political system
 date: 2025-09-14T10:23:45.583Z
 lastmod: 2025-09-15T13:34:07.722Z
 tags:
-  - sitrism
+  - sytrism
 author: Sergiu Taraban
 ---
 "The essence of any system is to resolve the conflict between freedom and order."

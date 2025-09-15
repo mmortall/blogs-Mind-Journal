@@ -14,7 +14,7 @@ defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 [languages]
   [languages.en]
-    title = "Syntrizm - politico-philosophical concept and model of state organization based on the balance of three sources of power: human institutions, artificial intelligence, and direct democracy"
+    title = "Sytrizm - politico-philosophical concept and model of state organization based on the balance of three sources of power: human institutions, artificial intelligence, and direct democracy"
     languageName = "English"
     weight = 1
   [languages.ru]

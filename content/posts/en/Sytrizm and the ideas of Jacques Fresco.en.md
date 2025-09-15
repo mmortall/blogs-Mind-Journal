@@ -2,12 +2,12 @@
 translationKey: sytrizm-fresco-compare
 title: Sytrizm and the ideas of Jacques Fresco
 date: 2025-09-11T07:48:01.641Z
-lastmod: 2025-09-14T10:21:14.108Z
+lastmod: 2025-09-15T17:56:32.983Z
 tags:
   - sytrism
   - fresco
 author: Sergiu Taraban
-thumbnail: ../attachments/image/Sytrizm%20and%20the%20ideas%20of%20Jacques%20Fresco-1757674501100.jpeg
+thumbnail: attachments/image/Sytrizm%20and%20the%20ideas%20of%20Jacques%20Fresco-1757674501100.jpeg
 ---
 ![](/attachments/image/Sytrizm%20and%20the%20ideas%20of%20Jacques%20Fresco-1757674501100.jpeg)
 

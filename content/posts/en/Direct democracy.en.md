@@ -2,10 +2,19 @@
 translationKey: direct-democracy
 title: Direct democracy
 date: 2025-09-14T10:23:00.107Z
-lastmod: 2025-09-15T13:33:34.507Z
+lastmod: 2025-09-15T18:07:06.155Z
 tags: []
 author: Sergiu Taraban
+thumbnail: attachments/image/Direct%20democracy.en-1757959281330.jpeg
 ---
+![](/attachments/image/Direct%20democracy.en-1757959281330.jpeg)
+
+Direct Democracy: Power of the People Without Intermediaries
+
+Direct democracy is a form of governance in which decisions are made not through elected representatives, but directly by the citizens themselves. From the Athenian agora to modern digital platforms, the idea of people’s immediate participation in decision-making has remained one of the most debated topics in political science. Today it is seen not only as a historical phenomenon, but also as a potential response to the challenges of the 21st century — the crisis of trust in institutions, the rise of new technologies, and the search for more equitable models of governance.
+
+***
+
 ## 🔹 Classical theoretical works
 
 1. **Jean-Jacques Rousseau - *The Social Contract* (1762)**

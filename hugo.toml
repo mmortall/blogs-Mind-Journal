@@ -52,6 +52,8 @@ enableGiscus = true
 showAuthor = true
 languageMenuName = "Language"
 customCSS = ["css/custom.css"] # Include custom CSS files
+pinFeatured = true
+numberOfPinnedPosts = 5
 
 [params.header.navbar]
 show_translations = true

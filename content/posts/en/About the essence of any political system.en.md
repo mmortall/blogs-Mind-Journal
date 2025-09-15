@@ -2,7 +2,7 @@
 translationKey: about-the-essence-of-any-political-system
 title: About the essence of any political system
 date: 2025-09-14T10:23:45.583Z
-lastmod: 2025-09-15T13:34:07.722Z
+lastmod: 2025-09-15T19:22:32.544Z
 tags:
   - sytrism
 author: Sergiu Taraban

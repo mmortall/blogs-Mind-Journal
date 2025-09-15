@@ -10,18 +10,18 @@ const imageAltClass = 'img_alt';
 
 
 const defaultSiteLanguage = 'en';
-const baseURL = 'https://mmortall.github.io/';
+const baseURL = 'https://mmortall.github.io/blogs-Mind-Journal/';
 const searchFieldClass = '.search_field';
 const searchClass = '.search';
 const goBackClass = 'button_back';
 const lineClass = '.line';
 
 // defined in i18n / translation files
-const quickLinks = 'Результаты';
-const searchResultsLabel = 'Результаты поиска';
-const shortSearchQuery = 'Слишком короткий запрос'
-const typeToSearch = 'Введите для поиска';
-const noMatchesFound = 'Совпадений не найдено';
+const quickLinks = 'Results';
+const searchResultsLabel = 'Search Results';
+const shortSearchQuery = 'Query is too short'
+const typeToSearch = 'Type to search';
+const noMatchesFound = 'No results found';
 
 ;
 // global variables

@@ -4,3 +4,7 @@
 [submodule "themes/diary"]
 	path = themes/diary
 	url = https://github.com/AmazingRise/hugo-theme-diary.git
+[submodule "themes/hugo-clarity"]
+	path = themes/hugo-clarity
+	url = https://github.com/mmortall/hugo-clarity.git
+

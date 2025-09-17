@@ -31,7 +31,7 @@ defaultContentLanguageInSubdir = true
 # Google Analytics
 [services]
   [services.googleAnalytics]
-    id = "G-XXXXXXXXXX"  # Your Google Analytics ID
+    id = "G-T31NEGXNGS"  # Your Google Analytics ID
 
 [markup]
   [markup.highlight]

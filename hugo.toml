@@ -33,9 +33,6 @@ defaultContentLanguageInSubdir = true
   [services.googleAnalytics]
     id = "G-T31NEGXNGS"  # Your Google Analytics ID
 
-enableSearch = true
-ga_analytics = "G-T31NEGXNGS"
-
 [markup]
   [markup.highlight]
     codeFences = true
@@ -57,6 +54,8 @@ languageMenuName = "Language"
 customCSS = ["css/custom.css"] # Include custom CSS files
 pinFeatured = true
 numberOfPinnedPosts = 5
+enableSearch = true
+ga_analytics = "G-T31NEGXNGS"
 
 [params.header.navbar]
 show_translations = true

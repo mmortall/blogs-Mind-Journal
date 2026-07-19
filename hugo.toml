@@ -16,11 +16,39 @@ defaultContentLanguageInSubdir = true
   [languages.en]
     title = "Sytrizm - politico-philosophical concept and model of state organization based on the balance of three sources of power: human institutions, artificial intelligence, and direct democracy"
     languageName = "English"
+    languageCode = "en-US"
     weight = 1
   [languages.ru]
     title = "Сайтризм — политико-философская концепция и модель государственного устройства, основанная на равновесии человеческих институтов, искусственного интеллекта и прямой демократии"
     languageName = "Русский"
+    languageCode = "ru"
     weight = 2
+  [languages.uk]
+    title = "Сайтризм — політико-філософська концепція та модель державного устрою, заснована на рівновазі людських інститутів, штучного інтелекту та прямої демократії"
+    languageName = "Українська"
+    languageCode = "uk"
+    weight = 3
+
+    [[languages.uk.menu.main]]
+      identifier = "archive"
+      url = "posts"
+      name = "Архів"
+      weight = 1
+    [[languages.uk.menu.main]]
+      identifier = "categories"
+      url = "categories"
+      name = "Категорії"
+      weight = 2
+    [[languages.uk.menu.main]]
+      identifier = "tags"
+      url = "tags"
+      name = "Теги"
+      weight = 3
+    [[languages.uk.menu.main]]
+      identifier = "rss"
+      url = "index.xml"
+      name = "RSS-стрічка"
+      weight = 4
 
 # Generate sitemap in the public folder
 [sitemap]
@@ -102,18 +130,22 @@ theme="github-light"
 
 
 [[menu.main]]
-url = "/categories"
+identifier = "categories"
+url = "categories"
 name = "Categories"
 weight = 2
 [[menu.main]]
-url = "/tags"
+identifier = "tags"
+url = "tags"
 name = "Tags"
 weight = 3
 [[menu.main]]
-url = "/posts"
+identifier = "archive"
+url = "posts"
 name = "Archive"
 weight = 1
 [[menu.main]]
-url = "/index.xml"
+identifier = "rss"
+url = "index.xml"
 name = "RSS Feed"
 weight = 4

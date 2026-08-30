@@ -1,0 +1,80 @@
+[read_more]
+other = "Читати далі"
+
+[copyright]
+other = "Авторське право"
+
+[all_rights]
+other = "Усі права захищені"
+
+[share_on]
+other = "Поділитися"
+
+[featured_posts]
+other = "Вибрані дописи"
+
+[recent_posts]
+other = "Останні дописи"
+
+[404_title]
+other = "Сторінку не знайдено"
+
+[could_not_find]
+other = "Не вдалося знайти сторінку, яку ви шукаєте"
+
+[go_back]
+other = "Назад"
+
+[translations]
+other = "Переклади"
+
+[categories]
+other = "Категорії"
+
+[tags]
+other = "Теги"
+
+[series]
+other = "Серії"
+
+[all_categories]
+other = "Усі категорії"
+
+[all_tags]
+other = "Усі теги"
+
+[all_series]
+other = "Усі серії"
+
+[overview]
+other = "Огляд"
+
+[reading_time]
+other = "{{ .ReadingTime }} хв читання"
+
+[series_posts]
+other = "Дописи в цій серії"
+
+[quick_links]
+other = "Результати"
+
+[no_matches]
+other = "Збігів не знайдено"
+
+[search_field_placeholder]
+other = "Пошук у базі знань"
+
+[blog_search_field_placeholder]
+other = "Пошук..."
+
+[search_results_label]
+other = "Результати пошуку"
+
+[short_search_query]
+other = "Запит надто короткий"
+
+[type_to_search]
+other = "Введіть текст для пошуку"
+
+[language_switcher]
+other = "Вибрати мову"

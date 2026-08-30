@@ -70,3 +70,6 @@ other = "Записи в этой серии"
   other = "Слишком короткий запрос"
 [type_to_search]
   other = "Введите для поиска"
+
+[language_switcher]
+other = "Выбрать язык"

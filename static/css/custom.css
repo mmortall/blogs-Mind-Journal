@@ -3,3 +3,63 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.language-switcher__toggle {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  gap: 0.5rem;
+}
+
+.language-switcher__option {
+  gap: 0.5rem;
+}
+
+.language-switcher__option[aria-current="page"] {
+  font-weight: 700;
+}
+
+.language-switcher__caret {
+  width: 0;
+  height: 0;
+  border-left: 0.3rem solid transparent;
+  border-right: 0.3rem solid transparent;
+  border-top: 0.4rem solid currentColor;
+  transition: transform 0.2s ease;
+}
+
+.language-switcher__toggle.nav_open .language-switcher__caret {
+  transform: rotate(180deg);
+}
+
+.language-flag {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  border: 1px solid rgba(127, 127, 127, 0.55);
+  border-radius: 0.1rem;
+  box-sizing: border-box;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.language-flag--en {
+  background:
+    linear-gradient(33deg, transparent 43%, #fff 43% 47%, #c8102e 47% 53%, #fff 53% 57%, transparent 57%),
+    linear-gradient(-33deg, transparent 43%, #fff 43% 47%, #c8102e 47% 53%, #fff 53% 57%, transparent 57%),
+    linear-gradient(to right, transparent 40%, #fff 40% 45%, #c8102e 45% 55%, #fff 55% 60%, transparent 60%),
+    linear-gradient(to bottom, transparent 35%, #fff 35% 42%, #c8102e 42% 58%, #fff 58% 65%, transparent 65%),
+    #012169;
+}
+
+/* White-blue-white Russian anti-war flag, as requested. */
+.language-flag--ru {
+  background: linear-gradient(to bottom, #fff 0 33.333%, #0083d6 33.333% 66.666%, #fff 66.666% 100%);
+}
+
+.language-flag--uk {
+  background: linear-gradient(to bottom, #0057b7 0 50%, #ffd700 50% 100%);
+}

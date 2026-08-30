@@ -5,7 +5,7 @@ date: 2025-09-14T10:23:45.583Z
 lastmod: 2025-09-15T19:22:32.544Z
 tags:
   - sytrism
-author: Sergiu Taraban
+author: Sergii Taraban
 ---
 "The essence of any system is to resolve the conflict between freedom and order."
 

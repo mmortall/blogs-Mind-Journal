@@ -78,3 +78,53 @@ other = "Введіть текст для пошуку"
 
 [language_switcher]
 other = "Вибрати мову"
+[future_map_label]
+other = "Інтерактивна мапа людей та організацій, пов’язаних із проєктуванням майбутнього"
+[future_map_filters]
+other = "Фільтри мапи"
+[future_map_all]
+other = "Усі"
+[future_map_people]
+other = "Люди"
+[future_map_organizations]
+other = "Організації"
+[future_map_sources]
+other = "Джерела"
+[future_map_title]
+other = "Мережа проєктування майбутнього"
+[future_map_description]
+other = "Публічно підтверджені люди, організації та джерела, пов’язані з ідеями Жака Фреско та їхньою критикою."
+[future_map_hint]
+other = "Виберіть вузол, щоб побачити опис, зв’язки та оригінальні публічні посилання."
+[future_map_search]
+other = "Пошук мапою"
+[future_map_search_placeholder]
+other = "Людина, проєкт, країна, пропозиція або застереження"
+[future_map_critics]
+other = "Критики"
+[future_map_proposals]
+other = "Пропозиції"
+[future_map_implementations]
+other = "Реалізації"
+[future_map_political]
+other = "Політичні проєкти"
+[future_map_research]
+other = "Дослідження"
+[future_map_open_source]
+other = "Відкритий код"
+[future_map_themes]
+other = "Фільтр за темою"
+[future_map_theme_all]
+other = "Усі теми"
+[future_map_theme_governance]
+other = "Управління"
+[future_map_theme_deliberation]
+other = "Обговорення"
+[future_map_theme_voting]
+other = "Голосування"
+[future_map_theme_planning]
+other = "Планування"
+[future_map_catalog]
+other = "Дослідницький каталог"
+[future_map_inspect]
+other = "Докладніше"

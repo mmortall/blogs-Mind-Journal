@@ -73,3 +73,53 @@ other = "Записи в этой серии"
 
 [language_switcher]
 other = "Выбрать язык"
+[future_map_label]
+other = "Интерактивная карта людей и организаций, связанных с проектированием будущего"
+[future_map_filters]
+other = "Фильтры карты"
+[future_map_all]
+other = "Все"
+[future_map_people]
+other = "Люди"
+[future_map_organizations]
+other = "Организации"
+[future_map_sources]
+other = "Источники"
+[future_map_title]
+other = "Сеть проектирования будущего"
+[future_map_description]
+other = "Публично подтверждённые люди, организации и источники, связанные с идеями Жака Фреско и их критикой."
+[future_map_hint]
+other = "Выберите узел, чтобы увидеть описание, связи и оригинальные публичные ссылки."
+[future_map_search]
+other = "Поиск по карте"
+[future_map_search_placeholder]
+other = "Человек, проект, страна, предложение или оговорка"
+[future_map_critics]
+other = "Критики"
+[future_map_proposals]
+other = "Предложения"
+[future_map_implementations]
+other = "Реализации"
+[future_map_political]
+other = "Политические проекты"
+[future_map_research]
+other = "Исследования"
+[future_map_open_source]
+other = "Открытый код"
+[future_map_themes]
+other = "Фильтр по теме"
+[future_map_theme_all]
+other = "Все темы"
+[future_map_theme_governance]
+other = "Управление"
+[future_map_theme_deliberation]
+other = "Обсуждение"
+[future_map_theme_voting]
+other = "Голосование"
+[future_map_theme_planning]
+other = "Планирование"
+[future_map_catalog]
+other = "Исследовательский каталог"
+[future_map_inspect]
+other = "Подробнее"

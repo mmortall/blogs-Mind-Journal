@@ -78,3 +78,53 @@ other = "Type to search"
 
 [language_switcher]
 other = "Choose language"
+[future_map_label]
+other = "Interactive map of people and organisations around future design"
+[future_map_filters]
+other = "Map filters"
+[future_map_all]
+other = "All"
+[future_map_people]
+other = "People"
+[future_map_organizations]
+other = "Organisations"
+[future_map_sources]
+other = "Sources"
+[future_map_title]
+other = "Future design network"
+[future_map_description]
+other = "Publicly documented people, organisations, and sources related to Jacque Fresco's ideas and their criticism."
+[future_map_hint]
+other = "Select a node to see its description, relations, and original public links."
+[future_map_search]
+other = "Search the map"
+[future_map_search_placeholder]
+other = "Person, project, country, proposal, or caveat"
+[future_map_critics]
+other = "Critics"
+[future_map_proposals]
+other = "Proposals"
+[future_map_implementations]
+other = "Implementations"
+[future_map_political]
+other = "Political projects"
+[future_map_research]
+other = "Research"
+[future_map_open_source]
+other = "Open source"
+[future_map_themes]
+other = "Filter by theme"
+[future_map_theme_all]
+other = "All themes"
+[future_map_theme_governance]
+other = "Governance"
+[future_map_theme_deliberation]
+other = "Deliberation"
+[future_map_theme_voting]
+other = "Voting"
+[future_map_theme_planning]
+other = "Planning"
+[future_map_catalog]
+other = "Research catalogue"
+[future_map_inspect]
+other = "Inspect entry"

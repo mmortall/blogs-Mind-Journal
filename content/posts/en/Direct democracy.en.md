@@ -4,7 +4,7 @@ title: Direct democracy
 date: 2025-09-14T10:23:00.107Z
 lastmod: 2025-09-15T18:07:06.155Z
 tags: []
-author: Sergiu Taraban
+author: Sergii Taraban
 thumbnail: attachments/image/Direct%20democracy.en-1757959281330.jpeg
 ---
 ![](attachments/image/Direct%20democracy.en-1757959281330.jpeg)

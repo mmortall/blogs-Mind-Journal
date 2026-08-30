@@ -1,0 +1,56 @@
+{{- $mapID := .Get "id" | default "future-network-map" -}}
+{{- $lang := .Page.Language.Lang -}}
+{{- $map := .Site.Data.future_network | default dict -}}
+{{- $nodes := $map.nodes | default (slice) -}}
+{{- $edges := $map.edges | default (slice) -}}
+{{- $payload := dict "nodes" $nodes "edges" $edges "lang" $lang -}}
+<section id="{{ $mapID }}" class="future-map" aria-label="{{ i18n "future_map_label" }}">
+  <div class="future-map__controls">
+    <label class="future-map__search-label" for="{{ $mapID }}-search">{{ i18n "future_map_search" }}</label>
+    <input id="{{ $mapID }}-search" class="future-map__search" type="search" data-map-search placeholder="{{ i18n "future_map_search_placeholder" }}">
+    <div class="future-map__toolbar" role="group" aria-label="{{ i18n "future_map_filters" }}">
+      <button type="button" class="future-map__filter is-active" data-map-filter="all">{{ i18n "future_map_all" }}</button>
+      <button type="button" class="future-map__filter" data-map-filter="critic">{{ i18n "future_map_critics" }}</button>
+      <button type="button" class="future-map__filter" data-map-filter="proposal">{{ i18n "future_map_proposals" }}</button>
+      <button type="button" class="future-map__filter" data-map-filter="implementation">{{ i18n "future_map_implementations" }}</button>
+      <button type="button" class="future-map__filter" data-map-filter="political">{{ i18n "future_map_political" }}</button>
+      <button type="button" class="future-map__filter" data-map-filter="research">{{ i18n "future_map_research" }}</button>
+      <button type="button" class="future-map__filter" data-map-filter="open-source">{{ i18n "future_map_open_source" }}</button>
+    </div>
+    <div class="future-map__themes" role="group" aria-label="{{ i18n "future_map_themes" }}">
+      <button type="button" class="future-map__theme is-active" data-map-theme="all">{{ i18n "future_map_theme_all" }}</button>
+      <button type="button" class="future-map__theme" data-map-theme="venus">TVP / RBE</button>
+      <button type="button" class="future-map__theme" data-map-theme="governance">{{ i18n "future_map_theme_governance" }}</button>
+      <button type="button" class="future-map__theme" data-map-theme="deliberation">{{ i18n "future_map_theme_deliberation" }}</button>
+      <button type="button" class="future-map__theme" data-map-theme="voting">{{ i18n "future_map_theme_voting" }}</button>
+      <button type="button" class="future-map__theme" data-map-theme="ai">AI</button>
+      <button type="button" class="future-map__theme" data-map-theme="planning">{{ i18n "future_map_theme_planning" }}</button>
+    </div>
+  </div>
+  <p class="future-map__count" data-map-count aria-live="polite"></p>
+  <div class="future-map__layout">
+    <div class="future-map__canvas">
+      <svg class="future-map__svg" viewBox="0 0 1000 600" role="img" aria-labelledby="{{ $mapID }}-title {{ $mapID }}-desc">
+        <title id="{{ $mapID }}-title">{{ i18n "future_map_title" }}</title>
+        <desc id="{{ $mapID }}-desc">{{ i18n "future_map_description" }}</desc>
+      </svg>
+    </div>
+    <aside class="future-map__details" aria-live="polite">
+      <p class="future-map__hint">{{ i18n "future_map_hint" }}</p>
+    </aside>
+  </div>
+  <h2 class="future-map__catalog-title">{{ i18n "future_map_catalog" }}</h2>
+  <div class="future-map__catalog" data-map-catalog>
+    {{- range $nodes }}
+      {{- $name := index .name $lang | default .name.en -}}
+      {{- $summary := index .summary $lang | default .summary.en -}}
+      <article class="future-map__card" data-node-id="{{ .id }}" data-role="{{ .role }}" data-themes="{{ delimit .themes " " }}" data-open-source="{{ .open_source }}">
+        <h3>{{ $name }}</h3>
+        <p>{{ $summary }}</p>
+        <button type="button" class="future-map__inspect" data-map-inspect="{{ .id }}">{{ i18n "future_map_inspect" }}</button>
+      </article>
+    {{- end }}
+  </div>
+  <script type="application/json" class="future-map__data">{{ $payload | jsonify }}</script>
+  <script src="{{ "js/future-map.js" | relURL }}" defer></script>
+</section>

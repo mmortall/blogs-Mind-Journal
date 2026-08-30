@@ -5,7 +5,7 @@ date: 2025-09-14T10:23:23.411Z
 lastmod: 2025-09-15T13:34:40.597Z
 tags:
   - sytrism
-author: Sergiu Taraban
+author: Sergii Taraban
 ---
 In order for **sitrism** not to fall apart in the first few decades, there needs to be a "linchpin" - a community or order that will **guarantee fidelity to fundamental principles**. There are analogs in history and culture that can be used as inspiration.
 

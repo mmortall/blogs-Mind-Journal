@@ -1,0 +1,312 @@
+nodes:
+  - id: jacque-fresco
+    role: origin
+    themes: [venus, planning]
+    open_source: false
+    name:
+      en: Jacque Fresco
+      ru: Жак Фреско
+      uk: Жак Фреско
+    summary:
+      en: Original source of social-design and resource-based-economy ideas.
+      ru: Исходный источник идей социального проектирования и ресурсно-ориентированной экономики.
+      uk: Вихідне джерело ідей соціального проєктування та ресурсно-орієнтованої економіки.
+    proposal:
+      en: Design society around resources, science, and long-term planning.
+      ru: Строить общество на ресурсах, науке и долгосрочном планировании.
+      uk: Будувати суспільство на ресурсах, науці та довгостроковому плануванні.
+    caveat:
+      en: The ideas remain a subject of interpretation and criticism.
+      ru: Эти идеи остаются предметом интерпретаций и критики.
+      uk: Ці ідеї залишаються предметом інтерпретацій і критики.
+    region:
+      en: United States
+      ru: США
+      uk: США
+    status:
+      en: Historical source
+      ru: Исторический источник
+      uk: Історичне джерело
+    links:
+      - label: The Venus Project history
+        url: https://www.thevenusproject.com/about/history/
+  - id: venus-project
+    role: implementation
+    themes: [venus, planning]
+    open_source: false
+    name:
+      en: The Venus Project
+      ru: «Проект Венера»
+      uk: «Проєкт Венера»
+    summary:
+      en: Organisation presenting its evolving programme and history.
+      ru: Организация, представляющая собственную развивающуюся программу и историю.
+      uk: Організація, яка представляє власну програму, що розвивається, та історію.
+    proposal:
+      en: Apply Fresco’s ideas through resource-based social design.
+      ru: Применять идеи Фреско через ресурсно-ориентированное социальное проектирование.
+      uk: Застосовувати ідеї Фреско через ресурсно-орієнтоване соціальне проєктування.
+    caveat:
+      en: Current organisation and programme should not be treated as identical to Fresco’s entire legacy.
+      ru: Нынешнюю организацию и программу не следует отождествлять со всем наследием Фреско.
+      uk: Нинішню організацію та програму не слід ототожнювати з усією спадщиною Фреско.
+    region:
+      en: United States
+      ru: США
+      uk: США
+    status:
+      en: Active organisation
+      ru: Действующая организация
+      uk: Чинна організація
+    links:
+      - label: Official website
+        url: https://www.thevenusproject.com/the-venus-project/
+      - label: Official history
+        url: https://www.thevenusproject.com/about/history/
+  - id: yevhen-sliuzko
+    role: critic
+    themes: [venus, research]
+    open_source: false
+    name:
+      en: Yevhen Sliuzko
+      ru: Евгений Слюзко
+      uk: Євген Слюзко
+    summary:
+      en: Former regional leader who presents the original direction and publishes critical analysis.
+      ru: Бывший региональный лидер, который отстаивает исходное направление и публикует критический анализ.
+      uk: Колишній регіональний лідер, який відстоює початковий напрямок і публікує критичний аналіз.
+    proposal:
+      en: Preserve the original direction while examining institutional failures.
+      ru: Сохранять исходное направление и одновременно разбирать институциональные проблемы.
+      uk: Зберігати початковий напрямок і водночас аналізувати інституційні проблеми.
+    caveat:
+      en: Former involvement creates a possible conflict-of-interest risk.
+      ru: Бывшая вовлечённость создаёт возможный риск конфликта интересов.
+      uk: Колишня залученість створює можливий ризик конфлікту інтересів.
+    region:
+      en: Ukraine / international
+      ru: Украина / международный контекст
+      uk: Україна / міжнародний контекст
+    status:
+      en: Public critic and author
+      ru: Публичный критик и автор
+      uk: Публічний критик і автор
+    links:
+      - label: Personal site
+        url: https://sluzko.com/
+      - label: Designing the Future author page
+        url: https://designing-the-future.org/author/yevhen_sliuzko/
+      - label: Telegram
+        url: https://t.me/sluzko
+      - label: Medium
+        url: https://medium.com/@DesigningTheFuture
+  - id: designing-the-future
+    role: research
+    themes: [venus, planning, governance]
+    open_source: false
+    name:
+      en: Designing the Future
+      ru: «Проектирование Будущего»
+      uk: «Проєктування Майбутнього»
+    summary:
+      en: Publishing platform for Fresco ideas, future design, and criticism of the current Venus Project.
+      ru: Издательская площадка для идей Фреско, проектирования будущего и критики нынешнего «Проекта Венера».
+      uk: Видавнича платформа для ідей Фреско, проєктування майбутнього й критики нинішнього «Проєкту Венера».
+    proposal:
+      en: Keep future-design discussion connected to public research and debate.
+      ru: Связывать проектирование будущего с публичным исследованием и дискуссией.
+      uk: Поєднувати проєктування майбутнього з публічним дослідженням і дискусією.
+    caveat:
+      en: Editorial platform represents its own selection and framing of sources.
+      ru: Редакционная площадка представляет собственный отбор и контекстуализацию источников.
+      uk: Редакційна платформа представляє власний відбір і контекстуалізацію джерел.
+    region:
+      en: Ukraine / international
+      ru: Украина / международный контекст
+      uk: Україна / міжнародний контекст
+    status:
+      en: Active publishing platform
+      ru: Действующая издательская площадка
+      uk: Чинна видавнича платформа
+    links:
+      - label: Public website
+        url: https://designing-the-future.org/ua/
+      - label: Research index
+        url: https://designing-the-future.org/kinecz-proyektu-venera-zhaka-fresko/
+  - id: dmitriy-molodozhonov
+    role: critic
+    themes: [venus, research]
+    open_source: false
+    name:
+      en: Dmitriy Molodozhonov
+      ru: Дмитрий Молодожонов
+      uk: Дмитро Молодожонов
+    summary:
+      en: Author and media producer writing about Fresco’s legacy and the Renovation Earth team.
+      ru: Автор и медиапродюсер, который пишет о наследии Фреско и команде «Реновация Земли».
+      uk: Автор і медіапродюсер, який пише про спадщину Фреско та команду «Реновація Землі».
+    proposal:
+      en: Combine Fresco’s questions with current science and social problems.
+      ru: Соединять вопросы Фреско с современной наукой и социальными проблемами.
+      uk: Поєднувати питання Фреско із сучасною наукою та суспільними проблемами.
+    caveat:
+      en: Media work reflects the team’s editorial perspective.
+      ru: Медиаработа отражает редакционную перспективу команды.
+      uk: Медіаробота відображає редакційну перспективу команди.
+    region:
+      en: Ukraine / international
+      ru: Украина / международный контекст
+      uk: Україна / міжнародний контекст
+    status:
+      en: Public author and media producer
+      ru: Публичный автор и медиапродюсер
+      uk: Публічний автор і медіапродюсер
+    links:
+      - label: Author page
+        url: https://designing-the-future.org/author/dmitriymolodozhonov/
+      - label: Public article on the new team
+        url: https://designing-the-future.org/poza-ramkami-proektu-venera-yak-mi-rozpochali-vse-nanovo/
+  - id: renovation-earth
+    role: implementation
+    themes: [venus, planning]
+    open_source: false
+    name:
+      en: Renovation Earth
+      ru: «Реновация Земли»
+      uk: «Реновація Землі»
+    summary:
+      en: Volunteer media team connecting Fresco’s questions with current science and social problems.
+      ru: Волонтёрская медиакоманда, соединяющая вопросы Фреско с современной наукой и социальными проблемами.
+      uk: Волонтерська медіакоманда, яка поєднує питання Фреско із сучасною наукою та суспільними проблемами.
+    proposal:
+      en: Develop public media and practical discussion around future design.
+      ru: Развивать публичные медиа и практическое обсуждение проектирования будущего.
+      uk: Розвивати публічні медіа та практичне обговорення проєктування майбутнього.
+    caveat:
+      en: Volunteer media activity is not equivalent to a formal institutional programme.
+      ru: Волонтёрская медиадеятельность не равна формальной институциональной программе.
+      uk: Волонтерська медіадіяльність не тотожна формальній інституційній програмі.
+    region:
+      en: International
+      ru: Международный контекст
+      uk: Міжнародний контекст
+    status:
+      en: Public media initiative
+      ru: Публичная медиаинициатива
+      uk: Публічна медіаініціатива
+    links:
+      - label: Telegram channel
+        url: https://t.me/earthrenovate
+  - id: critical-document
+    role: research
+    themes: [venus, governance, deliberation]
+    open_source: true
+    name:
+      en: Critical document
+      ru: Критический документ
+      uk: Критичний документ
+    summary:
+      en: Public source document used as the basis for independent commentary about the Venus Project.
+      ru: Публичный исходный документ, использованный для самостоятельного комментария о «Проекте Венера».
+      uk: Публічний вихідний документ, використаний для незалежного коментаря про «Проєкт Венера».
+    proposal:
+      en: Examine the organisation’s direction, governance, and accountability.
+      ru: Исследовать направление организации, управление и подотчётность.
+      uk: Дослідити напрямок організації, управління та підзвітність.
+    caveat:
+      en: The document is a source for commentary, not an independently verified final verdict.
+      ru: Документ служит источником для комментария, а не независимым окончательным вердиктом.
+      uk: Документ є джерелом для коментаря, а не незалежним остаточним вердиктом.
+    region:
+      en: Public web
+      ru: Публичный интернет
+      uk: Публічний інтернет
+    status:
+      en: Public source
+      ru: Публичный источник
+      uk: Публічне джерело
+    links:
+      - label: Google Docs original
+        url: https://docs.google.com/document/d/1EI_Le4-MgLDhm1c2tpYdjjVwwpbiAk_XRsD-dKx1qH8
+      - label: Supporting article
+        url: https://designing-the-future.org/kinecz-proyektu-venera-zhaka-fresko/
+  - id: mind-journal
+    role: research
+    themes: [governance, deliberation, voting, ai, planning]
+    open_source: true
+    name:
+      en: Mind Journal
+      ru: Mind Journal
+      uk: Mind Journal
+    summary:
+      en: This publication’s independent reading and commentary.
+      ru: Независимое чтение и комментарий этого издания.
+      uk: Незалежне читання та коментар цього видання.
+    proposal:
+      en: Explore political philosophy and future governance models.
+      ru: Исследовать политическую философию и модели управления будущего.
+      uk: Досліджувати політичну філософію та моделі управління майбутнього.
+    caveat:
+      en: Articles are exploratory and do not claim to be validated political-science results.
+      ru: Статьи носят исследовательский характер и не претендуют на статус проверенных результатов политической науки.
+      uk: Статті мають дослідницький характер і не претендують на статус перевірених результатів політичної науки.
+    region:
+      en: International
+      ru: Международный контекст
+      uk: Міжнародний контекст
+    status:
+      en: Active publication
+      ru: Действующее издание
+      uk: Чинне видання
+    links:
+      - label: Mind Journal
+        url: https://mmortall.github.io/blogs-Mind-Journal/
+edges:
+  - from: jacque-fresco
+    to: venus-project
+    label:
+      en: origin and institutional continuity
+      ru: исходная идея и организационная преемственность
+      uk: початкова ідея та організаційна спадкоємність
+  - from: yevhen-sliuzko
+    to: designing-the-future
+    label:
+      en: leads and publishes
+      ru: руководит и публикует
+      uk: керує та публікує
+  - from: yevhen-sliuzko
+    to: critical-document
+    label:
+      en: authorial research context
+      ru: авторский исследовательский контекст
+      uk: авторський дослідницький контекст
+  - from: dmitriy-molodozhonov
+    to: designing-the-future
+    label:
+      en: author and media work
+      ru: авторская и медиаработа
+      uk: авторська та медійна робота
+  - from: dmitriy-molodozhonov
+    to: renovation-earth
+    label:
+      en: team and current media work
+      ru: команда и текущая медиаработа
+      uk: команда та поточна медійна робота
+  - from: designing-the-future
+    to: critical-document
+    label:
+      en: publishes and contextualises
+      ru: публикует и поясняет контекст
+      uk: публікує та пояснює контекст
+  - from: mind-journal
+    to: critical-document
+    label:
+      en: independent reading and commentary
+      ru: независимое чтение и комментарий
+      uk: незалежне читання та коментар
+  - from: mind-journal
+    to: designing-the-future
+    label:
+      en: follows related ideas
+      ru: отслеживает родственные идеи
+      uk: відстежує споріднені ідеї

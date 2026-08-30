@@ -1,26 +1,47 @@
-# Mind-Journal 🧠✍️
+# Mind Journal 🧠✍️
 
-**Mind-Journal** is my personal blog where I share ideas, research, and reflections on [**Sytrism**](https://mmortall.github.io/blogs-Mind-Journal/posts/en/sytrism-as-a-new-form-of-government/) and contemporary political thought.  
-Here I explore the intersections of philosophy, political science, and futurism to rethink governance from a new perspective.
+**Languages:** English · [Русский](README.ru.md) · [Українська](README.uk.md)
 
-## 🔍 Topics
+Mind Journal is Sergii Taraban's personal publication about political
+philosophy, alternative forms of governance, and futurism. The project
+explores **Sytrism**: a proposed model that balances human institutions,
+artificial intelligence, and direct democracy.
 
-- Political theory and alternative forms of governance  
-- The concept of **Sytrism** as a model of "cyber-triarchy"  
-- The impact of technology, AI, and networked communities on democracy  
-- Referendums, direct democracy, and practices of popular participation  
-- Personal notes, experiments, and reflections  
+## Topics
 
-## 🌐 Website
+- Political theory and alternative forms of governance
+- Sytrism as a model of cyber-triarchy
+- Technology, artificial intelligence, and networked communities
+- Referendums, direct democracy, and public participation
+- Personal notes, research, experiments, and reflections
 
-The blog is available at:  
-👉 [https://mmortall.github.io/blogs-Mind-Journal/](https://mmortall.github.io/blogs-Mind-Journal/)
+## Website
 
-## 🎯 Purpose
+The current published site is available at
+<https://mmortall.github.io/blogs-Mind-Journal/>.
 
-This project is not just a collection of articles, but a space for exploring new ideas about the future of politics.  
-I aim to describe how human values, algorithmic rationality, and collective intelligence can be combined in systems of governance.
+Hugo is configured for English, Russian, and Ukrainian content. The same
+language structure can be deployed through GitLab Pages when this repository
+is hosted on GitLab; GitLab renders `README.md` as the project overview and
+the language links above open the other README files.
 
----
+## Author and license
 
-💡 If you’re interested in **political philosophy, theories of democracy, and the role of technology in governance**, I invite you to read and join the discussion!
+Unless a file says otherwise, original articles, translations, and site text
+by **Sergii Taraban** are licensed under
+[Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](LICENSE).
+
+You may copy, share, translate, and adapt this material for non-commercial
+purposes if you credit **Sergii Taraban**, link to the license, and indicate
+changes. Commercial use is not permitted by this license and requires separate
+permission from Sergii Taraban.
+
+Third-party works, theme files, images, quotations, and linked materials may
+have separate copyright and license terms. See [LICENSE](LICENSE) before
+reusing them.
+
+## Purpose
+
+This publication is a space for exploring how human values, algorithmic
+rationality, and collective intelligence might be combined in systems of
+governance.

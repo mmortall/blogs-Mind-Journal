@@ -9,8 +9,8 @@
 - Article and concept pages are linked; no known orphan wiki page remains.
 - Spelling, language-output, bibliography, and Kaneo provisioning questions are
   recorded in [Open questions](open-questions.md).
-- Central catalog validation is still pending a committed repository card and
-  root mapping.
+- Central catalog validation is ready now that committed repository card
+  `ba5a3f2` and local root mapping exist.
 
 ## Recommended next check
 

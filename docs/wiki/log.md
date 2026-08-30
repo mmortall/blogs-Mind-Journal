@@ -8,4 +8,5 @@ English/Russian posts. Added Cerebro routing files; Kaneo provisioning remained
 blocked by Cloudflare Tunnel error 1033.
 
 Committed local Cerebro integration as `ba5a3f2`; central catalog validation can
-now resolve the exact repository revision.
+now resolve the exact repository revision. Created and read back dedicated
+Kaneo project `ji0wvag33gbpawnxd9nkan0s`; added repo-local managed lifecycle.

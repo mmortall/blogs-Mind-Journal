@@ -7,12 +7,13 @@
 - Core wiki pages are linked from `index.md`.
 - Core pages have source declarations and source-backed claims.
 - Article and concept pages are linked; no known orphan wiki page remains.
-- Spelling, language-output, bibliography, and Kaneo provisioning questions are
-  recorded in [Open questions](open-questions.md).
+- Spelling, language-output, and bibliography questions are recorded in
+  [Open questions](open-questions.md). Kaneo provisioning is complete and
+  read-back-confirmed.
 - Central catalog validation is ready now that committed repository card
   `ba5a3f2` and local root mapping exist.
 
 ## Recommended next check
 
-Run a central catalog validation after committing the integration files, then
-retry Kaneo project provisioning and add only read-back-confirmed IDs.
+Run central catalog validation after committing integration files, then use
+`.ai/kaneo/manage.ps1 health` before material article work.

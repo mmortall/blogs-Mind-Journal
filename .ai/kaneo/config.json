@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "space_id": "repo:content:mind-journal",
+  "workspace_id": "gnETouELw7tAd34p5WREq79HDQg07xk3",
+  "project_id": "ji0wvag33gbpawnxd9nkan0s",
+  "project_name": "Mind Journal - Philosophy & Articles",
+  "api_endpoint": "https://admin.polyquantlabs.xyz/kaneo/api",
+  "default_area": "philosophy-articles",
+  "epic_key": "epic:repo:content:mind-journal",
+  "epic_title": "Epic: Mind Journal publication"
+}

@@ -6,4 +6,6 @@ For cross-repository questions, use:
 .\.ai\knowledge.ps1 resolve-context --task "<question>"
 ```
 
-Local posts, Hugo configuration, and maintained wiki pages remain canonical.
+For material work, `.ai/kaneo/manage.ps1` automatically starts one idempotent
+managed leaf and finishes it with validation evidence. Local posts, Hugo
+configuration, and maintained wiki pages remain canonical.

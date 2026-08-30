@@ -6,6 +6,6 @@ For cross-repository questions, use:
 .\.ai\knowledge.ps1 resolve-context --task "<question>"
 ```
 
-For material work, `.ai/kaneo/manage.ps1` automatically starts one idempotent
+For material work, `.ai/kaneo/manage.ps1` will automatically start one idempotent
 managed leaf and finishes it with validation evidence. Local posts, Hugo
 configuration, and maintained wiki pages remain canonical.

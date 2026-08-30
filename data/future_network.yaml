@@ -1,312 +1,410 @@
 nodes:
-  - id: jacque-fresco
-    role: origin
-    themes: [venus, planning]
-    open_source: false
-    name:
-      en: Jacque Fresco
-      ru: Жак Фреско
-      uk: Жак Фреско
-    summary:
-      en: Original source of social-design and resource-based-economy ideas.
-      ru: Исходный источник идей социального проектирования и ресурсно-ориентированной экономики.
-      uk: Вихідне джерело ідей соціального проєктування та ресурсно-орієнтованої економіки.
-    proposal:
-      en: Design society around resources, science, and long-term planning.
-      ru: Строить общество на ресурсах, науке и долгосрочном планировании.
-      uk: Будувати суспільство на ресурсах, науці та довгостроковому плануванні.
-    caveat:
-      en: The ideas remain a subject of interpretation and criticism.
-      ru: Эти идеи остаются предметом интерпретаций и критики.
-      uk: Ці ідеї залишаються предметом інтерпретацій і критики.
-    region:
-      en: United States
-      ru: США
-      uk: США
-    status:
-      en: Historical source
-      ru: Исторический источник
-      uk: Історичне джерело
-    links:
-      - label: The Venus Project history
-        url: https://www.thevenusproject.com/about/history/
   - id: venus-project
-    role: implementation
+    kind: organization
+    role: origin
+    scope: direct
     themes: [venus, planning]
     open_source: false
-    name:
-      en: The Venus Project
-      ru: «Проект Венера»
-      uk: «Проєкт Венера»
-    summary:
-      en: Organisation presenting its evolving programme and history.
-      ru: Организация, представляющая собственную развивающуюся программу и историю.
-      uk: Організація, яка представляє власну програму, що розвивається, та історію.
-    proposal:
-      en: Apply Fresco’s ideas through resource-based social design.
-      ru: Применять идеи Фреско через ресурсно-ориентированное социальное проектирование.
-      uk: Застосовувати ідеї Фреско через ресурсно-орієнтоване соціальне проєктування.
-    caveat:
-      en: Current organisation and programme should not be treated as identical to Fresco’s entire legacy.
-      ru: Нынешнюю организацию и программу не следует отождествлять со всем наследием Фреско.
-      uk: Нинішню організацію та програму не слід ототожнювати з усією спадщиною Фреско.
-    region:
-      en: United States
-      ru: США
-      uk: США
-    status:
-      en: Active organisation
-      ru: Действующая организация
-      uk: Чинна організація
+    name: {en: "The Venus Project", ru: "«Проект Венера»", uk: "«Проєкт Венера»"}
+    region: {en: "United States / global", ru: "США / мир", uk: "США / світ"}
+    status: {en: "active organisation", ru: "действующая организация", uk: "чинна організація"}
+    summary: {en: "Organisation continuing Jacque Fresco’s resource-based-economy programme.", ru: "Организация, продолжающая ресурсно-ориентированную программу Жака Фреско.", uk: "Організація, що продовжує ресурсно-орієнтовану програму Жака Фреско."}
+    proposal: {en: "Scientific planning, automation, and access to goods instead of money.", ru: "Научное планирование, автоматизация и доступ к благам вместо денег.", uk: "Наукове планування, автоматизація та доступ до благ замість грошей."}
+    caveat: {en: "Transition, accountability, ownership, and conflict resolution remain underspecified.", ru: "Переход, подотчётность, собственность и разрешение конфликтов описаны недостаточно.", uk: "Перехід, підзвітність, власність і розв’язання конфліктів описані недостатньо."}
     links:
-      - label: Official website
-        url: https://www.thevenusproject.com/the-venus-project/
-      - label: Official history
-        url: https://www.thevenusproject.com/about/history/
-  - id: yevhen-sliuzko
+      - {label: Official programme, url: "https://www.thevenusproject.com/the-venus-project/"}
+      - {label: Official history, url: "https://www.thevenusproject.com/about/history/"}
+
+  - id: sliuzko-dtf
+    kind: people
     role: critic
-    themes: [venus, research]
+    scope: direct
+    themes: [venus, governance]
     open_source: false
-    name:
-      en: Yevhen Sliuzko
-      ru: Евгений Слюзко
-      uk: Євген Слюзко
-    summary:
-      en: Former regional leader who presents the original direction and publishes critical analysis.
-      ru: Бывший региональный лидер, который отстаивает исходное направление и публикует критический анализ.
-      uk: Колишній регіональний лідер, який відстоює початковий напрямок і публікує критичний аналіз.
-    proposal:
-      en: Preserve the original direction while examining institutional failures.
-      ru: Сохранять исходное направление и одновременно разбирать институциональные проблемы.
-      uk: Зберігати початковий напрямок і водночас аналізувати інституційні проблеми.
-    caveat:
-      en: Former involvement creates a possible conflict-of-interest risk.
-      ru: Бывшая вовлечённость создаёт возможный риск конфликта интересов.
-      uk: Колишня залученість створює можливий ризик конфлікту інтересів.
-    region:
-      en: Ukraine / international
-      ru: Украина / международный контекст
-      uk: Україна / міжнародний контекст
-    status:
-      en: Public critic and author
-      ru: Публичный критик и автор
-      uk: Публічний критик і автор
+    name: {en: "Yevhen Sliuzko / Designing the Future", ru: "Евгений Слюзко / «Проектирование Будущего»", uk: "Євген Слюзко / «Проєктування Майбутнього»"}
+    region: {en: "Ukraine / international", ru: "Украина / международный проект", uk: "Україна / міжнародний проєкт"}
+    status: {en: "active public authors and NGO", ru: "активные публичные авторы и НКО", uk: "активні публічні автори та ГО"}
+    summary: {en: "Former regional leader and publication platform documenting criticism of the current institution.", ru: "Бывший региональный лидер и площадка, документирующие критику нынешней институции.", uk: "Колишній регіональний лідер і платформа, що документують критику нинішньої інституції."}
+    proposal: {en: "Open archives, accountable governance, independent research, translation, and education.", ru: "Открытые архивы, подотчётное управление, независимые исследования, переводы и образование.", uk: "Відкриті архіви, підзвітне управління, незалежні дослідження, переклади й освіта."}
+    caveat: {en: "They are parties to the dispute; claims need comparison with primary records and replies.", ru: "Они участники конфликта; утверждения нужно сверять с первичными документами и ответами.", uk: "Вони учасники конфлікту; твердження слід звіряти з первинними документами й відповідями."}
     links:
-      - label: Personal site
-        url: https://sluzko.com/
-      - label: Designing the Future author page
-        url: https://designing-the-future.org/author/yevhen_sliuzko/
-      - label: Telegram
-        url: https://t.me/sluzko
-      - label: Medium
-        url: https://medium.com/@DesigningTheFuture
-  - id: designing-the-future
-    role: research
-    themes: [venus, planning, governance]
-    open_source: false
-    name:
-      en: Designing the Future
-      ru: «Проектирование Будущего»
-      uk: «Проєктування Майбутнього»
-    summary:
-      en: Publishing platform for Fresco ideas, future design, and criticism of the current Venus Project.
-      ru: Издательская площадка для идей Фреско, проектирования будущего и критики нынешнего «Проекта Венера».
-      uk: Видавнича платформа для ідей Фреско, проєктування майбутнього й критики нинішнього «Проєкту Венера».
-    proposal:
-      en: Keep future-design discussion connected to public research and debate.
-      ru: Связывать проектирование будущего с публичным исследованием и дискуссией.
-      uk: Поєднувати проєктування майбутнього з публічним дослідженням і дискусією.
-    caveat:
-      en: Editorial platform represents its own selection and framing of sources.
-      ru: Редакционная площадка представляет собственный отбор и контекстуализацию источников.
-      uk: Редакційна платформа представляє власний відбір і контекстуалізацію джерел.
-    region:
-      en: Ukraine / international
-      ru: Украина / международный контекст
-      uk: Україна / міжнародний контекст
-    status:
-      en: Active publishing platform
-      ru: Действующая издательская площадка
-      uk: Чинна видавнича платформа
-    links:
-      - label: Public website
-        url: https://designing-the-future.org/ua/
-      - label: Research index
-        url: https://designing-the-future.org/kinecz-proyektu-venera-zhaka-fresko/
-  - id: dmitriy-molodozhonov
-    role: critic
-    themes: [venus, research]
-    open_source: false
-    name:
-      en: Dmitriy Molodozhonov
-      ru: Дмитрий Молодожонов
-      uk: Дмитро Молодожонов
-    summary:
-      en: Author and media producer writing about Fresco’s legacy and the Renovation Earth team.
-      ru: Автор и медиапродюсер, который пишет о наследии Фреско и команде «Реновация Земли».
-      uk: Автор і медіапродюсер, який пише про спадщину Фреско та команду «Реновація Землі».
-    proposal:
-      en: Combine Fresco’s questions with current science and social problems.
-      ru: Соединять вопросы Фреско с современной наукой и социальными проблемами.
-      uk: Поєднувати питання Фреско із сучасною наукою та суспільними проблемами.
-    caveat:
-      en: Media work reflects the team’s editorial perspective.
-      ru: Медиаработа отражает редакционную перспективу команды.
-      uk: Медіаробота відображає редакційну перспективу команди.
-    region:
-      en: Ukraine / international
-      ru: Украина / международный контекст
-      uk: Україна / міжнародний контекст
-    status:
-      en: Public author and media producer
-      ru: Публичный автор и медиапродюсер
-      uk: Публічний автор і медіапродюсер
-    links:
-      - label: Author page
-        url: https://designing-the-future.org/author/dmitriymolodozhonov/
-      - label: Public article on the new team
-        url: https://designing-the-future.org/poza-ramkami-proektu-venera-yak-mi-rozpochali-vse-nanovo/
-  - id: renovation-earth
-    role: implementation
-    themes: [venus, planning]
-    open_source: false
-    name:
-      en: Renovation Earth
-      ru: «Реновация Земли»
-      uk: «Реновація Землі»
-    summary:
-      en: Volunteer media team connecting Fresco’s questions with current science and social problems.
-      ru: Волонтёрская медиакоманда, соединяющая вопросы Фреско с современной наукой и социальными проблемами.
-      uk: Волонтерська медіакоманда, яка поєднує питання Фреско із сучасною наукою та суспільними проблемами.
-    proposal:
-      en: Develop public media and practical discussion around future design.
-      ru: Развивать публичные медиа и практическое обсуждение проектирования будущего.
-      uk: Розвивати публічні медіа та практичне обговорення проєктування майбутнього.
-    caveat:
-      en: Volunteer media activity is not equivalent to a formal institutional programme.
-      ru: Волонтёрская медиадеятельность не равна формальной институциональной программе.
-      uk: Волонтерська медіадіяльність не тотожна формальній інституційній програмі.
-    region:
-      en: International
-      ru: Международный контекст
-      uk: Міжнародний контекст
-    status:
-      en: Public media initiative
-      ru: Публичная медиаинициатива
-      uk: Публічна медіаініціатива
-    links:
-      - label: Telegram channel
-        url: https://t.me/earthrenovate
+      - {label: Yevhen Sliuzko, url: "https://sluzko.com/"}
+      - {label: Designing the Future, url: "https://designing-the-future.org/ua/"}
+
   - id: critical-document
-    role: research
-    themes: [venus, governance, deliberation]
-    open_source: true
-    name:
-      en: Critical document
-      ru: Критический документ
-      uk: Критичний документ
-    summary:
-      en: Public source document used as the basis for independent commentary about the Venus Project.
-      ru: Публичный исходный документ, использованный для самостоятельного комментария о «Проекте Венера».
-      uk: Публічний вихідний документ, використаний для незалежного коментаря про «Проєкт Венера».
-    proposal:
-      en: Examine the organisation’s direction, governance, and accountability.
-      ru: Исследовать направление организации, управление и подотчётность.
-      uk: Дослідити напрямок організації, управління та підзвітність.
-    caveat:
-      en: The document is a source for commentary, not an independently verified final verdict.
-      ru: Документ служит источником для комментария, а не независимым окончательным вердиктом.
-      uk: Документ є джерелом для коментаря, а не незалежним остаточним вердиктом.
-    region:
-      en: Public web
-      ru: Публичный интернет
-      uk: Публічний інтернет
-    status:
-      en: Public source
-      ru: Публичный источник
-      uk: Публічне джерело
+    kind: source
+    role: source
+    scope: direct
+    themes: [venus, governance]
+    open_source: false
+    name: {en: "Critical source document", ru: "Критический исходный документ", uk: "Критичний вихідний документ"}
+    region: {en: "Ukraine / Russian-speaking network", ru: "Украина / русскоязычная сеть", uk: "Україна / російськомовна мережа"}
+    status: {en: "public advocacy document", ru: "публичный позиционный документ", uk: "публічний позиційний документ"}
+    summary: {en: "Google document about governance, reporting, archives, and change of direction.", ru: "Google-документ об управлении, отчётности, архивах и смене направления.", uk: "Google-документ про управління, звітність, архіви та зміну напрямку."}
+    proposal: {en: "Transparency, archival access, and accountability as prerequisites.", ru: "Прозрачность, доступ к архивам и подотчётность как обязательные условия.", uk: "Прозорість, доступ до архівів і підзвітність як обов’язкові умови."}
+    caveat: {en: "Advocacy by involved critics, not an independent audit or court finding.", ru: "Позиция вовлечённых критиков, не независимый аудит или решение суда.", uk: "Позиція залучених критиків, не незалежний аудит чи рішення суду."}
     links:
-      - label: Google Docs original
-        url: https://docs.google.com/document/d/1EI_Le4-MgLDhm1c2tpYdjjVwwpbiAk_XRsD-dKx1qH8
-      - label: Supporting article
-        url: https://designing-the-future.org/kinecz-proyektu-venera-zhaka-fresko/
+      - {label: Google Docs original, url: "https://docs.google.com/document/d/1EI_Le4-MgLDhm1c2tpYdjjVwwpbiAk_XRsD-dKx1qH8"}
+
+  - id: renovation-earth
+    kind: organization
+    role: proposal
+    scope: direct
+    themes: [venus, planning]
+    open_source: false
+    name: {en: "Dmitriy Molodozhonov / Renovation Earth", ru: "Дмитрий Молодожонов / «Реновация Земли»", uk: "Дмитро Молодожонов / «Реновація Землі»"}
+    region: {en: "Ukraine / international", ru: "Украина / международный проект", uk: "Україна / міжнародний проєкт"}
+    status: {en: "volunteer media initiative", ru: "волонтёрская медиаинициатива", uk: "волонтерська медіаініціатива"}
+    summary: {en: "Media initiative reconnecting Fresco’s questions with current science.", ru: "Медиаинициатива, связывающая вопросы Фреско с современной наукой.", uk: "Медіаініціатива, що пов’язує питання Фреско із сучасною наукою."}
+    proposal: {en: "Restart outside the old institution through research-led media and community work.", ru: "Перезапуск вне старой институции через исследовательские медиа и сообщество.", uk: "Перезапуск поза старою інституцією через дослідницькі медіа та спільноту."}
+    caveat: {en: "Public evidence beyond media and community work is limited.", ru: "Публичных свидетельств реализации за пределами медиа и сообщества мало.", uk: "Публічних свідчень реалізації поза медіа та спільнотою мало."}
+    links:
+      - {label: Author page, url: "https://designing-the-future.org/author/dmitriymolodozhonov/"}
+      - {label: Telegram, url: "https://t.me/earthrenovate"}
+
+  - id: zeitgeist-integral
+    kind: organization
+    role: proposal
+    scope: direct
+    themes: [venus, planning, governance]
+    open_source: true
+    name: {en: "Peter Joseph / TZM / Integral Collective", ru: "Питер Джозеф / TZM / Integral Collective", uk: "Пітер Джозеф / TZM / Integral Collective"}
+    region: {en: "United States / global", ru: "США / мир", uk: "США / світ"}
+    status: {en: "active movement; early cooperative prototype", ru: "действующее движение; ранний прототип кооператива", uk: "чинний рух; ранній прототип кооперативу"}
+    summary: {en: "Former TVP partner that developed its own systems model and a post-monetary cooperative prototype.", ru: "Бывший партнёр TVP с собственной системной моделью и прототипом постденежного кооператива.", uk: "Колишній партнер TVP із власною системною моделлю та прототипом постгрошового кооперативу."}
+    proposal: {en: "Decentralised education; open designs, time credits, federated cooperatives, and feedback.", ru: "Децентрализованное просвещение; открытые проекты, временные кредиты, федерация кооперативов и обратная связь.", uk: "Децентралізована освіта; відкриті проєкти, часові кредити, федерація кооперативів і зворотний зв’язок."}
+    caveat: {en: "Extensive theory but little evidence of durable post-monetary governance at scale.", ru: "Много теории, но мало доказательств устойчивого постденежного управления в масштабе.", uk: "Багато теорії, але мало доказів стійкого постгрошового управління у масштабі."}
+    links:
+      - {label: TZM model, url: "https://www.thezeitgeistmovement.com/model"}
+      - {label: Peter Joseph, url: "https://www.peterjoseph.info/"}
+      - {label: Integral Collective, url: "https://integralcollective.io/"}
+
+  - id: municipalist-critique
+    kind: source
+    role: critic
+    scope: direct
+    themes: [venus, governance, direct-democracy]
+    open_source: false
+    name: {en: "Libertarian-municipalist critique", ru: "Либертарно-муниципалистская критика", uk: "Лібертарно-муніципалістська критика"}
+    region: {en: "international online essay", ru: "международное онлайн-эссе", uk: "міжнародне онлайн-есе"}
+    status: {en: "historical rough draft", ru: "исторический черновик", uk: "історична чернетка"}
+    summary: {en: "Pseudonymous critique that TVP and TZM leave politics, law, and conflict unresolved.", ru: "Псевдонимная критика — TVP и TZM не решают вопросы политики, права и конфликтов.", uk: "Псевдонімна критика — TVP і TZM не розв’язують питань політики, права та конфліктів."}
+    proposal: {en: "Confederated municipal and neighbourhood assemblies governing shared resources.", ru: "Конфедерация муниципальных и районных собраний для общих ресурсов.", uk: "Конфедерація муніципальних і районних зборів для спільних ресурсів."}
+    caveat: {en: "Pseudonymous rough draft; useful argument, not peer-reviewed evidence.", ru: "Псевдонимный черновик; полезный аргумент, но не рецензированное исследование.", uk: "Псевдонімна чернетка; корисний аргумент, але не рецензоване дослідження."}
+    links:
+      - {label: Original essay, url: "https://postscarcityeconomics.wordpress.com/2015/07/26/critique-of-a-resource-based-economy-the-venus-project-and-the-zeitgeist-movement-from-a-the-perspective-of-a-libertarian-municipalist-who-is-for-post-scarcity-economics-by-hagbard-celine33/"}
+
+  - id: rbe10k
+    kind: project
+    role: proposal
+    scope: direct
+    themes: [venus, planning]
+    open_source: false
+    name: {en: "RBE10K", ru: "RBE10K", uk: "RBE10K"}
+    region: {en: "international", ru: "международный проект", uk: "міжнародний проєкт"}
+    status: {en: "historical; activity unverified", ru: "исторический; активность не подтверждена", uk: "історичний; активність не підтверджена"}
+    summary: {en: "Proposal to test resource-economy practices with about ten thousand volunteers.", ru: "Предложение испытать ресурсную экономику с десятью тысячами добровольцев.", uk: "Пропозиція випробувати ресурсну економіку з десятьма тисячами добровольців."}
+    proposal: {en: "A bounded local pilot instead of waiting for global transition.", ru: "Ограниченный локальный пилот вместо ожидания глобального перехода.", uk: "Обмежений локальний пілот замість очікування глобального переходу."}
+    caveat: {en: "Movement-wiki source; current implementation could not be verified.", ru: "Источник — вики движения; текущую реализацию подтвердить не удалось.", uk: "Джерело — вікі руху; поточну реалізацію підтвердити не вдалося."}
+    links:
+      - {label: RBE wiki, url: "https://en.rbem.org/wiki/The_RBE10K_Project"}
+
+  - id: morozov-mcquillan
+    kind: people
+    role: critic
+    scope: adjacent
+    themes: [ai, governance, planning]
+    open_source: false
+    name: {en: "Evgeny Morozov / Dan McQuillan", ru: "Евгений Морозов / Дэн Маккуиллан", uk: "Євген Морозов / Ден Макквіллан"}
+    region: {en: "Europe", ru: "Европа", uk: "Європа"}
+    status: {en: "active authors", ru: "активные авторы", uk: "активні автори"}
+    summary: {en: "Critics of solutionism, platform power, and technocratic AI; not TVP participants.", ru: "Критики солюционизма, власти платформ и технократического AI; не участники TVP.", uk: "Критики солюціонізму, влади платформ і технократичного AI; не учасники TVP."}
+    proposal: {en: "Public digital infrastructure, democratic control, councils, and mutual aid.", ru: "Публичная цифровая инфраструктура, демократический контроль, советы и взаимопомощь.", uk: "Публічна цифрова інфраструктура, демократичний контроль, ради та взаємодопомога."}
+    caveat: {en: "Strong diagnosis and principles, but fewer deployable constitutional designs.", ru: "Сильная диагностика и принципы, но меньше готовых институциональных конструкций.", uk: "Сильна діагностика й принципи, але менше готових інституційних конструкцій."}
+    links:
+      - {label: Morozov — Digital Socialism, url: "https://newleftreview.org/issues/ii116/articles/evgeny-morozov-digital-socialism.pdf"}
+      - {label: McQuillan — profile, url: "https://www.danmcquillan.org/pages/about.html"}
+
+  - id: landemore
+    kind: person
+    role: proposal
+    scope: adjacent
+    themes: [governance, direct-democracy]
+    open_source: false
+    name: {en: "Hélène Landemore", ru: "Элен Ландемор", uk: "Елен Ландемор"}
+    region: {en: "France / United States", ru: "Франция / США", uk: "Франція / США"}
+    status: {en: "active political theorist", ru: "активный политический теоретик", uk: "активна політична теоретикиня"}
+    summary: {en: "Theorist of open democracy and representative citizen mini-publics.", ru: "Теоретик открытой демократии и репрезентативных гражданских мини-публик.", uk: "Теоретикиня відкритої демократії та репрезентативних громадянських мініпублік."}
+    proposal: {en: "Randomly selected assemblies with agenda power and links to the wider public.", ru: "Ассамблеи по жребию с правом задавать повестку и связью с обществом.", uk: "Асамблеї за жеребом із правом задавати порядок денний і зв’язком із суспільством."}
+    caveat: {en: "Sortition still needs safeguards for capture, expertise, and accountability.", ru: "Жребий требует защиты от захвата, дефицита экспертизы и неподотчётности.", uk: "Жереб потребує захисту від захоплення, браку експертизи та непідзвітності."}
+    links:
+      - {label: Open Democracy book, url: "https://politicalscience.yale.edu/publications/open-democracy-reinventing-popular-rule-twenty-first-century"}
+
+  - id: tongdong-bai
+    kind: person
+    role: proposal
+    scope: adjacent
+    themes: [governance]
+    open_source: false
+    name: {en: "Tongdong Bai", ru: "Бай Тундун", uk: "Бай Тундун"}
+    region: {en: "China", ru: "Китай", uk: "Китай"}
+    status: {en: "active political philosopher", ru: "активный политический философ", uk: "активний політичний філософ"}
+    summary: {en: "Chinese philosopher proposing a Confucian hybrid of democracy and meritocracy.", ru: "Китайский философ, предлагающий конфуцианский гибрид демократии и меритократии.", uk: "Китайський філософ, який пропонує конфуціанський гібрид демократії та меритократії."}
+    proposal: {en: "Elections and rights combined with an expert or meritocratic chamber.", ru: "Выборы и права в сочетании с экспертной или меритократической палатой.", uk: "Вибори й права у поєднанні з експертною або меритократичною палатою."}
+    caveat: {en: "Unequal political power creates legitimacy, elite-capture, and accountability risks.", ru: "Неравная власть создаёт риски легитимности, захвата элитами и неподотчётности.", uk: "Нерівна влада створює ризики легітимності, захоплення елітами та непідзвітності."}
+    links:
+      - {label: Fudan profile, url: "https://philosophy.fudan.edu.cn/philoenglish/10/d6/c48705a725206/page.htm"}
+      - {label: Book, url: "https://www.jstor.org/stable/j.ctvhrd162"}
+
+  - id: hidalgo
+    kind: person
+    role: research
+    scope: adjacent
+    themes: [ai, voting, governance]
+    open_source: false
+    name: {en: "César Hidalgo / Augmented Democracy", ru: "Сесар Идальго / Augmented Democracy", uk: "Сесар Ідальго / Augmented Democracy"}
+    region: {en: "Chile / France", ru: "Чили / Франция", uk: "Чилі / Франція"}
+    status: {en: "experimental proposal", ru: "экспериментальное предложение", uk: "експериментальна пропозиція"}
+    summary: {en: "Personal AI agents that learn political preferences and simulate votes.", ru: "Персональные AI-агенты, изучающие политические предпочтения и моделирующие голосование.", uk: "Персональні AI-агенти, що вивчають політичні уподобання й моделюють голосування."}
+    proposal: {en: "Inspectable “digital twins” for high-frequency policy simulations.", ru: "Проверяемые «цифровые двойники» для частого моделирования решений.", uk: "Перевірювані «цифрові двійники» для частого моделювання рішень."}
+    caveat: {en: "Prediction is not consent; error, manipulation, privacy, and compute inequality make official use premature.", ru: "Предсказание — не согласие; ошибки, манипуляции, приватность и неравенство делают запуск преждевременным.", uk: "Передбачення — не згода; помилки, маніпуляції, приватність і нерівність роблять запуск передчасним."}
+    links:
+      - {label: Original proposal, url: "https://cesarhidalgo.com/augmented-democracy"}
+
+  - id: radicalxchange
+    kind: organization
+    role: proposal
+    scope: adjacent
+    themes: [voting, governance]
+    open_source: false
+    name: {en: "Glen Weyl / RadicalxChange", ru: "Глен Вейл / RadicalxChange", uk: "Глен Вейл / RadicalxChange"}
+    region: {en: "United States / global", ru: "США / мир", uk: "США / світ"}
+    status: {en: "active research network", ru: "активная исследовательская сеть", uk: "активна дослідницька мережа"}
+    summary: {en: "Experiments with preference intensity and plural participation.", ru: "Эксперименты с силой предпочтений и множественным участием.", uk: "Експерименти із силою уподобань і множинною участю."}
+    proposal: {en: "Quadratic voting and funding, data dignity, and plural technologies.", ru: "Квадратичное голосование и финансирование, достоинство данных и плюральные технологии.", uk: "Квадратичне голосування й фінансування, гідність даних і плюральні технології."}
+    caveat: {en: "Outcomes depend on identity, budgets, anti-collusion rules, and agenda control.", ru: "Итоги зависят от идентичности, бюджетов, защиты от сговора и контроля повестки.", uk: "Підсумки залежать від ідентичності, бюджетів, захисту від змови й контролю порядку денного."}
+    links:
+      - {label: Quadratic voting, url: "https://www.radicalxchange.org/wiki/quadratic-voting/"}
+
+  - id: anno-dd2030
+    kind: project
+    role: political
+    scope: tool
+    themes: [ai, governance, deliberation]
+    open_source: true
+    name: {en: "Takahiro Anno / Digital Democracy 2030", ru: "Такахиро Анно / Digital Democracy 2030", uk: "Такахіро Анно / Digital Democracy 2030"}
+    region: {en: "Japan", ru: "Япония", uk: "Японія"}
+    status: {en: "active civic and political programme", ru: "действующая гражданская и политическая программа", uk: "чинна громадянська й політична програма"}
+    summary: {en: "Japanese political practice built around open manifestos and broad listening.", ru: "Японская политическая практика открытых манифестов и «широкого слушания».", uk: "Японська політична практика відкритих маніфестів і «широкого слухання»."}
+    proposal: {en: "Open-source AI clusters public input while humans retain decision responsibility.", ru: "Открытый AI группирует мнения, но ответственность остаётся у людей.", uk: "Відкритий AI групує думки, але відповідальність залишається в людей."}
+    caveat: {en: "Young tools; representativeness, moderation, summary bias, and real influence need evaluation.", ru: "Инструменты молоды; репрезентативность, модерация, смещение резюме и влияние требуют оценки.", uk: "Інструменти молоді; репрезентативність, модерація, упередження резюме та вплив потребують оцінки."}
+    links:
+      - {label: Digital Democracy 2030, url: "https://dd2030.org/about/"}
+      - {label: Team Mirai, url: "https://team-mir.ai/"}
+      - {label: Kouchou-AI repository, url: "https://github.com/digitaldemocracy2030/kouchou-ai"}
+      - {label: Idobata repository, url: "https://github.com/digitaldemocracy2030/idobata"}
+
+  - id: vtaiwan-polis
+    kind: software
+    role: implementation
+    scope: tool
+    themes: [deliberation, governance, ai]
+    open_source: true
+    name: {en: "Audrey Tang / vTaiwan / Polis", ru: "Одри Тан / vTaiwan / Polis", uk: "Одрі Тан / vTaiwan / Polis"}
+    region: {en: "Taiwan / global", ru: "Тайвань / мир", uk: "Тайвань / світ"}
+    status: {en: "deployed process and active software", ru: "внедрённый процесс и активное ПО", uk: "впроваджений процес і активне ПЗ"}
+    summary: {en: "Civic process using opinion clustering to find agreement across groups.", ru: "Гражданский процесс с кластеризацией мнений для поиска межгруппового согласия.", uk: "Громадянський процес із кластеризацією думок для пошуку міжгрупової згоди."}
+    proposal: {en: "Connect large-scale online opinion mapping to facilitation and public agencies.", ru: "Связать массовое картирование мнений с фасилитацией и госорганами.", uk: "Пов’язати масове картування думок із фасилітацією та держорганами."}
+    caveat: {en: "Participation is not automatically representative or binding; facilitation and uptake determine impact.", ru: "Участие не автоматически репрезентативно или обязательно; влияние зависит от процесса и реакции власти.", uk: "Участь не автоматично репрезентативна чи обов’язкова; вплив залежить від процесу й реакції влади."}
+    links:
+      - {label: vTaiwan, url: "https://info.vtaiwan.tw/"}
+      - {label: Polis repository, url: "https://github.com/compdemocracy/polis"}
+
+  - id: democracyos
+    kind: software
+    role: implementation
+    scope: tool
+    themes: [deliberation, voting]
+    open_source: true
+    name: {en: "Pia Mancini / DemocracyOS", ru: "Пиа Манчини / DemocracyOS", uk: "Піа Манчіні / DemocracyOS"}
+    region: {en: "Argentina / international", ru: "Аргентина / мир", uk: "Аргентина / світ"}
+    status: {en: "historical; unmaintained", ru: "исторический; не поддерживается", uk: "історичний; не підтримується"}
+    summary: {en: "Early open platform and political experiment for debate and voting.", ru: "Ранняя открытая платформа и политический эксперимент для дебатов и голосования.", uk: "Рання відкрита платформа й політичний експеримент для дебатів і голосування."}
+    proposal: {en: "Read bills, debate, and vote through a public interface between elections.", ru: "Читать законопроекты, обсуждать и голосовать через публичный интерфейс между выборами.", uk: "Читати законопроєкти, обговорювати й голосувати через публічний інтерфейс між виборами."}
+    caveat: {en: "Repository is unmaintained; design history, not a deployment recommendation.", ru: "Репозиторий не поддерживается; это история дизайна, не рекомендация внедрения.", uk: "Репозиторій не підтримується; це історія дизайну, не рекомендація впровадження."}
+    links:
+      - {label: GitHub repository, url: "https://github.com/DemocracyOS/democracyos"}
+
+  - id: your-priorities
+    kind: software
+    role: implementation
+    scope: tool
+    themes: [deliberation, ai, governance]
+    open_source: true
+    name: {en: "Róbert Bjarnason / Your Priorities", ru: "Роберт Бьярнасон / Your Priorities", uk: "Роберт Бʼярнасон / Your Priorities"}
+    region: {en: "Iceland / international", ru: "Исландия / мир", uk: "Ісландія / світ"}
+    status: {en: "active deployed platform", ru: "действующая внедрённая платформа", uk: "чинна впроваджена платформа"}
+    summary: {en: "Participation platform used by Better Reykjavík and public institutions.", ru: "Платформа участия, применяемая Better Reykjavík и публичными институтами.", uk: "Платформа участі, яку застосовують Better Reykjavík та публічні інституції."}
+    proposal: {en: "Crowdsource ideas, structure arguments, prioritise, and use AI as assistance.", ru: "Собирать идеи, структурировать аргументы, ранжировать и использовать AI как помощника.", uk: "Збирати ідеї, структурувати аргументи, ранжувати й використовувати AI як помічника."}
+    caveat: {en: "Rankings and AI shape attention; institutional response rules determine real power.", ru: "Рейтинги и AI формируют внимание; реальную власть определяют правила реакции институтов.", uk: "Рейтинги й AI формують увагу; реальну владу визначають правила реакції інституцій."}
+    links:
+      - {label: Official site, url: "https://citizens.is/"}
+      - {label: GitHub repository, url: "https://github.com/CitizensFoundation/your-priorities-app"}
+
+  - id: decidim-consul
+    kind: software
+    role: implementation
+    scope: tool
+    themes: [deliberation, governance, direct-democracy]
+    open_source: true
+    name: {en: "Decidim / Consul Democracy", ru: "Decidim / Consul Democracy", uk: "Decidim / Consul Democracy"}
+    region: {en: "Spain / global", ru: "Испания / мир", uk: "Іспанія / світ"}
+    status: {en: "active deployed platforms", ru: "действующие внедрённые платформы", uk: "чинні впроваджені платформи"}
+    summary: {en: "Municipal platforms for proposals, assemblies, budgets, debates, and collaborative laws.", ru: "Муниципальные платформы предложений, ассамблей, бюджетов, дебатов и совместных законов.", uk: "Муніципальні платформи пропозицій, асамблей, бюджетів, дебатів і спільних законів."}
+    proposal: {en: "Reusable, traceable participation workflows that cities can host and adapt.", ru: "Повторно используемые и прослеживаемые процессы участия для городов.", uk: "Повторно використовувані й простежувані процеси участі для міст."}
+    caveat: {en: "Software cannot guarantee inclusion or policy impact; configuration and commitments matter.", ru: "ПО не гарантирует включённость или влияние; важны настройка и обязательства.", uk: "ПЗ не гарантує залученість чи вплив; важливі налаштування й зобов’язання."}
+    links:
+      - {label: Decidim repository, url: "https://github.com/decidim/decidim"}
+      - {label: Consul repository, url: "https://github.com/consuldemocracy/consuldemocracy"}
+
+  - id: liquidfeedback
+    kind: software
+    role: proposal
+    scope: tool
+    themes: [voting, direct-democracy]
+    open_source: true
+    name: {en: "LiquidFeedback", ru: "LiquidFeedback", uk: "LiquidFeedback"}
+    region: {en: "Germany / international", ru: "Германия / мир", uk: "Німеччина / світ"}
+    status: {en: "established open-source system", ru: "зрелая открытая система", uk: "зріла відкрита система"}
+    summary: {en: "Liquid-democracy software with topic delegation and recall.", ru: "ПО жидкой демократии с делегированием по теме и отзывом.", uk: "ПЗ рідкої демократії з делегуванням за темою й відкликанням."}
+    proposal: {en: "Direct voting combined with flexible delegation and structured initiatives.", ru: "Прямое голосование с гибким делегированием и структурированными инициативами.", uk: "Пряме голосування з гнучким делегуванням і структурованими ініціативами."}
+    caveat: {en: "Delegation can concentrate influence; secret coercion-resistant elections need other safeguards.", ru: "Делегирование может концентрировать влияние; тайные выборы требуют иных гарантий.", uk: "Делегування може концентрувати вплив; таємні вибори потребують інших гарантій."}
+    links:
+      - {label: Open-source information, url: "https://liquidfeedback.com/en/open-source.html"}
+
+  - id: openfisca
+    kind: software
+    role: implementation
+    scope: tool
+    themes: [planning, governance]
+    open_source: true
+    name: {en: "OpenFisca", ru: "OpenFisca", uk: "OpenFisca"}
+    region: {en: "France / international", ru: "Франция / мир", uk: "Франція / світ"}
+    status: {en: "active digital public good", ru: "действующее цифровое общественное благо", uk: "чинне цифрове суспільне благо"}
+    summary: {en: "Rules-as-code engine for modelling tax and benefit law.", ru: "Движок «правила как код» для моделирования налогового и социального права.", uk: "Рушій «правила як код» для моделювання податкового й соціального права."}
+    proposal: {en: "Executable, inspectable, reusable policy rules through open models and APIs.", ru: "Исполняемые, проверяемые и повторно используемые правила через модели и API.", uk: "Виконувані, перевірювані й повторно використовувані правила через моделі та API."}
+    caveat: {en: "Code exposes consequences but cannot settle values, ambiguity, or legitimacy.", ru: "Код показывает последствия, но не решает ценностные споры, неоднозначность и легитимность.", uk: "Код показує наслідки, але не розв’язує ціннісні суперечки, неоднозначність і легітимність."}
+    links:
+      - {label: Official site, url: "https://openfisca.org/en/"}
+      - {label: GitHub, url: "https://github.com/openfisca"}
+
+  - id: verifiable-voting
+    kind: software
+    role: implementation
+    scope: tool
+    themes: [voting]
+    open_source: true
+    name: {en: "ElectionGuard / Helios / Belenios", ru: "ElectionGuard / Helios / Belenios", uk: "ElectionGuard / Helios / Belenios"}
+    region: {en: "international", ru: "международный контекст", uk: "міжнародний контекст"}
+    status: {en: "active research and deployment tools", ru: "действующие исследовательские и прикладные инструменты", uk: "чинні дослідницькі й прикладні інструменти"}
+    summary: {en: "Open families of end-to-end verifiable election technology.", ru: "Открытые семейства сквозной проверяемой избирательной технологии.", uk: "Відкриті сімейства наскрізно перевірюваної виборчої технології."}
+    proposal: {en: "Verify encrypted tallying without revealing individual ballots.", ru: "Проверять зашифрованный подсчёт без раскрытия отдельных бюллетеней.", uk: "Перевіряти зашифрований підрахунок без розкриття окремих бюлетенів."}
+    caveat: {en: "Cryptography does not solve coercion, compromised devices, registration, or administration.", ru: "Криптография не решает проблемы принуждения, заражённых устройств, регистрации и администрирования.", uk: "Криптографія не розв’язує проблем примусу, заражених пристроїв, реєстрації й адміністрування."}
+    links:
+      - {label: ElectionGuard, url: "https://github.com/Election-Tech-Initiative/electionguard-python"}
+      - {label: Helios, url: "https://github.com/benadida/helios-server"}
+      - {label: Belenios, url: "https://www.belenios.org/"}
+
+  - id: talk-to-city
+    kind: software
+    role: implementation
+    scope: tool
+    themes: [ai, deliberation]
+    open_source: true
+    name: {en: "Talk to the City", ru: "Talk to the City", uk: "Talk to the City"}
+    region: {en: "United States / international", ru: "США / мир", uk: "США / світ"}
+    status: {en: "active open-source tool", ru: "действующий открытый инструмент", uk: "чинний відкритий інструмент"}
+    summary: {en: "LLM system grouping public input into a nested tree of claims and themes.", ru: "LLM-система, группирующая ответы общества в дерево тезисов и тем.", uk: "LLM-система, що групує відповіді суспільства в дерево тез і тем."}
+    proposal: {en: "Listen to thousands of detailed responses without one reductive poll number.", ru: "Услышать тысячи ответов, не сводя их к одной цифре опроса.", uk: "Почути тисячі відповідей, не зводячи їх до однієї цифри опитування."}
+    caveat: {en: "LLM summaries are interpretations; privacy, prompts, and omissions require human audit.", ru: "LLM-резюме — интерпретации; приватность, промпты и пропуски требуют аудита.", uk: "LLM-резюме — інтерпретації; приватність, промпти й пропуски потребують аудиту."}
+    links:
+      - {label: Official about page, url: "https://www.talktothe.city/about"}
+      - {label: Active GitHub repository, url: "https://github.com/AIObjectives/tttc-light-js"}
+
+  - id: cip-habermas
+    kind: research
+    role: research
+    scope: adjacent
+    themes: [ai, deliberation, governance]
+    open_source: false
+    name: {en: "CIP / Habermas Machine", ru: "CIP / Habermas Machine", uk: "CIP / Habermas Machine"}
+    region: {en: "United States / United Kingdom", ru: "США / Великобритания", uk: "США / Велика Британія"}
+    status: {en: "active research and prototypes", ru: "активные исследования и прототипы", uk: "активні дослідження й прототипи"}
+    summary: {en: "Democratic-AI experiments and an AI mediator drafting common-ground statements.", ru: "Эксперименты с демократическим AI и AI-медиатором общей позиции.", uk: "Експерименти з демократичним AI та AI-медіатором спільної позиції."}
+    proposal: {en: "Public-input assemblies and assisted synthesis rather than an AI ruler.", ru: "Ассамблеи общественного участия и вспомогательный синтез вместо AI-правителя.", uk: "Асамблеї громадської участі й допоміжний синтез замість AI-правителя."}
+    caveat: {en: "Preferred consensus is not authorization; framing and model control can suppress disagreement.", ru: "Предпочтённый консенсус — не полномочие; фрейминг и контроль модели могут подавлять несогласие.", uk: "Уподобаний консенсус — не повноваження; фреймінг і контроль моделі можуть пригнічувати незгоду."}
+    links:
+      - {label: CIP roadmap, url: "https://www.cip.org/research/ai-roadmap"}
+      - {label: DeepMind research, url: "https://deepmind.google/research/publications/65220/"}
+      - {label: Critical analysis, url: "https://ojs.aaai.org/index.php/AIES/article/view/36687"}
+
+  - id: forward-voting
+    kind: organization
+    role: political
+    scope: adjacent
+    themes: [voting, governance]
+    open_source: false
+    name: {en: "Forward Party / voting reform", ru: "Forward Party / реформа голосования", uk: "Forward Party / реформа голосування"}
+    region: {en: "United States", ru: "США", uk: "США"}
+    status: {en: "active political party and reform field", ru: "действующая партия и поле реформ", uk: "чинна партія й поле реформ"}
+    summary: {en: "Centrist-oriented political project focused on structural electoral reform.", ru: "Центристский политический проект структурной реформы выборов.", uk: "Центристський політичний проєкт структурної реформи виборів."}
+    proposal: {en: "Ranked-choice voting, open primaries, plus competing Approval and STAR methods.", ru: "Ранжированное голосование, открытые праймериз, а также Approval и STAR.", uk: "Ранжоване голосування, відкриті праймериз, а також Approval і STAR."}
+    caveat: {en: "Rules change incentives but cannot alone solve money, media, administration, or trust.", ru: "Правила меняют стимулы, но сами не решают проблемы денег, медиа, администрирования и доверия.", uk: "Правила змінюють стимули, але самі не розв’язують проблем грошей, медіа, адміністрування й довіри."}
+    links:
+      - {label: Forward Party FAQ, url: "https://www.forwardparty.com/faq/"}
+      - {label: Ranked-choice voting, url: "https://fairvote.org/our-reforms/ranked-choice-voting/"}
+      - {label: Approval voting, url: "https://electionscience.org/education/approval-voting/"}
+      - {label: STAR voting, url: "https://www.starvoting.org/star"}
+
+  - id: open-north-flux
+    kind: project
+    role: political
+    scope: adjacent
+    themes: [voting, governance, direct-democracy]
+    open_source: true
+    name: {en: "Open North / Flux Australia", ru: "Open North / Flux Australia", uk: "Open North / Flux Australia"}
+    region: {en: "Canada / Australia", ru: "Канада / Австралия", uk: "Канада / Австралія"}
+    status: {en: "active civic infrastructure / historical experiment", ru: "активная civic-инфраструктура / исторический эксперимент", uk: "активна civic-інфраструктура / історичний експеримент"}
+    summary: {en: "Canadian civic-data infrastructure and an Australian issue-democracy experiment.", ru: "Канадская инфраструктура гражданских данных и австралийский эксперимент демократии по вопросам.", uk: "Канадська інфраструктура громадянських даних й австралійський експеримент демократії за питаннями."}
+    proposal: {en: "Open civic data on one side; transferable issue voting on the other.", ru: "Открытые гражданские данные с одной стороны; передаваемое голосование по вопросам — с другой.", uk: "Відкриті громадянські дані з одного боку; передаване голосування за питаннями — з іншого."}
+    caveat: {en: "Open North is infrastructure, not a constitution; Flux vote trading risks inequality and capture.", ru: "Open North — инфраструктура, не конституция; торговля голосами Flux несёт риски неравенства и захвата.", uk: "Open North — інфраструктура, не конституція; торгівля голосами Flux несе ризики нерівності й захоплення."}
+    links:
+      - {label: Open North, url: "https://opennorth.ca/"}
+      - {label: Open North GitHub, url: "https://github.com/opennorth"}
+      - {label: Flux archive, url: "https://voteflux.org/"}
+
   - id: mind-journal
-    role: research
-    themes: [governance, deliberation, voting, ai, planning]
+    kind: local
+    role: source
+    scope: reference
+    themes: [venus, governance, voting, ai, planning]
     open_source: true
-    name:
-      en: Mind Journal
-      ru: Mind Journal
-      uk: Mind Journal
-    summary:
-      en: This publication’s independent reading and commentary.
-      ru: Независимое чтение и комментарий этого издания.
-      uk: Незалежне читання та коментар цього видання.
-    proposal:
-      en: Explore political philosophy and future governance models.
-      ru: Исследовать политическую философию и модели управления будущего.
-      uk: Досліджувати політичну філософію та моделі управління майбутнього.
-    caveat:
-      en: Articles are exploratory and do not claim to be validated political-science results.
-      ru: Статьи носят исследовательский характер и не претендуют на статус проверенных результатов политической науки.
-      uk: Статті мають дослідницький характер і не претендують на статус перевірених результатів політичної науки.
-    region:
-      en: International
-      ru: Международный контекст
-      uk: Міжнародний контекст
-    status:
-      en: Active publication
-      ru: Действующее издание
-      uk: Чинне видання
+    name: {en: "Mind Journal", ru: "Mind Journal", uk: "Mind Journal"}
+    region: {en: "Ukraine / international", ru: "Украина / мир", uk: "Україна / світ"}
+    status: {en: "independent editorial project", ru: "независимый редакционный проект", uk: "незалежний редакційний проєкт"}
+    summary: {en: "Independent comparison of political philosophy, civic technology, democracy, and future design.", ru: "Независимое сопоставление политической философии, civic tech, демократии и проектирования будущего.", uk: "Незалежне зіставлення політичної філософії, civic tech, демократії та проєктування майбутнього."}
+    proposal: {en: "Keep competing ideas, original sources, software, and caveats in one inspectable map.", ru: "Свести идеи, первичные источники, ПО и оговорки в одну проверяемую карту.", uk: "Звести ідеї, первинні джерела, ПЗ і застереження в одну перевірювану мапу."}
+    caveat: {en: "Inclusion is not endorsement; this is a research index, not a ranking.", ru: "Включение не означает одобрения; это исследовательский индекс, не рейтинг.", uk: "Включення не означає схвалення; це дослідницький індекс, не рейтинг."}
     links:
-      - label: Mind Journal
-        url: https://mmortall.github.io/blogs-Mind-Journal/
+      - {label: Mind Journal, url: "https://mmortall.github.io/blogs-Mind-Journal/"}
+
 edges:
-  - from: jacque-fresco
-    to: venus-project
-    label:
-      en: origin and institutional continuity
-      ru: исходная идея и организационная преемственность
-      uk: початкова ідея та організаційна спадкоємність
-  - from: yevhen-sliuzko
-    to: designing-the-future
-    label:
-      en: leads and publishes
-      ru: руководит и публикует
-      uk: керує та публікує
-  - from: yevhen-sliuzko
-    to: critical-document
-    label:
-      en: authorial research context
-      ru: авторский исследовательский контекст
-      uk: авторський дослідницький контекст
-  - from: dmitriy-molodozhonov
-    to: designing-the-future
-    label:
-      en: author and media work
-      ru: авторская и медиаработа
-      uk: авторська та медійна робота
-  - from: dmitriy-molodozhonov
-    to: renovation-earth
-    label:
-      en: team and current media work
-      ru: команда и текущая медиаработа
-      uk: команда та поточна медійна робота
-  - from: designing-the-future
-    to: critical-document
-    label:
-      en: publishes and contextualises
-      ru: публикует и поясняет контекст
-      uk: публікує та пояснює контекст
-  - from: mind-journal
-    to: critical-document
-    label:
-      en: independent reading and commentary
-      ru: независимое чтение и комментарий
-      uk: незалежне читання та коментар
-  - from: mind-journal
-    to: designing-the-future
-    label:
-      en: follows related ideas
-      ru: отслеживает родственные идеи
-      uk: відстежує споріднені ідеї
+  - {from: venus-project, to: sliuzko-dtf}
+  - {from: sliuzko-dtf, to: critical-document}
+  - {from: sliuzko-dtf, to: renovation-earth}
+  - {from: venus-project, to: zeitgeist-integral}
+  - {from: venus-project, to: municipalist-critique}
+  - {from: venus-project, to: rbe10k}
+  - {from: anno-dd2030, to: talk-to-city}
+  - {from: vtaiwan-polis, to: anno-dd2030}
+  - {from: talk-to-city, to: cip-habermas}

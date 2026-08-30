@@ -51,6 +51,6 @@
       </article>
     {{- end }}
   </div>
-  <script type="application/json" class="future-map__data">{{ $payload | jsonify }}</script>
+  <script type="application/json" class="future-map__data">{{ $payload | jsonify | safeJS }}</script>
   <script src="{{ "js/future-map.js" | relURL }}" defer></script>
 </section>

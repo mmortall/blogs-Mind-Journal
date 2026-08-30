@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 $platformRoot = if ([string]::IsNullOrWhiteSpace($env:KNOWLEDGE_ROOT_PLATFORM)) {
-    "C:\Projects\all-knowledge-platform"
+    throw "Central knowledge router is unavailable. Set KNOWLEDGE_ROOT_PLATFORM to its checkout path."
 } else {
     $env:KNOWLEDGE_ROOT_PLATFORM
 }

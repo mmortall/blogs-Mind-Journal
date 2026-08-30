@@ -20,4 +20,4 @@ Access service credentials; secret values are never stored here.
 
 The project was created and read back from configured content workspace on
 2026-08-30. Use central workflow instructions in
-`C:/Projects/all-knowledge-platform/docs/wiki/systems/kaneo-workflow.md`.
+`docs/wiki/systems/kaneo-workflow.md`.

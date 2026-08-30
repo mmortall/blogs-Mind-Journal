@@ -3,9 +3,9 @@
 
   const ns = "http://www.w3.org/2000/svg";
   const copyByLanguage = {
-    en: { proposal: "Proposal", caveat: "Critical caveat", region: "Region", status: "Status", open: "Open source", yes: "yes", no: "no", links: "Original materials", shown: "entries shown", empty: "No entries match these filters." },
-    ru: { proposal: "Что предлагают", caveat: "Критическая оговорка", region: "Регион", status: "Статус", open: "Открытый код", yes: "да", no: "нет", links: "Оригинальные материалы", shown: "позиций показано", empty: "По этим фильтрам ничего не найдено." },
-    uk: { proposal: "Що пропонують", caveat: "Критичне застереження", region: "Регіон", status: "Статус", open: "Відкритий код", yes: "так", no: "ні", links: "Оригінальні матеріали", shown: "позицій показано", empty: "За цими фільтрами нічого не знайдено." }
+    en: { proposal: "Proposal", caveat: "Critical caveat", region: "Region", status: "Status", open: "Open source", yes: "yes", no: "no", links: "Original materials", shown: "entries shown", empty: "No entries match these filters.", fullscreen: "Full screen", exitFullscreen: "Exit full screen", fit: "Fit graph" },
+    ru: { proposal: "Что предлагают", caveat: "Критическая оговорка", region: "Регион", status: "Статус", open: "Открытый код", yes: "да", no: "нет", links: "Оригинальные материалы", shown: "позиций показано", empty: "По этим фильтрам ничего не найдено.", fullscreen: "На весь экран", exitFullscreen: "Выйти из полноэкранного режима", fit: "Вписать граф" },
+    uk: { proposal: "Що пропонують", caveat: "Критичне застереження", region: "Регіон", status: "Статус", open: "Відкритий код", yes: "так", no: "ні", links: "Оригінальні матеріали", shown: "позицій показано", empty: "За цими фільтрами нічого не знайдено.", fullscreen: "На весь екран", exitFullscreen: "Вийти з повноекранного режиму", fit: "Вписати граф" }
   };
 
   function localized(value, language) {
@@ -26,6 +26,30 @@
     details.appendChild(paragraph);
   }
 
+  function labelLines(value, maxLength) {
+    const words = value.trim().split(/\s+/);
+    const lines = [];
+    let current = "";
+    words.forEach((word) => {
+      if (!current && word.length > maxLength) {
+        lines.push(`${word.slice(0, maxLength - 1)}…`);
+        return;
+      }
+      const candidate = current ? `${current} ${word}` : word;
+      if (current && candidate.length > maxLength) {
+        lines.push(current);
+        current = word;
+      } else {
+        current = candidate;
+      }
+    });
+    if (current) lines.push(current);
+    if (lines.length <= 2) return lines;
+    lines.length = 2;
+    lines[1] = `${lines[1].slice(0, maxLength - 1)}…`;
+    return lines;
+  }
+
   function init(root) {
     const dataElement = root.querySelector(".future-map__data");
     const svg = root.querySelector(".future-map__svg");
@@ -44,8 +68,43 @@
     const cards = [...root.querySelectorAll(".future-map__card")];
     const search = root.querySelector("[data-map-search]");
     const count = root.querySelector("[data-map-count]");
+    const canvas = root.querySelector(".future-map__canvas");
+    const fullscreenButton = root.querySelector("[data-map-fullscreen]");
+    const fitButton = root.querySelector("[data-map-fit]");
+    const filterButtons = [...root.querySelectorAll("[data-map-filter]")];
+    const themeButtons = [...root.querySelectorAll("[data-map-theme]")];
     let role = "all";
     let theme = "all";
+
+    function setActive(buttons, activeButton) {
+      buttons.forEach((button) => {
+        const active = button === activeButton;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+    }
+
+    function updateFullscreenButton() {
+      if (!fullscreenButton) return;
+      const active = document.fullscreenElement === root || root.classList.contains("is-expanded");
+      fullscreenButton.textContent = active ? copy.exitFullscreen : copy.fullscreen;
+      fullscreenButton.setAttribute("aria-pressed", String(active));
+    }
+
+    async function toggleFullscreen() {
+      try {
+        if (document.fullscreenElement === root) {
+          await document.exitFullscreen();
+        } else if (root.requestFullscreen) {
+          await root.requestFullscreen();
+        } else {
+          root.classList.toggle("is-expanded");
+        }
+      } catch (_) {
+        root.classList.toggle("is-expanded");
+      }
+      updateFullscreenButton();
+    }
 
     function matches(node) {
       const roleMatch = role === "all" || node.role === role || (role === "open-source" && node.open_source);
@@ -111,7 +170,14 @@
         const label = document.createElementNS(ns, "text");
         label.setAttribute("x", position.x); label.setAttribute("y", position.y + 4); label.setAttribute("text-anchor", "middle");
         const name = localized(node.name, language);
-        label.textContent = name.length > 30 ? `${name.slice(0, 28)}…` : name;
+        const lines = labelLines(name, 23);
+        lines.forEach((line, index) => {
+          const tspan = document.createElementNS(ns, "tspan");
+          tspan.setAttribute("x", position.x);
+          tspan.setAttribute("dy", index === 0 ? (lines.length === 1 ? "4" : "-5") : "17");
+          tspan.textContent = line;
+          label.appendChild(tspan);
+        });
         group.append(box, label); svg.appendChild(group);
         group.addEventListener("click", () => showDetails(node));
         group.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); showDetails(node); } });
@@ -125,18 +191,26 @@
       draw(visible);
     }
 
-    root.querySelectorAll("[data-map-filter]").forEach((button) => button.addEventListener("click", () => {
+    filterButtons.forEach((button) => button.addEventListener("click", () => {
       role = button.dataset.mapFilter;
-      root.querySelectorAll("[data-map-filter]").forEach((item) => item.classList.toggle("is-active", item === button)); update();
+      setActive(filterButtons, button); update();
     }));
-    root.querySelectorAll("[data-map-theme]").forEach((button) => button.addEventListener("click", () => {
+    themeButtons.forEach((button) => button.addEventListener("click", () => {
       theme = button.dataset.mapTheme;
-      root.querySelectorAll("[data-map-theme]").forEach((item) => item.classList.toggle("is-active", item === button)); update();
+      setActive(themeButtons, button); update();
     }));
     root.querySelectorAll("[data-map-inspect]").forEach((button) => button.addEventListener("click", () => {
       const node = nodes.get(button.dataset.mapInspect); if (node) { showDetails(node); details.scrollIntoView({ behavior: "smooth", block: "nearest" }); }
     }));
     if (search) search.addEventListener("input", update);
+    if (fullscreenButton) fullscreenButton.addEventListener("click", toggleFullscreen);
+    if (fitButton) fitButton.addEventListener("click", () => {
+      update();
+      if (canvas) canvas.scrollTo({ left: 0, top: 0, behavior: "smooth" });
+      if (canvas) canvas.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+    document.addEventListener("fullscreenchange", updateFullscreenButton);
+    updateFullscreenButton();
     update();
   }
 

@@ -1,4 +1,19 @@
 nodes:
+  - id: jacque-fresco
+    kind: person
+    role: origin
+    scope: direct
+    themes: [venus, planning]
+    open_source: false
+    name: {en: "Jacque Fresco", ru: "Жак Фреско", uk: "Жак Фреско"}
+    region: {en: "United States", ru: "США", uk: "США"}
+    status: {en: "historical source", ru: "исторический источник", uk: "історичне джерело"}
+    summary: {en: "Industrial designer and futurist who originated The Venus Project and its social-design programme.", ru: "Промышленный дизайнер и футуролог, создавший «Проект Венера» и его программу социального проектирования.", uk: "Промисловий дизайнер і футуролог, який створив «Проєкт Венера» та його програму соціального проєктування."}
+    proposal: {en: "Redesign settlements and production around resources, science, automation, and long-term planning.", ru: "Перестроить поселения и производство вокруг ресурсов, науки, автоматизации и долгосрочного планирования.", uk: "Перебудувати поселення й виробництво навколо ресурсів, науки, автоматизації та довгострокового планування."}
+    caveat: {en: "His broad vision did not specify a complete transition, constitutional order, or accountability system.", ru: "Его широкое видение не задавало полного перехода, конституционного устройства или системы подотчётности.", uk: "Його широке бачення не задавало повного переходу, конституційного устрою чи системи підзвітності."}
+    links:
+      - {label: Official history, url: "https://www.thevenusproject.com/about/history/"}
+
   - id: venus-project
     kind: organization
     role: origin
@@ -29,7 +44,10 @@ nodes:
     caveat: {en: "They are parties to the dispute; claims need comparison with primary records and replies.", ru: "Они участники конфликта; утверждения нужно сверять с первичными документами и ответами.", uk: "Вони учасники конфлікту; твердження слід звіряти з первинними документами й відповідями."}
     links:
       - {label: Yevhen Sliuzko, url: "https://sluzko.com/"}
+      - {label: Yevhen Sliuzko — author page, url: "https://designing-the-future.org/author/yevhen_sliuzko/"}
       - {label: Designing the Future, url: "https://designing-the-future.org/ua/"}
+      - {label: Telegram, url: "https://t.me/sluzko"}
+      - {label: Medium, url: "https://medium.com/@DesigningTheFuture"}
 
   - id: critical-document
     kind: source
@@ -67,7 +85,7 @@ nodes:
     role: proposal
     scope: direct
     themes: [venus, planning, governance]
-    open_source: true
+    open_source: false
     name: {en: "Peter Joseph / TZM / Integral Collective", ru: "Питер Джозеф / TZM / Integral Collective", uk: "Пітер Джозеф / TZM / Integral Collective"}
     region: {en: "United States / global", ru: "США / мир", uk: "США / світ"}
     status: {en: "active movement; early cooperative prototype", ru: "действующее движение; ранний прототип кооператива", uk: "чинний рух; ранній прототип кооперативу"}
@@ -397,8 +415,10 @@ nodes:
     caveat: {en: "Inclusion is not endorsement; this is a research index, not a ranking.", ru: "Включение не означает одобрения; это исследовательский индекс, не рейтинг.", uk: "Включення не означає схвалення; це дослідницький індекс, не рейтинг."}
     links:
       - {label: Mind Journal, url: "https://mmortall.github.io/blogs-Mind-Journal/"}
+      - {label: GitHub repository, url: "https://github.com/mmortall/blogs-Mind-Journal"}
 
 edges:
+  - {from: jacque-fresco, to: venus-project}
   - {from: venus-project, to: sliuzko-dtf}
   - {from: sliuzko-dtf, to: critical-document}
   - {from: sliuzko-dtf, to: renovation-earth}

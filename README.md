@@ -45,3 +45,13 @@ reusing them.
 This publication is a space for exploring how human values, algorithmic
 rationality, and collective intelligence might be combined in systems of
 governance.
+
+## Validation
+
+Build public and draft variants, then validate the multilingual research map:
+
+```powershell
+hugo --minify --destination public
+node tools/validate-future-map.mjs public
+hugo --buildDrafts --minify --destination public-drafts
+```

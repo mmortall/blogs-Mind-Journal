@@ -100,6 +100,14 @@ other = "Select a node to see its description, relations, and original public li
 other = "Search the map"
 [future_map_search_placeholder]
 other = "Person, project, country, proposal, or caveat"
+[future_map_actions]
+other = "Map actions"
+[future_map_fullscreen]
+other = "Full screen"
+[future_map_exit_fullscreen]
+other = "Exit full screen"
+[future_map_fit]
+other = "Fit graph"
 [future_map_critics]
 other = "Critics"
 [future_map_proposals]

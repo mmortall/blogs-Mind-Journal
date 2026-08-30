@@ -100,6 +100,14 @@ other = "Виберіть вузол, щоб побачити опис, зв’�
 other = "Пошук мапою"
 [future_map_search_placeholder]
 other = "Людина, проєкт, країна, пропозиція або застереження"
+[future_map_actions]
+other = "Дії мапи"
+[future_map_fullscreen]
+other = "На весь екран"
+[future_map_exit_fullscreen]
+other = "Вийти з повноекранного режиму"
+[future_map_fit]
+other = "Вписати граф"
 [future_map_critics]
 other = "Критики"
 [future_map_proposals]

@@ -8,6 +8,10 @@
   <div class="future-map__controls">
     <label class="future-map__search-label" for="{{ $mapID }}-search">{{ i18n "future_map_search" }}</label>
     <input id="{{ $mapID }}-search" class="future-map__search" type="search" data-map-search placeholder="{{ i18n "future_map_search_placeholder" }}">
+    <div class="future-map__actions" role="group" aria-label="{{ i18n "future_map_actions" }}">
+      <button type="button" class="future-map__action" data-map-fullscreen aria-pressed="false">{{ i18n "future_map_fullscreen" }}</button>
+      <button type="button" class="future-map__action" data-map-fit>{{ i18n "future_map_fit" }}</button>
+    </div>
     <div class="future-map__toolbar" role="group" aria-label="{{ i18n "future_map_filters" }}">
       <button type="button" class="future-map__filter is-active" data-map-filter="all">{{ i18n "future_map_all" }}</button>
       <button type="button" class="future-map__filter" data-map-filter="critic">{{ i18n "future_map_critics" }}</button>

@@ -48,6 +48,7 @@ for (const { file, html } of mapPages) {
   for (const node of data.nodes) {
     if (!node.id || !node.role || !Array.isArray(node.themes) || !node.themes.length) fail(`Required metadata missing for ${node.id || "unknown"}`);
     if (typeof node.open_source !== "boolean") fail(`open_source must be boolean for ${node.id}`);
+    if (!node.position || !Number.isFinite(node.position.x) || !Number.isFinite(node.position.y) || Math.abs(node.position.x) > 100 || Math.abs(node.position.y) > 100) fail(`Political-map position must be within -100..100 for ${node.id}`);
     for (const field of localizedFields) for (const language of languages) {
       if (!node[field] || typeof node[field][language] !== "string" || !node[field][language].trim()) fail(`${node.id}.${field}.${language} is missing`);
     }
@@ -59,6 +60,7 @@ for (const { file, html } of mapPages) {
   for (const edge of data.edges) if (!idSet.has(edge.from) || !idSet.has(edge.to)) fail(`Broken edge ${edge.from} -> ${edge.to}`);
   const cards = (html.match(/data-node-id=/g) || []).length;
   if (cards !== data.nodes.length) fail(`Card count ${cards} differs from node count ${data.nodes.length} in ${file}`);
+  for (const id of ids) if (!html.includes(`-entry-${id}`)) fail(`Local article anchor missing for ${id} in ${file}`);
   if (/(?:[CD]:\\|localhost|127\.0\.0\.1|BEGIN [A-Z ]*PRIVATE KEY)/i.test(script[1])) fail(`Private or local-only value leaked into ${file}`);
 }
 if (seenLanguages.size !== languages.length) fail(`Expected languages ${languages.join(", ")}`);

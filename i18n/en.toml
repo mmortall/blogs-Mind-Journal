@@ -93,9 +93,11 @@ other = "Sources"
 [future_map_title]
 other = "Future design network"
 [future_map_description]
-other = "Publicly documented people, organisations, and sources related to Jacque Fresco's ideas and their criticism."
+other = "Ideas around Jacque Fresco and The Venus Project placed by economic coordination and political agency."
 [future_map_hint]
-other = "Select a node to see its description, relations, and original public links."
+other = "Select a point to see its description and links. The Mind Journal article is always first."
+[future_map_model_note]
+other = "Horizontal: public or resource planning → hybrid coordination → market and private autonomy. Vertical: expert or technocratic control → participatory and direct democracy. Positions describe the represented mechanism, not a person's complete ideology."
 [future_map_search]
 other = "Search the map"
 [future_map_search_placeholder]

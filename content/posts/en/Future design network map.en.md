@@ -17,6 +17,10 @@ The filters preserve three distinctions that are easy to lose. A direct critic c
 
 Each entry therefore records not only an idea, but also what it proposes instead, its present status, and a serious caveat. Inclusion is not endorsement.
 
+The diagram uses two axes tailored to this debate rather than the usual party labels. Horizontally, ideas move from public or resource planning through hybrid coordination to markets and private autonomy. Vertically, they move from expert or technocratic control to participation and direct democracy. “Left”, “centre”, and “right” therefore mean positions inside this specific design problem, not a complete verdict on a person’s politics. A point locates the governing mechanism represented by the entry; reasonable readers may place it differently.
+
+Click a point to open its explanation. The first link always returns to that entry in this Mind Journal article; the links after it lead to original sites, papers, archives, or source code.
+
 {{< future-map id="future-network-map-en" >}}
 
 > **Copyright and method.** This map is an independent editorial compilation of public links. Copyright in the materials it references belongs to their authors and rights holders.

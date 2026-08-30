@@ -5,6 +5,7 @@ nodes:
     scope: direct
     themes: [venus, planning]
     open_source: false
+    position: {x: -82, "y": -72}
     name: {en: "Jacque Fresco", ru: "Жак Фреско", uk: "Жак Фреско"}
     region: {en: "United States", ru: "США", uk: "США"}
     status: {en: "historical source", ru: "исторический источник", uk: "історичне джерело"}
@@ -20,6 +21,7 @@ nodes:
     scope: direct
     themes: [venus, planning]
     open_source: false
+    position: {x: -88, "y": -80}
     name: {en: "The Venus Project", ru: "«Проект Венера»", uk: "«Проєкт Венера»"}
     region: {en: "United States / global", ru: "США / мир", uk: "США / світ"}
     status: {en: "active organisation", ru: "действующая организация", uk: "чинна організація"}
@@ -36,6 +38,7 @@ nodes:
     scope: direct
     themes: [venus, governance]
     open_source: false
+    position: {x: -28, "y": 18}
     name: {en: "Yevhen Sliuzko / Designing the Future", ru: "Евгений Слюзко / «Проектирование Будущего»", uk: "Євген Слюзко / «Проєктування Майбутнього»"}
     region: {en: "Ukraine / international", ru: "Украина / международный проект", uk: "Україна / міжнародний проєкт"}
     status: {en: "active public authors and NGO", ru: "активные публичные авторы и НКО", uk: "активні публічні автори та ГО"}
@@ -55,6 +58,7 @@ nodes:
     scope: direct
     themes: [venus, governance]
     open_source: false
+    position: {x: -12, "y": 8}
     name: {en: "Critical source document", ru: "Критический исходный документ", uk: "Критичний вихідний документ"}
     region: {en: "Ukraine / Russian-speaking network", ru: "Украина / русскоязычная сеть", uk: "Україна / російськомовна мережа"}
     status: {en: "public advocacy document", ru: "публичный позиционный документ", uk: "публічний позиційний документ"}
@@ -70,6 +74,7 @@ nodes:
     scope: direct
     themes: [venus, planning]
     open_source: false
+    position: {x: -38, "y": 34}
     name: {en: "Dmitriy Molodozhonov / Renovation Earth", ru: "Дмитрий Молодожонов / «Реновация Земли»", uk: "Дмитро Молодожонов / «Реновація Землі»"}
     region: {en: "Ukraine / international", ru: "Украина / международный проект", uk: "Україна / міжнародний проєкт"}
     status: {en: "volunteer media initiative", ru: "волонтёрская медиаинициатива", uk: "волонтерська медіаініціатива"}
@@ -86,6 +91,7 @@ nodes:
     scope: direct
     themes: [venus, planning, governance]
     open_source: false
+    position: {x: -68, "y": -32}
     name: {en: "Peter Joseph / TZM / Integral Collective", ru: "Питер Джозеф / TZM / Integral Collective", uk: "Пітер Джозеф / TZM / Integral Collective"}
     region: {en: "United States / global", ru: "США / мир", uk: "США / світ"}
     status: {en: "active movement; early cooperative prototype", ru: "действующее движение; ранний прототип кооператива", uk: "чинний рух; ранній прототип кооперативу"}
@@ -103,6 +109,7 @@ nodes:
     scope: direct
     themes: [venus, governance, direct-democracy]
     open_source: false
+    position: {x: -54, "y": 76}
     name: {en: "Libertarian-municipalist critique", ru: "Либертарно-муниципалистская критика", uk: "Лібертарно-муніципалістська критика"}
     region: {en: "international online essay", ru: "международное онлайн-эссе", uk: "міжнародне онлайн-есе"}
     status: {en: "historical rough draft", ru: "исторический черновик", uk: "історична чернетка"}
@@ -118,6 +125,7 @@ nodes:
     scope: direct
     themes: [venus, planning]
     open_source: false
+    position: {x: -76, "y": -46}
     name: {en: "RBE10K", ru: "RBE10K", uk: "RBE10K"}
     region: {en: "international", ru: "международный проект", uk: "міжнародний проєкт"}
     status: {en: "historical; activity unverified", ru: "исторический; активность не подтверждена", uk: "історичний; активність не підтверджена"}
@@ -133,6 +141,7 @@ nodes:
     scope: adjacent
     themes: [ai, governance, planning]
     open_source: false
+    position: {x: -22, "y": 48}
     name: {en: "Evgeny Morozov / Dan McQuillan", ru: "Евгений Морозов / Дэн Маккуиллан", uk: "Євген Морозов / Ден Макквіллан"}
     region: {en: "Europe", ru: "Европа", uk: "Європа"}
     status: {en: "active authors", ru: "активные авторы", uk: "активні автори"}
@@ -149,6 +158,8 @@ nodes:
     scope: adjacent
     themes: [governance, direct-democracy]
     open_source: false
+    position: {x: -18, "y": 86}
+    label_offset: {x: -12, "y": 14}
     name: {en: "Hélène Landemore", ru: "Элен Ландемор", uk: "Елен Ландемор"}
     region: {en: "France / United States", ru: "Франция / США", uk: "Франція / США"}
     status: {en: "active political theorist", ru: "активный политический теоретик", uk: "активна політична теоретикиня"}
@@ -164,6 +175,7 @@ nodes:
     scope: adjacent
     themes: [governance]
     open_source: false
+    position: {x: 12, "y": -58}
     name: {en: "Tongdong Bai", ru: "Бай Тундун", uk: "Бай Тундун"}
     region: {en: "China", ru: "Китай", uk: "Китай"}
     status: {en: "active political philosopher", ru: "активный политический философ", uk: "активний політичний філософ"}
@@ -180,6 +192,7 @@ nodes:
     scope: adjacent
     themes: [ai, voting, governance]
     open_source: false
+    position: {x: 4, "y": -26}
     name: {en: "César Hidalgo / Augmented Democracy", ru: "Сесар Идальго / Augmented Democracy", uk: "Сесар Ідальго / Augmented Democracy"}
     region: {en: "Chile / France", ru: "Чили / Франция", uk: "Чилі / Франція"}
     status: {en: "experimental proposal", ru: "экспериментальное предложение", uk: "експериментальна пропозиція"}
@@ -195,6 +208,8 @@ nodes:
     scope: adjacent
     themes: [voting, governance]
     open_source: false
+    position: {x: 42, "y": 42}
+    label_offset: {x: 12, "y": -8}
     name: {en: "Glen Weyl / RadicalxChange", ru: "Глен Вейл / RadicalxChange", uk: "Глен Вейл / RadicalxChange"}
     region: {en: "United States / global", ru: "США / мир", uk: "США / світ"}
     status: {en: "active research network", ru: "активная исследовательская сеть", uk: "активна дослідницька мережа"}
@@ -210,6 +225,8 @@ nodes:
     scope: tool
     themes: [ai, governance, deliberation]
     open_source: true
+    position: {x: 8, "y": 72}
+    label_offset: {x: -12, "y": 13}
     name: {en: "Takahiro Anno / Digital Democracy 2030", ru: "Такахиро Анно / Digital Democracy 2030", uk: "Такахіро Анно / Digital Democracy 2030"}
     region: {en: "Japan", ru: "Япония", uk: "Японія"}
     status: {en: "active civic and political programme", ru: "действующая гражданская и политическая программа", uk: "чинна громадянська й політична програма"}
@@ -228,6 +245,8 @@ nodes:
     scope: tool
     themes: [deliberation, governance, ai]
     open_source: true
+    position: {x: -4, "y": 94}
+    label_offset: {x: 12, "y": -16}
     name: {en: "Audrey Tang / vTaiwan / Polis", ru: "Одри Тан / vTaiwan / Polis", uk: "Одрі Тан / vTaiwan / Polis"}
     region: {en: "Taiwan / global", ru: "Тайвань / мир", uk: "Тайвань / світ"}
     status: {en: "deployed process and active software", ru: "внедрённый процесс и активное ПО", uk: "впроваджений процес і активне ПЗ"}
@@ -244,6 +263,8 @@ nodes:
     scope: tool
     themes: [deliberation, voting]
     open_source: true
+    position: {x: 4, "y": 84}
+    label_offset: {x: 12, "y": 2}
     name: {en: "Pia Mancini / DemocracyOS", ru: "Пиа Манчини / DemocracyOS", uk: "Піа Манчіні / DemocracyOS"}
     region: {en: "Argentina / international", ru: "Аргентина / мир", uk: "Аргентина / світ"}
     status: {en: "historical; unmaintained", ru: "исторический; не поддерживается", uk: "історичний; не підтримується"}
@@ -259,6 +280,8 @@ nodes:
     scope: tool
     themes: [deliberation, ai, governance]
     open_source: true
+    position: {x: 18, "y": 70}
+    label_offset: {x: 12, "y": 20}
     name: {en: "Róbert Bjarnason / Your Priorities", ru: "Роберт Бьярнасон / Your Priorities", uk: "Роберт Бʼярнасон / Your Priorities"}
     region: {en: "Iceland / international", ru: "Исландия / мир", uk: "Ісландія / світ"}
     status: {en: "active deployed platform", ru: "действующая внедрённая платформа", uk: "чинна впроваджена платформа"}
@@ -275,6 +298,8 @@ nodes:
     scope: tool
     themes: [deliberation, governance, direct-democracy]
     open_source: true
+    position: {x: -34, "y": 92}
+    label_offset: {x: -12, "y": -7}
     name: {en: "Decidim / Consul Democracy", ru: "Decidim / Consul Democracy", uk: "Decidim / Consul Democracy"}
     region: {en: "Spain / global", ru: "Испания / мир", uk: "Іспанія / світ"}
     status: {en: "active deployed platforms", ru: "действующие внедрённые платформы", uk: "чинні впроваджені платформи"}
@@ -291,6 +316,8 @@ nodes:
     scope: tool
     themes: [voting, direct-democracy]
     open_source: true
+    position: {x: 26, "y": 82}
+    label_offset: {x: 12, "y": 16}
     name: {en: "LiquidFeedback", ru: "LiquidFeedback", uk: "LiquidFeedback"}
     region: {en: "Germany / international", ru: "Германия / мир", uk: "Німеччина / світ"}
     status: {en: "established open-source system", ru: "зрелая открытая система", uk: "зріла відкрита система"}
@@ -306,6 +333,7 @@ nodes:
     scope: tool
     themes: [planning, governance]
     open_source: true
+    position: {x: -16, "y": -16}
     name: {en: "OpenFisca", ru: "OpenFisca", uk: "OpenFisca"}
     region: {en: "France / international", ru: "Франция / мир", uk: "Франція / світ"}
     status: {en: "active digital public good", ru: "действующее цифровое общественное благо", uk: "чинне цифрове суспільне благо"}
@@ -322,6 +350,8 @@ nodes:
     scope: tool
     themes: [voting]
     open_source: true
+    position: {x: 28, "y": 30}
+    label_offset: {x: 12, "y": 17}
     name: {en: "ElectionGuard / Helios / Belenios", ru: "ElectionGuard / Helios / Belenios", uk: "ElectionGuard / Helios / Belenios"}
     region: {en: "international", ru: "международный контекст", uk: "міжнародний контекст"}
     status: {en: "active research and deployment tools", ru: "действующие исследовательские и прикладные инструменты", uk: "чинні дослідницькі й прикладні інструменти"}
@@ -339,6 +369,8 @@ nodes:
     scope: tool
     themes: [ai, deliberation]
     open_source: true
+    position: {x: 2, "y": 56}
+    label_offset: {x: -12, "y": -8}
     name: {en: "Talk to the City", ru: "Talk to the City", uk: "Talk to the City"}
     region: {en: "United States / international", ru: "США / мир", uk: "США / світ"}
     status: {en: "active open-source tool", ru: "действующий открытый инструмент", uk: "чинний відкритий інструмент"}
@@ -355,6 +387,8 @@ nodes:
     scope: adjacent
     themes: [ai, deliberation, governance]
     open_source: false
+    position: {x: -8, "y": 38}
+    label_offset: {x: -12, "y": 14}
     name: {en: "CIP / Habermas Machine", ru: "CIP / Habermas Machine", uk: "CIP / Habermas Machine"}
     region: {en: "United States / United Kingdom", ru: "США / Великобритания", uk: "США / Велика Британія"}
     status: {en: "active research and prototypes", ru: "активные исследования и прототипы", uk: "активні дослідження й прототипи"}
@@ -372,6 +406,8 @@ nodes:
     scope: adjacent
     themes: [voting, governance]
     open_source: false
+    position: {x: 66, "y": 32}
+    label_offset: {x: 12, "y": 10}
     name: {en: "Forward Party / voting reform", ru: "Forward Party / реформа голосования", uk: "Forward Party / реформа голосування"}
     region: {en: "United States", ru: "США", uk: "США"}
     status: {en: "active political party and reform field", ru: "действующая партия и поле реформ", uk: "чинна партія й поле реформ"}
@@ -390,6 +426,8 @@ nodes:
     scope: adjacent
     themes: [voting, governance, direct-democracy]
     open_source: true
+    position: {x: 36, "y": 64}
+    label_offset: {x: 12, "y": 18}
     name: {en: "Open North / Flux Australia", ru: "Open North / Flux Australia", uk: "Open North / Flux Australia"}
     region: {en: "Canada / Australia", ru: "Канада / Австралия", uk: "Канада / Австралія"}
     status: {en: "active civic infrastructure / historical experiment", ru: "активная civic-инфраструктура / исторический эксперимент", uk: "активна civic-інфраструктура / історичний експеримент"}
@@ -407,6 +445,7 @@ nodes:
     scope: reference
     themes: [venus, governance, voting, ai, planning]
     open_source: true
+    position: {x: 0, "y": 0}
     name: {en: "Mind Journal", ru: "Mind Journal", uk: "Mind Journal"}
     region: {en: "Ukraine / international", ru: "Украина / мир", uk: "Україна / світ"}
     status: {en: "independent editorial project", ru: "независимый редакционный проект", uk: "незалежний редакційний проєкт"}

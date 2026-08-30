@@ -3,9 +3,9 @@
 
   const ns = "http://www.w3.org/2000/svg";
   const copyByLanguage = {
-    en: { proposal: "Proposal", caveat: "Critical caveat", region: "Region", status: "Status", open: "Open source", yes: "yes", no: "no", links: "Original materials", shown: "entries shown", empty: "No entries match these filters.", fullscreen: "Full screen", exitFullscreen: "Exit full screen", fit: "Fit graph" },
-    ru: { proposal: "Что предлагают", caveat: "Критическая оговорка", region: "Регион", status: "Статус", open: "Открытый код", yes: "да", no: "нет", links: "Оригинальные материалы", shown: "позиций показано", empty: "По этим фильтрам ничего не найдено.", fullscreen: "На весь экран", exitFullscreen: "Выйти из полноэкранного режима", fit: "Вписать граф" },
-    uk: { proposal: "Що пропонують", caveat: "Критичне застереження", region: "Регіон", status: "Статус", open: "Відкритий код", yes: "так", no: "ні", links: "Оригінальні матеріали", shown: "позицій показано", empty: "За цими фільтрами нічого не знайдено.", fullscreen: "На весь екран", exitFullscreen: "Вийти з повноекранного режиму", fit: "Вписати граф" }
+    en: { proposal: "Proposal", caveat: "Critical caveat", region: "Region", status: "Status", open: "Open source", yes: "yes", no: "no", links: "Mind Journal and original materials", article: "Mind Journal article", shown: "entries shown", empty: "No entries match these filters.", fullscreen: "Full screen", exitFullscreen: "Exit full screen", fit: "Fit map", left: "public / resource planning", center: "hybrid coordination", right: "market / private autonomy", top: "participatory / direct democracy", bottom: "expert / technocratic control", xAxis: "Economic coordination", yAxis: "Political agency" },
+    ru: { proposal: "Что предлагают", caveat: "Критическая оговорка", region: "Регион", status: "Статус", open: "Открытый код", yes: "да", no: "нет", links: "Mind Journal и оригинальные материалы", article: "Статья Mind Journal", shown: "позиций показано", empty: "По этим фильтрам ничего не найдено.", fullscreen: "На весь экран", exitFullscreen: "Выйти из полноэкранного режима", fit: "Вписать карту", left: "общественное / ресурсное планирование", center: "смешанная координация", right: "рынок / частная автономия", top: "участие / прямая демократия", bottom: "экспертное / технократическое управление", xAxis: "Экономическая координация", yAxis: "Политическое участие" },
+    uk: { proposal: "Що пропонують", caveat: "Критичне застереження", region: "Регіон", status: "Статус", open: "Відкритий код", yes: "так", no: "ні", links: "Mind Journal та оригінальні матеріали", article: "Стаття Mind Journal", shown: "позицій показано", empty: "За цими фільтрами нічого не знайдено.", fullscreen: "На весь екран", exitFullscreen: "Вийти з повноекранного режиму", fit: "Вписати мапу", left: "суспільне / ресурсне планування", center: "змішана координація", right: "ринок / приватна автономія", top: "участь / пряма демократія", bottom: "експертне / технократичне управління", xAxis: "Економічна координація", yAxis: "Політична участь" }
   };
 
   function localized(value, language) {
@@ -24,30 +24,6 @@
     const paragraph = element("p", "future-map__meta");
     paragraph.append(element("strong", "", `${label}: `), document.createTextNode(value));
     details.appendChild(paragraph);
-  }
-
-  function labelLines(value, maxLength) {
-    const words = value.trim().split(/\s+/);
-    const lines = [];
-    let current = "";
-    words.forEach((word) => {
-      if (!current && word.length > maxLength) {
-        lines.push(`${word.slice(0, maxLength - 1)}…`);
-        return;
-      }
-      const candidate = current ? `${current} ${word}` : word;
-      if (current && candidate.length > maxLength) {
-        lines.push(current);
-        current = word;
-      } else {
-        current = candidate;
-      }
-    });
-    if (current) lines.push(current);
-    if (lines.length <= 2) return lines;
-    lines.length = 2;
-    lines[1] = `${lines[1].slice(0, maxLength - 1)}…`;
-    return lines;
   }
 
   function init(root) {
@@ -126,6 +102,9 @@
       addDetail(details, copy.open, node.open_source ? copy.yes : copy.no);
       const heading = element("h4", "", copy.links);
       const links = element("div", "future-map__links");
+      const local = element("a", "future-map__article-link", `${copy.article}: ${localized(node.name, language)}`);
+      local.href = `${window.location.pathname}${window.location.search}#${root.id}-entry-${node.id}`;
+      links.appendChild(local);
       (node.links || []).forEach((link) => {
         const anchor = element("a", "", link.label);
         anchor.href = link.url;
@@ -137,21 +116,69 @@
     }
 
     function draw(visibleNodes) {
+      const descriptionText = svg.querySelector("desc") && svg.querySelector("desc").textContent;
       svg.replaceChildren();
       const title = document.createElementNS(ns, "title");
       title.textContent = root.getAttribute("aria-label") || "Map";
       svg.appendChild(title);
+      if (descriptionText) {
+        const description = document.createElementNS(ns, "desc");
+        description.textContent = descriptionText; svg.appendChild(description);
+      }
       if (!visibleNodes.length) {
         const label = document.createElementNS(ns, "text");
         label.setAttribute("x", "500"); label.setAttribute("y", "90"); label.setAttribute("text-anchor", "middle");
         label.textContent = copy.empty; svg.appendChild(label); svg.setAttribute("viewBox", "0 0 1000 180"); return;
       }
-      const columns = Math.min(4, Math.max(1, Math.ceil(Math.sqrt(visibleNodes.length * 1.5))));
-      const width = 1000, cellWidth = width / columns, cellHeight = 118;
+      const width = 1000, height = 700;
+      const frame = { left: 112, right: 60, top: 62, bottom: 92 };
+      const plotWidth = width - frame.left - frame.right;
+      const plotHeight = height - frame.top - frame.bottom;
+      const xScale = (value) => frame.left + ((Number(value) + 100) / 200) * plotWidth;
+      const yScale = (value) => frame.top + ((100 - Number(value)) / 200) * plotHeight;
       const positions = new Map();
-      visibleNodes.forEach((node, index) => positions.set(node.id, { x: (index % columns) * cellWidth + cellWidth / 2, y: Math.floor(index / columns) * cellHeight + 64 }));
-      const height = Math.ceil(visibleNodes.length / columns) * cellHeight + 20;
       svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+      [
+        { x: frame.left, width: plotWidth / 3, className: "future-map__zone future-map__zone--left" },
+        { x: frame.left + plotWidth / 3, width: plotWidth / 3, className: "future-map__zone future-map__zone--center" },
+        { x: frame.left + plotWidth * 2 / 3, width: plotWidth / 3, className: "future-map__zone future-map__zone--right" }
+      ].forEach((zone) => {
+        const rect = document.createElementNS(ns, "rect");
+        rect.setAttribute("x", zone.x); rect.setAttribute("y", frame.top);
+        rect.setAttribute("width", zone.width); rect.setAttribute("height", plotHeight);
+        rect.setAttribute("class", zone.className); svg.appendChild(rect);
+      });
+
+      const axisX = document.createElementNS(ns, "line");
+      axisX.setAttribute("x1", frame.left); axisX.setAttribute("x2", width - frame.right);
+      axisX.setAttribute("y1", yScale(0)); axisX.setAttribute("y2", yScale(0));
+      axisX.setAttribute("class", "future-map__axis"); svg.appendChild(axisX);
+      const axisY = document.createElementNS(ns, "line");
+      axisY.setAttribute("x1", xScale(0)); axisY.setAttribute("x2", xScale(0));
+      axisY.setAttribute("y1", frame.top); axisY.setAttribute("y2", height - frame.bottom);
+      axisY.setAttribute("class", "future-map__axis"); svg.appendChild(axisY);
+
+      function axisLabel(text, x, y, anchor, className) {
+        const label = document.createElementNS(ns, "text");
+        label.textContent = text; label.setAttribute("x", x); label.setAttribute("y", y);
+        label.setAttribute("text-anchor", anchor || "middle");
+        label.setAttribute("class", className || "future-map__axis-label");
+        svg.appendChild(label); return label;
+      }
+      axisLabel(copy.left, frame.left, height - 58, "start");
+      axisLabel(copy.center, xScale(0), height - 58, "middle");
+      axisLabel(copy.right, width - frame.right, height - 58, "end");
+      axisLabel(copy.xAxis, xScale(0), height - 22, "middle", "future-map__axis-title");
+      axisLabel(copy.top, frame.left + 10, frame.top + 20, "start");
+      axisLabel(copy.bottom, frame.left + 10, height - frame.bottom - 10, "start");
+      const yTitle = axisLabel(copy.yAxis, 24, frame.top + plotHeight / 2, "middle", "future-map__axis-title");
+      yTitle.setAttribute("transform", `rotate(-90 24 ${frame.top + plotHeight / 2})`);
+
+      visibleNodes.forEach((node) => positions.set(node.id, {
+        x: xScale(node.position && node.position.x),
+        y: yScale(node.position && node.position.y)
+      }));
       data.edges.forEach((edge) => {
         const from = positions.get(edge.from), to = positions.get(edge.to);
         if (!from || !to) return;
@@ -164,21 +191,21 @@
         const group = document.createElementNS(ns, "g");
         group.setAttribute("class", `future-map__node future-map__node--${node.role}`);
         group.setAttribute("tabindex", "0"); group.setAttribute("role", "button"); group.setAttribute("aria-label", localized(node.name, language));
-        const box = document.createElementNS(ns, "rect");
-        box.setAttribute("x", position.x - cellWidth * .4); box.setAttribute("y", position.y - 38);
-        box.setAttribute("width", cellWidth * .8); box.setAttribute("height", "76"); box.setAttribute("rx", "12");
+        const hit = document.createElementNS(ns, "circle");
+        hit.setAttribute("cx", position.x); hit.setAttribute("cy", position.y); hit.setAttribute("r", "18");
+        hit.setAttribute("class", "future-map__hit");
+        const point = document.createElementNS(ns, "circle");
+        point.setAttribute("class", "future-map__point");
+        point.setAttribute("cx", position.x); point.setAttribute("cy", position.y); point.setAttribute("r", "9");
         const label = document.createElementNS(ns, "text");
-        label.setAttribute("x", position.x); label.setAttribute("y", position.y + 4); label.setAttribute("text-anchor", "middle");
+        const defaultRight = position.x < width - frame.right - 145;
+        const offsetX = node.label_offset ? Number(node.label_offset.x) : (defaultRight ? 13 : -13);
+        const offsetY = node.label_offset ? Number(node.label_offset.y) : 4;
+        label.setAttribute("x", position.x + offsetX); label.setAttribute("y", position.y + offsetY);
+        label.setAttribute("text-anchor", offsetX >= 0 ? "start" : "end");
         const name = localized(node.name, language);
-        const lines = labelLines(name, 23);
-        lines.forEach((line, index) => {
-          const tspan = document.createElementNS(ns, "tspan");
-          tspan.setAttribute("x", position.x);
-          tspan.setAttribute("dy", index === 0 ? (lines.length === 1 ? "4" : "-5") : "17");
-          tspan.textContent = line;
-          label.appendChild(tspan);
-        });
-        group.append(box, label); svg.appendChild(group);
+        label.textContent = name.length > 24 ? `${name.slice(0, 22)}…` : name;
+        group.append(hit, point, label); svg.appendChild(group);
         group.addEventListener("click", () => showDetails(node));
         group.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); showDetails(node); } });
       });

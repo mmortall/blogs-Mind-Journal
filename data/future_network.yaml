@@ -131,9 +131,10 @@ nodes:
     status: {en: "historical; activity unverified", ru: "исторический; активность не подтверждена", uk: "історичний; активність не підтверджена"}
     summary: {en: "Proposal to test resource-economy practices with about ten thousand volunteers.", ru: "Предложение испытать ресурсную экономику с десятью тысячами добровольцев.", uk: "Пропозиція випробувати ресурсну економіку з десятьма тисячами добровольців."}
     proposal: {en: "A bounded local pilot instead of waiting for global transition.", ru: "Ограниченный локальный пилот вместо ожидания глобального перехода.", uk: "Обмежений локальний пілот замість очікування глобального переходу."}
-    caveat: {en: "Movement-wiki source; current implementation could not be verified.", ru: "Источник — вики движения; текущую реализацию подтвердить не удалось.", uk: "Джерело — вікі руху; поточну реалізацію підтвердити не вдалося."}
+    caveat: {en: "Historical proposal: its own wiki was unavailable on 31 August 2026, and no current implementation was verified.", ru: "Историческое предложение: 31 августа 2026 года собственная вики была недоступна, а текущую реализацию подтвердить не удалось.", uk: "Історична пропозиція: 31 серпня 2026 року власна вікі була недоступна, а поточну реалізацію підтвердити не вдалося."}
     links:
-      - {label: RBE wiki, url: "https://en.rbem.org/wiki/The_RBE10K_Project"}
+      - {label: Historical partner profile (2013), url: "https://onecommunityglobal.org/people-changing-the-world/"}
+      - {label: Original RBE wiki (unavailable 2026-08-31), url: "https://en.rbem.org/wiki/The_RBE10K_Project"}
 
   - id: morozov-mcquillan
     kind: people

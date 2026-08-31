@@ -1,5 +1,6 @@
 ---
 translationKey: future-network-map
+featured: true
 title: Future design network map
 date: 2026-08-30T00:00:00Z
 tags:

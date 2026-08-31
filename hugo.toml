@@ -84,7 +84,7 @@ showAuthor = true
 languageMenuName = "Language"
 customCSS = ["css/custom.css", "css/future-map.css"] # Include custom CSS files
 pinFeatured = true
-numberOfPinnedPosts = 5
+numberOfPinnedPosts = 1
 enableSearch = true
 ga_analytics = "G-T31NEGXNGS"
 

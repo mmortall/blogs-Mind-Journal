@@ -179,6 +179,8 @@
         x: xScale(node.position && node.position.x),
         y: yScale(node.position && node.position.y)
       }));
+      const renderScale = svg.getBoundingClientRect().width / width;
+      const nodeFontSize = Math.min(13, 13 / Math.max(renderScale, 1));
       data.edges.forEach((edge) => {
         const from = positions.get(edge.from), to = positions.get(edge.to);
         if (!from || !to) return;
@@ -205,6 +207,7 @@
         label.setAttribute("text-anchor", offsetX >= 0 ? "start" : "end");
         const name = localized(node.name, language);
         label.textContent = name.length > 24 ? `${name.slice(0, 22)}…` : name;
+        label.style.fontSize = `${nodeFontSize}px`;
         group.append(hit, point, label); svg.appendChild(group);
         group.addEventListener("click", () => showDetails(node));
         group.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); showDetails(node); } });
@@ -236,7 +239,10 @@
       if (canvas) canvas.scrollTo({ left: 0, top: 0, behavior: "smooth" });
       if (canvas) canvas.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
-    document.addEventListener("fullscreenchange", updateFullscreenButton);
+    document.addEventListener("fullscreenchange", () => {
+      updateFullscreenButton();
+      update();
+    });
     updateFullscreenButton();
     update();
   }

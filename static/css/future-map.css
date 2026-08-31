@@ -29,7 +29,7 @@
 .future-map__node--implementation .future-map__point { fill:#5db879; }
 .future-map__node--political .future-map__point { fill:#5d9acc; }
 .future-map__node--research .future-map__point { fill:#9b78c6; }
-.future-map__node text { fill:currentColor; font:600 13px/1.2 system-ui,sans-serif; pointer-events:none; paint-order:stroke; stroke:var(--body-background,#fff); stroke-width:4px; stroke-linejoin:round; }
+.future-map__node text { fill:currentColor; font:600 13px/1.2 var(--font,system-ui),sans-serif; pointer-events:none; paint-order:stroke; stroke:var(--choice-bg,#202020); stroke-width:2px; stroke-linejoin:round; }
 .future-map__details { min-height:15rem; max-height:min(46rem,70vh); overflow:auto; padding:1rem; border-radius:.5rem; background:rgba(127,127,127,.1); }
 .future-map__details h3 { margin-top:0; }
 .future-map__details h4 { margin-bottom:.4rem; }

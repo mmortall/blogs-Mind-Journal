@@ -21,6 +21,18 @@ for (const relativePath of ["index.json", "ru/index.json", "uk/index.json"]) {
   const index = JSON.parse(fs.readFileSync(indexPath, "utf8"));
   if (!Array.isArray(index) || !index.length) fail(`Search index is empty or invalid: ${indexPath}`);
 }
+const mapCssPath = path.join(buildRoot, "css", "future-map.css");
+if (!fs.existsSync(mapCssPath)) fail(`Future map stylesheet missing: ${mapCssPath}`);
+const mapCss = fs.readFileSync(mapCssPath, "utf8");
+if (!mapCss.includes(".future-map__node text")) fail("Future map label rule missing");
+if (!mapCss.includes("stroke:var(--choice-bg,#202020)")) fail("Future map labels must use theme-aware background outline");
+if (!mapCss.includes("stroke-width:2px")) fail("Future map label outline is unexpectedly thick");
+if (mapCss.includes("stroke:var(--body-background,#fff)")) fail("Future map labels must not use white fallback outline");
+const mapJsPath = path.join(buildRoot, "js", "future-map.js");
+if (!fs.existsSync(mapJsPath)) fail(`Future map script missing: ${mapJsPath}`);
+const mapJs = fs.readFileSync(mapJsPath, "utf8");
+if (!mapJs.includes("svg.getBoundingClientRect().width / width")) fail("Future map label scaling is missing");
+if (!mapJs.includes('document.addEventListener("fullscreenchange", () =>')) fail("Future map fullscreen redraw handler is missing");
 const mapPages = walk(buildRoot).filter((file) => path.basename(file) === "index.html")
   .map((file) => ({ file, html: fs.readFileSync(file, "utf8") }))
   .filter(({ html }) => html.includes("future-map__data"));

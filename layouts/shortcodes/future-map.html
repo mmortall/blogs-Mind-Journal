@@ -3,7 +3,7 @@
 {{- $map := .Site.Data.future_network | default dict -}}
 {{- $nodes := $map.nodes | default (slice) -}}
 {{- $edges := $map.edges | default (slice) -}}
-{{- $payload := dict "nodes" $nodes "edges" $edges "lang" $lang -}}
+{{- $payload := dict "nodes" $nodes "edges" $edges "lang" $lang "reviewed_at" $map.reviewed_at -}}
 <section id="{{ $mapID }}" class="future-map" aria-label="{{ i18n "future_map_label" }}">
   <div class="future-map__controls">
     <label class="future-map__search-label" for="{{ $mapID }}-search">{{ i18n "future_map_search" }}</label>
@@ -49,7 +49,7 @@
     {{- range $nodes }}
       {{- $name := index .name $lang | default .name.en -}}
       {{- $summary := index .summary $lang | default .summary.en -}}
-      <article id="{{ $mapID }}-entry-{{ .id }}" class="future-map__card" data-node-id="{{ .id }}" data-role="{{ .role }}" data-themes="{{ delimit .themes " " }}" data-open-source="{{ .open_source }}">
+      <article id="{{ $mapID }}-entry-{{ .id }}" class="future-map__card" data-node-id="{{ .id }}" data-role="{{ .role }}" data-kind="{{ .kind }}" data-scope="{{ .scope }}" data-themes="{{ delimit .themes " " }}" data-open-source="{{ .open_source }}">
         <h3>{{ $name }}</h3>
         <p>{{ $summary }}</p>
         <button type="button" class="future-map__inspect" data-map-inspect="{{ .id }}">{{ i18n "future_map_inspect" }}</button>

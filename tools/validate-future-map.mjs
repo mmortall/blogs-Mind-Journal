@@ -46,6 +46,7 @@ for (const { file, html } of mapPages) {
   let data = JSON.parse(script[1]);
   if (typeof data === "string") data = JSON.parse(data);
   if (!data || !Array.isArray(data.nodes) || !Array.isArray(data.edges)) fail(`Invalid map payload in ${file}`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(data.reviewed_at || "")) fail(`Map review date missing or invalid in ${file}`);
   if (!languages.includes(data.lang) || seenLanguages.has(data.lang)) fail(`Invalid or duplicate map language ${data.lang}`);
   seenLanguages.add(data.lang);
   if (data.nodes.length < 20) fail(`Map coverage regressed to ${data.nodes.length} nodes in ${file}`);

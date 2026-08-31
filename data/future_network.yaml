@@ -1,3 +1,5 @@
+reviewed_at: "2026-08-31"
+
 nodes:
   - id: jacque-fresco
     kind: person
@@ -8,10 +10,10 @@ nodes:
     position: {x: -82, "y": -72}
     name: {en: "Jacque Fresco", ru: "Жак Фреско", uk: "Жак Фреско"}
     region: {en: "United States", ru: "США", uk: "США"}
-    status: {en: "historical source", ru: "исторический источник", uk: "історичне джерело"}
+    status: {en: "historical source; died 2017-05-18", ru: "исторический источник; умер 18.05.2017", uk: "історичне джерело; помер 18.05.2017"}
     summary: {en: "Industrial designer and futurist who originated The Venus Project and its social-design programme.", ru: "Промышленный дизайнер и футуролог, создавший «Проект Венера» и его программу социального проектирования.", uk: "Промисловий дизайнер і футуролог, який створив «Проєкт Венера» та його програму соціального проєктування."}
     proposal: {en: "Redesign settlements and production around resources, science, automation, and long-term planning.", ru: "Перестроить поселения и производство вокруг ресурсов, науки, автоматизации и долгосрочного планирования.", uk: "Перебудувати поселення й виробництво навколо ресурсів, науки, автоматизації та довгострокового планування."}
-    caveat: {en: "His broad vision did not specify a complete transition, constitutional order, or accountability system.", ru: "Его широкое видение не задавало полного перехода, конституционного устройства или системы подотчётности.", uk: "Його широке бачення не задавало повного переходу, конституційного устрою чи системи підзвітності."}
+    caveat: {en: "His broad vision did not specify a complete transition, constitutional order, or accountability system. Current organisational status belongs to The Venus Project and its separate governing bodies.", ru: "Его широкое видение не задавало полного перехода, конституционного устройства или системы подотчётности. Текущий статус организации относится к «Проекту Венера» и его отдельным органам управления.", uk: "Його широке бачення не задавало повного переходу, конституційного устрою чи системи підзвітності. Поточний статус організації належить «Проєкту Венера» та його окремим органам управління."}
     links:
       - {label: Official history, url: "https://www.thevenusproject.com/about/history/"}
 
@@ -24,10 +26,10 @@ nodes:
     position: {x: -88, "y": -80}
     name: {en: "The Venus Project", ru: "«Проект Венера»", uk: "«Проєкт Венера»"}
     region: {en: "United States / global", ru: "США / мир", uk: "США / світ"}
-    status: {en: "active organisation", ru: "действующая организация", uk: "чинна організація"}
+    status: {en: "active organisation; programme deployment unverified", ru: "действующая организация; внедрение программы не подтверждено", uk: "чинна організація; впровадження програми не підтверджено"}
     summary: {en: "Organisation continuing Jacque Fresco’s resource-based-economy programme.", ru: "Организация, продолжающая ресурсно-ориентированную программу Жака Фреско.", uk: "Організація, що продовжує ресурсно-орієнтовану програму Жака Фреско."}
     proposal: {en: "Scientific planning, automation, and access to goods instead of money.", ru: "Научное планирование, автоматизация и доступ к благам вместо денег.", uk: "Наукове планування, автоматизація та доступ до благ замість грошей."}
-    caveat: {en: "Transition, accountability, ownership, and conflict resolution remain underspecified.", ru: "Переход, подотчётность, собственность и разрешение конфликтов описаны недостаточно.", uk: "Перехід, підзвітність, власність і розв’язання конфліктів описані недостатньо."}
+    caveat: {en: "Current organisational continuity does not establish deployment, feasibility, democratic legitimacy, or effectiveness of the proposed economy. Transition, accountability, ownership, and conflict resolution remain underspecified.", ru: "Текущая организационная преемственность не доказывает внедрение, реализуемость, демократическую легитимность или эффективность предлагаемой экономики. Переход, подотчётность, собственность и разрешение конфликтов описаны недостаточно.", uk: "Поточна організаційна тяглість не доводить впровадження, здійсненність, демократичну легітимність чи ефективність запропонованої економіки. Перехід, підзвітність, власність і розв’язання конфліктів описані недостатньо."}
     links:
       - {label: Official programme, url: "https://www.thevenusproject.com/the-venus-project/"}
       - {label: Official history, url: "https://www.thevenusproject.com/about/history/"}
@@ -94,10 +96,10 @@ nodes:
     position: {x: -68, "y": -32}
     name: {en: "Peter Joseph / TZM / Integral Collective", ru: "Питер Джозеф / TZM / Integral Collective", uk: "Пітер Джозеф / TZM / Integral Collective"}
     region: {en: "United States / global", ru: "США / мир", uk: "США / світ"}
-    status: {en: "active movement; early cooperative prototype", ru: "действующее движение; ранний прототип кооператива", uk: "чинний рух; ранній прототип кооперативу"}
-    summary: {en: "Former TVP partner that developed its own systems model and a post-monetary cooperative prototype.", ru: "Бывший партнёр TVP с собственной системной моделью и прототипом постденежного кооператива.", uk: "Колишній партнер TVP із власною системною моделлю та прототипом постгрошового кооперативу."}
+    status: {en: "decentralised movement; Integral design-stage proposal", ru: "децентрализованное движение; проект Integral на стадии разработки", uk: "децентралізований рух; проєкт Integral на стадії розробки"}
+    summary: {en: "The Zeitgeist Movement’s distributed educational advocacy alongside Integral’s separate, versioned post-monetary design reference.", ru: "Децентрализованная просветительская деятельность Движения Zeitgeist рядом с отдельным версионированным проектом постденежной системы Integral.", uk: "Децентралізована просвітницька діяльність Руху Zeitgeist поруч з окремим версійним проєктом постгрошової системи Integral."}
     proposal: {en: "Decentralised education; open designs, time credits, federated cooperatives, and feedback.", ru: "Децентрализованное просвещение; открытые проекты, временные кредиты, федерация кооперативов и обратная связь.", uk: "Децентралізована освіта; відкриті проєкти, часові кредити, федерація кооперативів і зворотний зв’язок."}
-    caveat: {en: "Extensive theory but little evidence of durable post-monetary governance at scale.", ru: "Много теории, но мало доказательств устойчивого постденежного управления в масштабе.", uk: "Багато теорії, але мало доказів стійкого постгрошового управління у масштабі."}
+    caveat: {en: "TZM and Integral are not the same organisation. TZM describes a dispersed movement with a rarely updated central site; Integral v0.1 is a development reference, not proof of a finished or deployed cooperative economy.", ru: "TZM и Integral — не одна организация. TZM описывает децентрализованное движение с редко обновляемым центральным сайтом; Integral v0.1 — проектный материал, а не доказательство готовой или внедрённой кооперативной экономики.", uk: "TZM та Integral — не одна організація. TZM описує децентралізований рух із рідко оновлюваним центральним сайтом; Integral v0.1 — проєктний матеріал, а не доказ готової чи впровадженої кооперативної економіки."}
     links:
       - {label: TZM model, url: "https://www.thezeitgeistmovement.com/model"}
       - {label: Peter Joseph, url: "https://www.peterjoseph.info/"}
@@ -196,7 +198,7 @@ nodes:
     position: {x: 4, "y": -26}
     name: {en: "César Hidalgo / Augmented Democracy", ru: "Сесар Идальго / Augmented Democracy", uk: "Сесар Ідальго / Augmented Democracy"}
     region: {en: "Chile / France", ru: "Чили / Франция", uk: "Чилі / Франція"}
-    status: {en: "experimental proposal", ru: "экспериментальное предложение", uk: "експериментальна пропозиція"}
+    status: {en: "archived research proposal; last updated 2019", ru: "архивное исследовательское предложение; последнее обновление — 2019 год", uk: "архівна дослідницька пропозиція; останнє оновлення — 2019 рік"}
     summary: {en: "Personal AI agents that learn political preferences and simulate votes.", ru: "Персональные AI-агенты, изучающие политические предпочтения и моделирующие голосование.", uk: "Персональні AI-агенти, що вивчають політичні уподобання й моделюють голосування."}
     proposal: {en: "Inspectable “digital twins” for high-frequency policy simulations.", ru: "Проверяемые «цифровые двойники» для частого моделирования решений.", uk: "Перевірювані «цифрові двійники» для частого моделювання рішень."}
     caveat: {en: "Prediction is not consent; error, manipulation, privacy, and compute inequality make official use premature.", ru: "Предсказание — не согласие; ошибки, манипуляции, приватность и неравенство делают запуск преждевременным.", uk: "Передбачення — не згода; помилки, маніпуляції, приватність і нерівність роблять запуск передчасним."}
@@ -321,7 +323,7 @@ nodes:
     label_offset: {x: 12, "y": 16}
     name: {en: "LiquidFeedback", ru: "LiquidFeedback", uk: "LiquidFeedback"}
     region: {en: "Germany / international", ru: "Германия / мир", uk: "Німеччина / світ"}
-    status: {en: "established open-source system", ru: "зрелая открытая система", uk: "зріла відкрита система"}
+    status: {en: "current maintenance and deployment unverified", ru: "текущие поддержка и внедрение не подтверждены", uk: "поточні підтримка та впровадження не підтверджені"}
     summary: {en: "Liquid-democracy software with topic delegation and recall.", ru: "ПО жидкой демократии с делегированием по теме и отзывом.", uk: "ПЗ рідкої демократії з делегуванням за темою й відкликанням."}
     proposal: {en: "Direct voting combined with flexible delegation and structured initiatives.", ru: "Прямое голосование с гибким делегированием и структурированными инициативами.", uk: "Пряме голосування з гнучким делегуванням і структурованими ініціативами."}
     caveat: {en: "Delegation can concentrate influence; secret coercion-resistant elections need other safeguards.", ru: "Делегирование может концентрировать влияние; тайные выборы требуют иных гарантий.", uk: "Делегування може концентрувати вплив; таємні вибори потребують інших гарантій."}
@@ -337,7 +339,7 @@ nodes:
     position: {x: -16, "y": -16}
     name: {en: "OpenFisca", ru: "OpenFisca", uk: "OpenFisca"}
     region: {en: "France / international", ru: "Франция / мир", uk: "Франція / світ"}
-    status: {en: "active digital public good", ru: "действующее цифровое общественное благо", uk: "чинне цифрове суспільне благо"}
+    status: {en: "maintained rules-as-code infrastructure", ru: "поддерживаемая инфраструктура «правила как код»", uk: "підтримувана інфраструктура «правила як код»"}
     summary: {en: "Rules-as-code engine for modelling tax and benefit law.", ru: "Движок «правила как код» для моделирования налогового и социального права.", uk: "Рушій «правила як код» для моделювання податкового й соціального права."}
     proposal: {en: "Executable, inspectable, reusable policy rules through open models and APIs.", ru: "Исполняемые, проверяемые и повторно используемые правила через модели и API.", uk: "Виконувані, перевірювані й повторно використовувані правила через моделі та API."}
     caveat: {en: "Code exposes consequences but cannot settle values, ambiguity, or legitimacy.", ru: "Код показывает последствия, но не решает ценностные споры, неоднозначность и легитимность.", uk: "Код показує наслідки, але не розв’язує ціннісні суперечки, неоднозначність і легітимність."}
@@ -355,7 +357,7 @@ nodes:
     label_offset: {x: 12, "y": 17}
     name: {en: "ElectionGuard / Helios / Belenios", ru: "ElectionGuard / Helios / Belenios", uk: "ElectionGuard / Helios / Belenios"}
     region: {en: "international", ru: "международный контекст", uk: "міжнародний контекст"}
-    status: {en: "active research and deployment tools", ru: "действующие исследовательские и прикладные инструменты", uk: "чинні дослідницькі й прикладні інструменти"}
+    status: {en: "three toolkits with different research and deployment statuses", ru: "три инструментария с разными статусами исследования и внедрения", uk: "три інструментарії з різними статусами дослідження та впровадження"}
     summary: {en: "Open families of end-to-end verifiable election technology.", ru: "Открытые семейства сквозной проверяемой избирательной технологии.", uk: "Відкриті сімейства наскрізно перевірюваної виборчої технології."}
     proposal: {en: "Verify encrypted tallying without revealing individual ballots.", ru: "Проверять зашифрованный подсчёт без раскрытия отдельных бюллетеней.", uk: "Перевіряти зашифрований підрахунок без розкриття окремих бюлетенів."}
     caveat: {en: "Cryptography does not solve coercion, compromised devices, registration, or administration.", ru: "Криптография не решает проблемы принуждения, заражённых устройств, регистрации и администрирования.", uk: "Криптографія не розв’язує проблем примусу, заражених пристроїв, реєстрації й адміністрування."}
@@ -431,7 +433,7 @@ nodes:
     label_offset: {x: 12, "y": 18}
     name: {en: "Open North / Flux Australia", ru: "Open North / Flux Australia", uk: "Open North / Flux Australia"}
     region: {en: "Canada / Australia", ru: "Канада / Австралия", uk: "Канада / Австралія"}
-    status: {en: "active civic infrastructure / historical experiment", ru: "активная civic-инфраструктура / исторический эксперимент", uk: "активна civic-інфраструктура / історичний експеримент"}
+    status: {en: "active Canadian civic infrastructure / historical Australian experiment", ru: "действующая канадская civic-инфраструктура / исторический австралийский эксперимент", uk: "чинна канадська civic-інфраструктура / історичний австралійський експеримент"}
     summary: {en: "Canadian civic-data infrastructure and an Australian issue-democracy experiment.", ru: "Канадская инфраструктура гражданских данных и австралийский эксперимент демократии по вопросам.", uk: "Канадська інфраструктура громадянських даних й австралійський експеримент демократії за питаннями."}
     proposal: {en: "Open civic data on one side; transferable issue voting on the other.", ru: "Открытые гражданские данные с одной стороны; передаваемое голосование по вопросам — с другой.", uk: "Відкриті громадянські дані з одного боку; передаване голосування за питаннями — з іншого."}
     caveat: {en: "Open North is infrastructure, not a constitution; Flux vote trading risks inequality and capture.", ru: "Open North — инфраструктура, не конституция; торговля голосами Flux несёт риски неравенства и захвата.", uk: "Open North — інфраструктура, не конституція; торгівля голосами Flux несе ризики нерівності й захоплення."}
@@ -452,7 +454,7 @@ nodes:
     status: {en: "independent editorial project", ru: "независимый редакционный проект", uk: "незалежний редакційний проєкт"}
     summary: {en: "Independent comparison of political philosophy, civic technology, democracy, and future design.", ru: "Независимое сопоставление политической философии, civic tech, демократии и проектирования будущего.", uk: "Незалежне зіставлення політичної філософії, civic tech, демократії та проєктування майбутнього."}
     proposal: {en: "Keep competing ideas, original sources, software, and caveats in one inspectable map.", ru: "Свести идеи, первичные источники, ПО и оговорки в одну проверяемую карту.", uk: "Звести ідеї, первинні джерела, ПЗ і застереження в одну перевірювану мапу."}
-    caveat: {en: "Inclusion is not endorsement; this is a research index, not a ranking.", ru: "Включение не означает одобрения; это исследовательский индекс, не рейтинг.", uk: "Включення не означає схвалення; це дослідницький індекс, не рейтинг."}
+    caveat: {en: "Inclusion is not endorsement; this is a research index, not a ranking. Mind Journal owns the catalogue, not the political authority or ideology of listed entries.", ru: "Включение не означает одобрения; это исследовательский индекс, не рейтинг. Mind Journal ведёт каталог, но не владеет политическими полномочиями или идеологией перечисленных позиций.", uk: "Включення не означає схвалення; це дослідницький індекс, не рейтинг. Mind Journal веде каталог, але не володіє політичними повноваженнями чи ідеологією перелічених позицій."}
     links:
       - {label: Mind Journal, url: "https://mmortall.github.io/blogs-Mind-Journal/"}
       - {label: GitHub repository, url: "https://github.com/mmortall/blogs-Mind-Journal"}

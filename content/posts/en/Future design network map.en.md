@@ -19,6 +19,8 @@ Each entry therefore records not only an idea, but also what it proposes instead
 
 The diagram uses two axes tailored to this debate rather than the usual party labels. Horizontally, ideas move from public or resource planning through hybrid coordination to markets and private autonomy. Vertically, they move from expert or technocratic control to participation and direct democracy. “Left”, “centre”, and “right” therefore mean positions inside this specific design problem, not a complete verdict on a person’s politics. A point locates the governing mechanism represented by the entry; reasonable readers may place it differently.
 
+These are editorial hypotheses reviewed on 31 August 2026, not measurements. A person, organisation, document, or tool may be useful as a reference while the plotted point refers only to a documented mechanism.
+
 Click a point to open its explanation. The first link always returns to that entry in this Mind Journal article; the links after it lead to original sites, papers, archives, or source code.
 
 {{< future-map id="future-network-map-en" >}}

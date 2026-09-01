@@ -3,6 +3,7 @@ translationKey: governance-of-large-groups
 draft: false
 title: "How to Govern Large Groups: Eight Problems Instead of One Button"
 date: 2026-09-01T00:00:00Z
+toc: true
 tags:
   - governance
   - institutions
@@ -19,6 +20,8 @@ So governing a large group is not mainly a matter of making everyone obey. It is
 Here is a practical map for looking at a state, company, civic initiative, religious community or online platform.
 
 ## One map instead of a list of terms
+
+![Signals from many participants converge on a decision and return to the system as feedback.](attachments/image/governance-feedback-loop.png)
 
 Start with this chain:
 
@@ -40,6 +43,8 @@ Outcome = function of fit, signal quality, dependence,
 This is not a score or a law of society. It is a checklist of variables to inspect before explaining success by “strong leadership” or failure by “bad culture”.
 
 ## Eight practical problems
+
+![Eight different governance problems connect around a shared center of coordination.](attachments/image/governance-eight-problems.png)
 
 ### 1. Define the shared task
 
@@ -93,6 +98,8 @@ The history of religious and utopian communities shows a double effect. After a 
 
 ## Why culture, morality and religion matter
 
+![A shared ritual connects participants while a nearby boundary suggests how belonging can also exclude.](attachments/image/governance-culture-ritual.png)
+
 Culture is not decoration on top of “real” governance. It stores instructions that cannot be rewritten as an order each time: whom to trust, what counts as shameful, when to help a stranger, how to act in a conflict and how much it is acceptable to challenge a senior person.
 
 Culture has at least four governance functions:
@@ -108,6 +115,8 @@ The practical conclusion is to assess culture by its effects on information, rec
 
 ## State, company, community and platform
 
+![A state, company, community, and online platform appear as different structures connected by flows of people and information.](attachments/image/governance-institutions-comparison.png)
+
 Institutions do not arise because there is one correct form of governance. They stabilise different trade-offs.
 
 A state coordinates people who do not know one another: security, infrastructure, taxation, standards and conflict resolution. Scale gives it capacity but increases the distance between a decision and its local consequence. Administrative capacity is not the same as justice or accountability.
@@ -119,6 +128,8 @@ A community or religious movement can support cooperation through meaning, mutua
 An online platform adds an algorithmic layer. It governs rules and visibility: what users see, who can distribute a message and which signals become rewards. Rapid spread measures a cascade, not truth. Platform evaluation needs separate measures for quality, harm, correction and access to appeal.
 
 ## A working diagnostic
+
+![An observer checks signals, control points, feedback, and the possibility of exit from a system.](attachments/image/governance-diagnostic.png)
 
 Start with seven questions:
 
@@ -133,6 +144,8 @@ Start with seven questions:
 This diagnosis does not produce a moral verdict automatically. It turns the vague claim that “people are well governed” into mechanisms that can be checked. A strong system is not one in which resistance is invisible. It is one in which bad signals arrive, decisions can be revised, power has counterweights and coordination survives a change of people.
 
 ## Sources and limits
+
+![Books, interviews, experimental materials, and maps form an evidence map with its gaps still visible.](attachments/image/governance-evidence-limits.png)
 
 This article is a map of mechanisms, not a universal theory of society. The research dossier combines experiments, comparative data, historical cases, panel observations and interviews. These designs answer different questions and do not support equally strong causal claims.
 

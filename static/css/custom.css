@@ -63,3 +63,14 @@
 .language-flag--uk {
   background: linear-gradient(to bottom, #0057b7 0 50%, #ffd700 50% 100%);
 }
+
+/* Keep Hugo fenced-code output aligned with Clarity's dark syntax palette. */
+.highlight_wrap .highlight pre {
+  background: var(--code-bg) !important;
+  color: var(--light) !important;
+}
+
+.highlight_wrap .highlight pre code {
+  background: transparent !important;
+  color: inherit !important;
+}

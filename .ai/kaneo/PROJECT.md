@@ -7,7 +7,7 @@
 | Knowledge card | `.ai/knowledge.yaml` |
 | Space ID | `repo:content:mind-journal` |
 | API endpoint | `https://admin.polyquantlabs.xyz/kaneo/api` |
-| MCP endpoint | `https://admin.polyquantlabs.xyz/kaneo/api/mcp` |
+| MCP endpoint | Separate host-only channel; repository workflow uses local REST wrapper |
 | Workspace | `content creation and blogging` |
 | Workspace ID | `gnETouELw7tAd34p5WREq79HDQg07xk3` |
 | Project name | `Mind Journal - Philosophy & Articles` |

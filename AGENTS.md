@@ -1,6 +1,16 @@
 See `CLAUDE.md`, `docs/wiki/index.md`, and `llm-wiki/index.md`.
 
 <!-- AI-WORK-CONTEXT:START -->
+## Kaneo channel rule
+
+For material tracked work, task lifecycle goes through local REST wrapper
+`.\.ai\kaneo\manage.ps1`; do not use Kaneo MCP or `/kaneo/api/mcp`.
+`health` -> `start --outcome ... --apply` -> canonical work and validation ->
+`finish --task-id ... --changed ... --validation ... --apply`.
+`--outcome` is task title and `goal`; managed task must have
+`acceptanceCriteria`. If wrapper fails, diagnose wrapper/REST/auth separately;
+never switch to MCP. Read-only or no-change work creates no task.
+
 ## Work tracking and knowledge routing
 
 For material implementation, research, or planning, load `.ai/kaneo/PROJECT.md`

@@ -81,7 +81,7 @@ In a company this may mean whistleblower protection, worker access to safety dat
 
 Every governance system makes mistakes. The key question is how expensive it is to admit one. Appeals, reversible decisions, protection for people who report problems and a way to leave without losing every livelihood and social tie are practical safeguards.
 
-Research on closed religious movements is more useful when it avoids a universal “brainwashing” formula and checks observable mechanisms: who controls information, housing, money and relationships; whether leaders follow the same rules; what happens after dissent; whether outside advice is available; and whether a person can leave without threats or harassment. Strict teaching or strong faith alone does not prove abuse. Risk rises when dependence combines with monopoly, unequal rules and punishment for seeking outside help.
+Research on closed religious movements is more useful when it checks concrete mechanisms than when it looks for a universal “brainwashing” formula. Who controls information, housing, money and relationships? Do leaders follow the same rules as everyone else? What happens after dissent? Is outside advice available? Can a person leave without threats or harassment? Strict teaching or strong faith alone does not prove abuse. Risk rises when dependence combines with monopoly, unequal rules and punishment for seeking outside help.
 
 Exit data also need care. A three-year German study of people who had recently joined three religious organisations found relatively stable well-being among those who stayed and only partial evidence of crisis among a small group of voluntary leavers. It is not a universal law for all movements. Studies of former members describe different paths: relief and freedom can coexist with lost relationships and lower self-esteem. “Left” is not a complete outcome; it is the beginning of another period.
 
@@ -102,9 +102,9 @@ Culture has at least four governance functions:
 3. **Carry memory.** A custom preserves a solution from earlier generations, even after its original reason is forgotten.
 4. **Legitimate authority.** A norm explains why a decision should count as binding.
 
-Each function has a reverse side. Memory can preserve a bad rule. Legitimacy can protect abuse. A shared ritual can increase mutual aid while also excluding outsiders and rewarding submission. A cross-cultural study linked beliefs in knowledgeable, punitive gods with greater generosity to distant co-believers in behavioural games, but this does not show that religion in general causes social complexity. Archaeological and historical research likewise suggests that ritual could support political stratification, not only cooperation.
+Each function has a reverse side. Memory can preserve a bad rule. Legitimacy can protect abuse. A shared ritual can increase mutual aid while also excluding outsiders and rewarding submission. A cross-cultural study linked beliefs in knowledgeable, punitive gods with greater generosity to distant co-believers in behavioural games, but this does not show that religion in general causes social complexity. Archaeological and historical research likewise suggests that ritual could support political stratification alongside cooperation.
 
-The practical conclusion is to assess culture by its effects on information, reciprocity, sanctions and exit—not by how sacred or cohesive it appears. Ask not only “how strongly do people believe?” but also “which coordination problem does this belief solve, and who can refuse it?”
+The practical conclusion is to assess culture by its effects on information, reciprocity, sanctions and exit—not by how sacred or cohesive it appears. Instead of asking how strongly people believe, ask which coordination problem the belief solves and who can refuse it.
 
 ## State, company, community and platform
 
@@ -116,7 +116,7 @@ A company replaces some market negotiations with internal direction. In Ronald C
 
 A community or religious movement can support cooperation through meaning, mutual obligations and repeated rituals. That can be cheaper than monitoring every action. It also makes power boundaries important: who interprets the norm, can a member ask a question, are there several support channels, and does belonging become dependence?
 
-An online platform adds an algorithmic layer. It governs not only rules but visibility: what users see, who can distribute a message and which signals become rewards. Rapid spread measures a cascade, not truth. Platform evaluation needs separate measures for quality, harm, correction and access to appeal.
+An online platform adds an algorithmic layer. It governs rules and visibility: what users see, who can distribute a message and which signals become rewards. Rapid spread measures a cascade, not truth. Platform evaluation needs separate measures for quality, harm, correction and access to appeal.
 
 ## A working diagnostic
 
@@ -136,8 +136,11 @@ This diagnosis does not produce a moral verdict automatically. It turns the vagu
 
 This article is a map of mechanisms, not a universal theory of society. The research dossier combines experiments, comparative data, historical cases, panel observations and interviews. These designs answer different questions and do not support equally strong causal claims.
 
-- [Bloom and Van Reenen on management practices and firm outcomes](https://doi.org/10.1162/qjec.2007.122.4.1351) and [Bloom and colleagues’ field experiment in India](https://doi.org/10.1093/qje/qjs044).
+- [Bloom and Van Reenen on management practices and firm outcomes](https://doi.org/10.1162/qjec.2007.122.4.1351).
+- [Bloom and colleagues’ field experiment in India](https://doi.org/10.1093/qje/qjs044).
 - [Purzycki and colleagues on moralising gods and social reciprocity](https://www.nature.com/articles/nature16980).
 - [Watts and colleagues on ritual sacrifice and stratification](https://www.nature.com/articles/nature17159).
-- [Namini and Murken on three-year trajectories in NRMs](https://doi.org/10.1080/13674670902897618), [Eldershaw on Shambhala succession](https://doi.org/10.1525/nr.2007.10.4.72) and [Miller on American spiritual communities](https://doi.org/10.1525/nr.2010.13.3.14).
-- [Jokela and colleagues on religious disengagement in four American cohorts](https://doi.org/10.1007/s00127-023-02497-x): this is not a study of NRMs, dependency or safe exit.
+- [Namini and Murken on three-year trajectories in new religious movements (NRMs)](https://doi.org/10.1080/13674670902897618).
+- [Eldershaw on Shambhala succession](https://doi.org/10.1525/nr.2007.10.4.72).
+- [Miller on American spiritual communities](https://doi.org/10.1525/nr.2010.13.3.14).
+- [Jokela and colleagues on religious disengagement—ending active attendance—in four American cohorts](https://doi.org/10.1007/s00127-023-02497-x): this is not a study of NRMs, dependency or safe exit.

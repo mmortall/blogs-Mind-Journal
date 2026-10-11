@@ -3,6 +3,11 @@ See `CLAUDE.md`, `docs/wiki/index.md`, and `llm-wiki/index.md`.
 <!-- AI-WORK-CONTEXT:START -->
 ## Kaneo channel rule
 
+Always use `https://admin.polyquantlabs.xyz/kaneo/api`. Bundled REST client
+needs Python 3.11+ and machine credentials, not local Kaneo or central checkout.
+Run wrapper before declaring tracker unavailable; classify missing credentials
+as authentication configuration failure.
+
 For material tracked work, task lifecycle goes through local REST wrapper
 `.\.ai\kaneo\manage.ps1`; do not use Kaneo MCP or `/kaneo/api/mcp`.
 `health` -> `start --outcome ... --apply` -> canonical work and validation ->

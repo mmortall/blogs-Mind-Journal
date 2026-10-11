@@ -28,3 +28,15 @@ lifecycle.
 - If wrapper or REST call fails, diagnose local wrapper, credentials, or REST
   payload separately. Do not switch to MCP to hide the failure.
 - Read-only or no-change work creates no Kaneo task.
+
+## Portable REST runtime
+
+Use `https://admin.polyquantlabs.xyz/kaneo/api` on every machine.
+Do not discover localhost, Docker, MCP, or another server.
+`manage.ps1` uses bundled standard-library client in `.ai/kaneo/runtime`.
+Central checkout is not required for Kaneo. Python 3.11+ is required;
+set `KANEO_PYTHON` when automatic interpreter selection is unsuitable.
+Set `KANEO_API_KEY`, `CF_ACCESS_CLIENT_ID`, and `CF_ACCESS_CLIENT_SECRET`
+in machine/user/process environment. Missing credentials are authentication
+configuration failure, not absence of Kaneo. Never commit credential values.
+Knowledge routing remains separate and uses `KNOWLEDGE_ROOT_PLATFORM`.

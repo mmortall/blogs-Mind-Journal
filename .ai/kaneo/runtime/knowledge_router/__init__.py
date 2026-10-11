@@ -1,0 +1,1 @@
+"""Bundled Kaneo REST client."""

@@ -1,6 +1,6 @@
 {
   "config.json": "75073aac7bec272b6911db10ae095101f4bd3975e3a41a32c31f5da7dea01fbe",
-  "manage.ps1": "fd8de9aca72e0e3e96da1e0de97d5106d204b59db23df5e2fbd15131f214cc59",
+  "manage.ps1": "35878f9a46c1a377587b45ab64aad3a101e83ffb38ac6ba56d9abda5635b3f52",
   "runtime/knowledge_router/__init__.py": "e6973a12094734245c223ca31dd5796bee1237ca7086abbfe038de9e573d3bf9",
   "runtime/.gitignore": "6feaded4e28ea86e001a6751b4e3d960e8b7c31b9616ff9936b79297086e809b",
   "runtime/config/kaneo-workspaces.yaml": "27141d39205f4d785f43cd205f3272dce7996c5003b44fc359451f46a31f5d59",

@@ -17,17 +17,27 @@ foreach ($name in @("KANEO_API_KEY", "CF_ACCESS_CLIENT_ID", "CF_ACCESS_CLIENT_SE
 $python = $env:KANEO_PYTHON
 $pythonArgs = @()
 if (-not $python) {
+    $candidates = @()
     foreach ($relative in @(".conda-env\python.exe", ".venv\Scripts\python.exe", ".venv/bin/python")) {
         $candidate = Join-Path $repoRoot $relative
-        if (Test-Path -LiteralPath $candidate -PathType Leaf) { $python = $candidate; break }
+        if (Test-Path -LiteralPath $candidate -PathType Leaf) {
+            $candidates += @{ Path = $candidate; Args = @() }
+        }
     }
-}
-if (-not $python) {
     foreach ($name in @("py", "python3", "python")) {
         $command = Get-Command $name -ErrorAction SilentlyContinue
         if ($command) {
-            $python = $command.Source
-            if ($name -eq "py") { $pythonArgs = @("-3") }
+            $candidateArgs = @()
+            if ($name -eq "py") { $candidateArgs = @("-3") }
+            $candidates += @{ Path = $command.Source; Args = $candidateArgs }
+        }
+    }
+    foreach ($candidate in $candidates) {
+        $candidateArgs = $candidate.Args
+        & $candidate.Path @candidateArgs -c 'import sys; sys.exit(0 if sys.version_info >= (3, 11) else 1)'
+        if ($LASTEXITCODE -eq 0) {
+            $python = $candidate.Path
+            $pythonArgs = $candidateArgs
             break
         }
     }

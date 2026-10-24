@@ -5,10 +5,13 @@
 - **Name spelling:** sources use `Sytrism`, `Sytrizm`, `Saitrism`, `Sightrism`,
   `Sitrypism`, and `Cytriapism`. Decide which spelling is canonical for future
   titles, URLs, tags, and translations. (`content/posts/en/`; `content/posts/ru/`)
-- **Language coverage:** local Hugo configuration declares English and Russian,
-  while the checked public page exposed a Ukrainian language option. Confirm
-  whether Ukrainian is intended or stale generated output. (`hugo.toml`; public
-  site check on 2026-08-30)
+- **Language coverage (resolved 2026-10-24):** `hugo.toml` declares Ukrainian and
+  `content/posts/uk/` holds all eight posts, so Ukrainian is intended. Still
+  open: whether the author reviewed the Ukrainian translations (all dated
+  2026-08-30 or later). (`hugo.toml`; `content/posts/uk/`)
+- **Research-to-site transfer:** only the governance digest is published; the 20
+  research drafts and dossiers are wiki-only. Decide which become site posts and
+  who fact-checks them. (`docs/wiki/research/articles/publication-audit.md`)
 - **Evidence boundary:** original posts still refer to thinkers and research
   without a source-note layer. The new governance research series has explicit
   evidence tables and a 295-record bibliography; decide whether older posts need

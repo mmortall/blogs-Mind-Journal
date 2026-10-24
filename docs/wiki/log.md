@@ -1807,3 +1807,12 @@ sequential bibliography records, 163 evidence rows, 702 fence markers with no
 unmatched fences, 393 unique Markdown URLs, 0 H1 issues, 0 missing local links,
 `git diff --check`, and `hugo --minify` with EN 26/RU 25/UK 25 pages and 64 static
 files per language. Pre-existing `warning-goldmark-raw-html` on `/` remains.
+
+## [2026-10-24] ingest | governance-of-large-groups (EN/RU/UK) and site state
+Ingested the published three-language digest (commits `424b381`, `71c5d45`,
+`ca71889`, `2b16cea`; code-block CSS fix `805f569`). Rewrote `features/articles.md`
+(8 posts x 3 languages, image list, base-path rule); refreshed `current-status.md`,
+`architecture.md`, `source-map.md`, `open-questions.md` (Ukrainian resolved,
+research-to-site transfer added); corrected the bibliography count in
+`wiki-health.md`. Open: author review of Ukrainian translations; which research
+drafts to publish; `themes/ananke` submodule state.

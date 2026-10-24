@@ -1,14 +1,23 @@
 # Wiki health
 
-> source: `docs/wiki/index.md`, repository inventory and validation on 2026-08-31
+> source: `docs/wiki/index.md`, repository inventory and validation on 2026-08-31; publication lint on 2026-10-24
 
 ## Current findings
+
+- Publication lint (2026-10-24): `features/articles.md`, `current-status.md`,
+  `architecture.md`, `source-map.md` and `open-questions.md` were stale (five EN/RU
+  posts, no Ukrainian, no governance digest) and are fixed. The bibliography count
+  in this page was also stale (345 vs 363 actual) and is corrected.
+- Not tracked by this wiki: `themes/ananke` shows a modified submodule state and
+  `.tmp/` is untracked scratch; neither is committed here. `[unclear]` whether
+  `themes/ananke` is still used, since `hugo.toml` selects `hugo-clarity`.
+  (`hugo.toml`; `git status`)
 
 - Core Wiki pages and all 20 governance article drafts are linked from
   `index.md`, `source-map.md`, or the relevant research map; no known orphan
   research page remains.
 - Research inventory contains 43 Markdown files under `docs/wiki`, 20
-  plain-language article drafts, 345 sequential bibliography records, and the
+  plain-language article drafts, 363 sequential bibliography records, and the
   current external URL counts recorded below. New succession, everyday-outcome,
   and closed-group sources cover leader change, conflict, persistence, service
   delivery, extraction, bargaining windows, commune durability, post-exit

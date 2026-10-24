@@ -1,6 +1,6 @@
 # Source map
 
-> source: repository inventory on 2026-08-31
+> source: repository inventory on 2026-10-24
 
 | Source | Role | Authority |
 |---|---|---|
@@ -8,6 +8,9 @@
 | `hugo.toml` | Hugo site, language, theme, navigation, and service configuration | canonical configuration |
 | `content/posts/en/` | English editorial source | canonical content |
 | `content/posts/ru/` | Russian editorial source and translations | canonical content |
+| `content/posts/uk/` | Ukrainian translations; includes the 2026 governance digest | canonical content |
+| `content/posts/*/*governance*` (3 files) | Published three-language digest of the governance research; ingested into [Articles](features/articles.md) | canonical content; ingested 2026-10-24 |
+| `static/css/custom.css` | Local style overrides, including the fenced-code contrast fix | canonical implementation |
 | `static/attachments/image/` | Post media | canonical assets |
 | `layouts/`, `themes/`, `archetypes/` | Presentation and content scaffolding | canonical implementation |
 | `run.cmd`, `.gitignore` | Local operation and generated-output boundaries | canonical workflow |

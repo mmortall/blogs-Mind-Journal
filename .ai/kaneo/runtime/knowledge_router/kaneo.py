@@ -12,8 +12,10 @@ import json
 import os
 import re
 import ssl
+import threading
 import time
 from contextlib import contextmanager, nullcontext
+from email.utils import parsedate_to_datetime
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -33,10 +35,63 @@ DEFAULT_ACCEPTANCE_CRITERIA = (
 )
 TLS_CERTIFICATE_RETRY_DELAYS = (0.25, 0.5)
 READ_RETRY_DELAYS = (0.25, 0.5)
+# HTTP statuses that may succeed on replay.  429/503 carry Retry-After; 502/530
+# are Cloudflare edge/origin failures.  401/403 are never retried.
+RETRYABLE_HTTP_STATUSES = frozenset({429, 502, 503, 530})
+RETRY_AFTER_STATUSES = frozenset({429, 503})
+IDEMPOTENT_METHODS = frozenset({"GET", "HEAD", "OPTIONS", "PUT", "DELETE"})
+# Without an operation deadline a server-requested wait longer than this fails.
+MAX_RETRY_AFTER_SECONDS = 30.0
+CAPABILITIES_PATH = "/task/agent/capabilities"
+EXPORT_PAGE_LIMIT = 100
+# Legacy list pages hold 250 tasks; paged exports hold 100.  Page bounds stay in
+# task units so ``--max-pages`` keeps the same coverage on both routes.
+LEGACY_TASK_PAGE_SIZE = 250
+CONTEXT_PAGE_LIMIT = 100
+CONTEXT_MAX_PAGES = 16
+CAPABILITY_FALLBACKS = {
+    "managedPreview": "dry-run start scans the project task list",
+    "taskRevisions": "task edits use legacy field endpoints without a caller version",
+    "relationIdempotency": "comment and relation creation is sent without an idempotency key",
+    "pagedExports": "snapshot lists tasks through legacy board pages",
+    "projectRelationExports": "snapshot reads relations once per task",
+    "taskContext": "task context reads relations once per hierarchy level",
+}
 
 
 class KaneoError(RuntimeError):
     """Raised when Kaneo configuration or read-back validation fails."""
+
+
+class KaneoHTTPError(KaneoError):
+    """Kaneo answered with an HTTP error status."""
+
+    def __init__(self, message: str, *, status: int, body: str = "") -> None:
+        super().__init__(message)
+        self.status = status
+        self.body = body
+
+
+def retry_after_seconds(value: str | None, *, now: datetime | None = None) -> float | None:
+    """Parse numeric or HTTP-date Retry-After into non-negative seconds."""
+    if value is None or not value.strip():
+        return None
+    text = value.strip()
+    try:
+        seconds = float(text)
+    except ValueError:
+        try:
+            moment = parsedate_to_datetime(text)
+        except (TypeError, ValueError, IndexError):
+            return None
+        if moment is None:
+            return None
+        if moment.tzinfo is None:
+            moment = moment.replace(tzinfo=timezone.utc)
+        seconds = (moment - (now or datetime.now(timezone.utc))).total_seconds()
+    if seconds != seconds:  # NaN
+        return None
+    return max(0.0, seconds)
 
 
 def _policy_text(value: str | None, fallback: str, label: str) -> str:
@@ -101,7 +156,10 @@ class RepoBinding:
 class KaneoClient:
     """Authenticated JSON client with explicit read-back helpers."""
 
-    def __init__(self, api_endpoint: str, *, timeout: int = 30) -> None:
+    def __init__(
+        self, api_endpoint: str, *, timeout: int = 30,
+        notice: Callable[[str], None] | None = None,
+    ) -> None:
         names = ("KANEO_API_KEY", "CF_ACCESS_CLIENT_ID", "CF_ACCESS_CLIENT_SECRET")
         missing = [name for name in names if not os.getenv(name)]
         if missing:
@@ -109,6 +167,10 @@ class KaneoClient:
         self.api_endpoint = api_endpoint.rstrip("/")
         self.timeout = timeout
         self._deadline_at: float | None = None
+        self._capabilities: dict[str, Any] | None = None
+        self._capability_lock = threading.Lock()
+        self._notice = notice
+        self.notices: list[str] = []
         self.headers = {
             "Authorization": f"Bearer {os.environ['KANEO_API_KEY']}",
             "CF-Access-Client-Id": os.environ["CF_ACCESS_CLIENT_ID"],
@@ -128,12 +190,44 @@ class KaneoClient:
         finally:
             self._deadline_at = previous
 
-    def request(self, method: str, path: str, body: dict[str, Any] | None = None) -> Any:
+    def _http_retry_wait(
+        self, method: str, keyed: bool, status: int, retry_after: str | None,
+        delay: float | None,
+    ) -> float | None:
+        """Return the wait before replaying an HTTP failure, or None to fail now.
+
+        Only idempotent methods and requests carrying an Idempotency-Key are
+        replayed; an unkeyed POST/PATCH is never sent twice.  A server
+        Retry-After that does not fit inside the operation deadline fails fast.
+        """
+        if delay is None or status not in RETRYABLE_HTTP_STATUSES:
+            return None
+        if method not in IDEMPOTENT_METHODS and not keyed:
+            return None
+        wait = delay
+        if status in RETRY_AFTER_STATUSES:
+            requested = retry_after_seconds(retry_after)
+            if requested is not None:
+                wait = requested
+        limit = MAX_RETRY_AFTER_SECONDS
+        if self._deadline_at is not None:
+            # Keep at least one second for the replayed request itself.
+            limit = min(limit, self._deadline_at - time.monotonic() - 1)
+        if wait > limit:
+            return None
+        return wait
+
+    def request(
+        self, method: str, path: str, body: dict[str, Any] | None = None, *,
+        idempotency_key: str | None = None,
+    ) -> Any:
         headers = dict(self.headers)
         payload = None
         if body is not None:
             payload = json.dumps(body, ensure_ascii=False).encode("utf-8")
             headers["Content-Type"] = "application/json"
+        if idempotency_key is not None:
+            headers["Idempotency-Key"] = idempotency_key
         request = urllib.request.Request(
             f"{self.api_endpoint}{path}", data=payload, headers=headers, method=method
         )
@@ -150,8 +244,16 @@ class KaneoClient:
                     return json.loads(raw.decode("utf-8")) if raw else None
             except urllib.error.HTTPError as exc:
                 detail = exc.read(1000).decode("utf-8", errors="replace")
-                raise KaneoError(
-                    f"Kaneo {method} {path} failed: HTTP {exc.code}: {detail}"
+                retry_after = exc.headers.get("Retry-After") if exc.headers else None
+                wait = self._http_retry_wait(
+                    method, idempotency_key is not None, exc.code, retry_after, delay,
+                )
+                if wait is not None:
+                    time.sleep(wait)
+                    continue
+                raise KaneoHTTPError(
+                    f"Kaneo {method} {path} failed: HTTP {exc.code}: {detail}",
+                    status=exc.code, body=detail,
                 ) from exc
             except (urllib.error.URLError, ssl.SSLCertVerificationError) as exc:
                 retryable = _is_transient_expired_tls_certificate(exc) or (
@@ -163,6 +265,211 @@ class KaneoClient:
                 raise KaneoError(f"Kaneo {method} {path} failed: {exc}") from exc
             except (OSError, ValueError) as exc:
                 raise KaneoError(f"Kaneo {method} {path} failed: {exc}") from exc
+
+    def capabilities(self) -> dict[str, Any]:
+        """Read ``/task/agent/capabilities`` once per client.
+
+        A server without the agent router (legacy fork) answers 404; that is
+        cached as an empty capability set so every feature takes its fallback.
+        """
+        with self._capability_lock:
+            if self._capabilities is None:
+                try:
+                    payload = self.request("GET", CAPABILITIES_PATH)
+                except KaneoHTTPError as exc:
+                    if exc.status != 404:
+                        raise
+                    payload = {}
+                self._capabilities = payload if isinstance(payload, dict) else {}
+            return self._capabilities
+
+    def supports(self, feature: str) -> bool:
+        """Return whether the server advertises one capability as true."""
+        return self.capabilities().get(feature) is True
+
+    def require(self, feature: str) -> bool:
+        """Return support; on absence record one visible fallback notice.
+
+        The notice names the feature, the fallback and the endpoint only; it
+        never contains request headers or credentials.
+        """
+        if self.supports(feature):
+            return True
+        fallback = CAPABILITY_FALLBACKS.get(feature, "legacy behaviour is used")
+        message = (
+            f"Kaneo capability {feature!r} is not advertised by {self.api_endpoint}; "
+            f"fallback: {fallback}"
+        )
+        self.note(message)
+        return False
+
+    def note(self, message: str) -> None:
+        """Record one fallback notice and show it through the notice callback once."""
+        with self._capability_lock:
+            if message in self.notices:
+                return
+            self.notices.append(message)
+        if self._notice is not None:
+            self._notice(message)
+
+    def export_task_pages(
+        self, project_id: str, *, max_tasks: int | None = None,
+        max_pages: int | None = None,
+    ) -> list[dict[str, Any]]:
+        """Read every project task identity through cursor-paged export.
+
+        Requires ``pagedExports``.  ``max_pages`` counts legacy 250-task pages
+        and ``max_tasks`` caps the result; both fail closed before returning a
+        partial list.  Rows carry id, version, number, title, status, workItemType,
+        projectId, goal, acceptanceCriteria and completionSummary, among others.
+        """
+        task_limit = None if max_pages is None else max_pages * LEGACY_TASK_PAGE_SIZE
+        rows: list[dict[str, Any]] = []
+        seen: set[str] = set()
+        cursor: str | None = None
+        while True:
+            query = {"limit": EXPORT_PAGE_LIMIT}
+            if cursor:
+                query["cursor"] = cursor
+            payload = self.request(
+                "GET",
+                f"/task/agent/export/{urllib.parse.quote(project_id, safe='')}?"
+                f"{urllib.parse.urlencode(query)}",
+            )
+            page = payload.get("tasks") if isinstance(payload, dict) else None
+            if not isinstance(page, list):
+                raise KaneoError(f"Invalid Kaneo task export response: {project_id}")
+            for row in page:
+                if not isinstance(row, dict) or not row.get("id"):
+                    raise KaneoError(f"Kaneo task export row lacks id: {project_id}")
+                if row["id"] not in seen:
+                    seen.add(row["id"])
+                    rows.append(row)
+            if task_limit is not None and len(rows) > task_limit:
+                raise KaneoError(
+                    f"Kaneo task pagination limit exceeded for {project_id}: {max_pages} pages"
+                )
+            if max_tasks is not None and len(rows) > max_tasks:
+                raise KaneoError(
+                    f"Kaneo export task limit exceeded for {project_id}: {len(rows)} > {max_tasks}"
+                )
+            next_cursor = (payload.get("pagination") or {}).get("nextCursor")
+            if not next_cursor:
+                return rows
+            if next_cursor == cursor:
+                raise KaneoError(f"Kaneo task export cursor did not advance: {project_id}")
+            cursor = str(next_cursor)
+
+    def export_relations(
+        self, project_id: str, *, max_relations: int | None = None,
+    ) -> list[dict[str, Any]]:
+        """Read every relation touching one project once, cursor-paged.
+
+        Requires ``projectRelationExports``.  Rows carry id, sourceTaskId,
+        targetTaskId, relationType and createdAt; both endpoints are in the
+        caller's workspace.
+        """
+        rows: list[dict[str, Any]] = []
+        seen: set[str] = set()
+        cursor: str | None = None
+        while True:
+            query = {"limit": EXPORT_PAGE_LIMIT}
+            if cursor:
+                query["cursor"] = cursor
+            payload = self.request(
+                "GET",
+                f"/task/agent/relation-export/{urllib.parse.quote(project_id, safe='')}?"
+                f"{urllib.parse.urlencode(query)}",
+            )
+            page = payload.get("relations") if isinstance(payload, dict) else None
+            if not isinstance(page, list):
+                raise KaneoError(f"Invalid Kaneo relation export response: {project_id}")
+            for row in page:
+                if not isinstance(row, dict) or not row.get("id"):
+                    raise KaneoError(f"Kaneo relation export row lacks id: {project_id}")
+                if row["id"] not in seen:
+                    seen.add(row["id"])
+                    rows.append(row)
+            if max_relations is not None and len(rows) > max_relations:
+                raise KaneoError(
+                    f"Kaneo relation export limit exceeded for {project_id}: "
+                    f"{len(rows)} > {max_relations}"
+                )
+            next_cursor = (payload.get("pagination") or {}).get("nextCursor")
+            if not next_cursor:
+                return rows
+            if next_cursor == cursor:
+                raise KaneoError(f"Kaneo relation export cursor did not advance: {project_id}")
+            cursor = str(next_cursor)
+
+    def task_context_relations(
+        self, task_id: str, *, max_pages: int = CONTEXT_MAX_PAGES,
+    ) -> dict[str, Any]:
+        """Read one task's relations and ancestor chain through ``/task/agent/context``.
+
+        Requires ``taskContext``.  Relation pages are followed up to ``max_pages``;
+        a longer list fails closed instead of returning a partial context.
+        """
+        relations: list[dict[str, Any]] = []
+        ancestors: list[str] | None = None
+        page = 1
+        while True:
+            if page > max_pages:
+                raise KaneoError(f"Kaneo task context page limit exceeded for {task_id}: {max_pages}")
+            payload = self.request(
+                "GET",
+                f"/task/agent/context/{urllib.parse.quote(task_id, safe='')}?"
+                f"{urllib.parse.urlencode({'page': page, 'limit': CONTEXT_PAGE_LIMIT})}",
+            )
+            if not isinstance(payload, dict) or not isinstance(payload.get("relations"), list):
+                raise KaneoError(f"Invalid Kaneo task context response: {task_id}")
+            relations.extend(payload["relations"])
+            if ancestors is None:
+                ancestors = list(payload.get("ancestor_ids") or [])
+            if not (payload.get("pagination") or {}).get("hasMore"):
+                return {"relations": relations, "ancestor_ids": ancestors}
+            page += 1
+
+    def _revisioned_update(
+        self, task_id: str, fields: dict[str, Any], version: int | None,
+    ) -> bool:
+        """Send one versioned field patch when the server supports revisions.
+
+        Returns False when ``taskRevisions`` is not advertised so the caller uses
+        the legacy endpoint.  A 409 means the remote task changed after the
+        caller read it: the error is raised as is, without re-reading or
+        re-sending, so newer remote fields are never overwritten.
+        """
+        if not self.require("taskRevisions"):
+            return False
+        expected = version
+        if expected is None:
+            expected = self.get_task(task_id).get("version")
+        if type(expected) is not int or expected < 1:
+            raise KaneoError(f"Task revision unavailable for {task_id}; cannot send a versioned edit")
+        body = {"expectedVersion": expected, **fields}
+        digest = hashlib.sha256(
+            json.dumps([task_id, body], sort_keys=True, ensure_ascii=False).encode("utf-8")
+        ).hexdigest()[:48]
+        try:
+            self.request(
+                "PATCH", f"/task/agent/{urllib.parse.quote(task_id, safe='')}", body,
+                idempotency_key=f"edit:{digest}",
+            )
+        except KaneoHTTPError as exc:
+            if exc.status != 409:
+                raise
+            current = None
+            try:
+                current = json.loads(exc.body).get("currentVersion")
+            except (ValueError, AttributeError):
+                pass
+            raise KaneoError(
+                f"Stale task revision for {task_id}: sent version {expected}, "
+                f"server has {current if current is not None else 'a newer version'}; "
+                "re-read the task before editing"
+            ) from exc
+        return True
 
     def list_projects(self, workspace_id: str, *, include_archived: bool = True) -> list[dict[str, Any]]:
         query = urllib.parse.urlencode(
@@ -271,15 +578,22 @@ class KaneoClient:
 
     def update_status(
         self, task_id: str, status: str, *, completion_summary: str | None = None,
+        goal: str | None = None, acceptance_criteria: str | None = None,
+        version: int | None = None,
     ) -> dict[str, Any]:
         payload: dict[str, Any] = {"status": status}
+        if goal is not None:
+            payload["goal"] = _policy_text(goal, "", "Goal")
+        if acceptance_criteria is not None:
+            payload["acceptanceCriteria"] = _policy_text(acceptance_criteria, "", "Acceptance criteria")
         if status == "done":
             payload["completionSummary"] = _policy_text(
                 completion_summary, "Completion evidence is recorded.", "Completion summary"
             )
-        self.request(
-            "PUT", f"/task/status/{urllib.parse.quote(task_id, safe='')}", payload
-        )
+        if not self._revisioned_update(task_id, payload, version):
+            self.request(
+                "PUT", f"/task/status/{urllib.parse.quote(task_id, safe='')}", payload
+            )
         read_back = self.get_task(task_id)
         if read_back.get("status") != status:
             raise KaneoError(f"Task status read-back mismatch: {task_id}")
@@ -287,42 +601,61 @@ class KaneoClient:
             raise KaneoError(f"Task completion summary read-back mismatch: {task_id}")
         return read_back
 
-    def update_description(self, task_id: str, description: str) -> dict[str, Any]:
+    def update_description(
+        self, task_id: str, description: str, *, version: int | None = None,
+    ) -> dict[str, Any]:
         """Update task description and verify exact persisted content."""
-        self.request(
-            "PUT", f"/task/description/{urllib.parse.quote(task_id, safe='')}",
-            {"description": description},
-        )
+        if not self._revisioned_update(task_id, {"description": description}, version):
+            self.request(
+                "PUT", f"/task/description/{urllib.parse.quote(task_id, safe='')}",
+                {"description": description},
+            )
         read_back = self.get_task(task_id)
         if read_back.get("description") != description:
             raise KaneoError(f"Task description read-back mismatch: {task_id}")
         return read_back
 
-    def update_title(self, task_id: str, title: str) -> dict[str, Any]:
+    def update_title(
+        self, task_id: str, title: str, *, version: int | None = None,
+    ) -> dict[str, Any]:
         """Update task title and verify exact persisted content."""
-        self.request(
-            "PUT", f"/task/title/{urllib.parse.quote(task_id, safe='')}",
-            {"title": title},
-        )
+        if not self._revisioned_update(task_id, {"title": title}, version):
+            self.request(
+                "PUT", f"/task/title/{urllib.parse.quote(task_id, safe='')}",
+                {"title": title},
+            )
         read_back = self.get_task(task_id)
         if read_back.get("title") != title:
             raise KaneoError(f"Task title read-back mismatch: {task_id}")
         return read_back
 
-    def update_assignee(self, task_id: str, user_id: str | None) -> dict[str, Any]:
+    def update_assignee(
+        self, task_id: str, user_id: str | None, *, version: int | None = None,
+    ) -> dict[str, Any]:
         """Assign a task and verify the exact persisted assignee."""
-        self.request(
-            "PUT", f"/task/assignee/{urllib.parse.quote(task_id, safe='')}",
-            {"userId": user_id},
-        )
+        if not self._revisioned_update(task_id, {"userId": user_id}, version):
+            self.request(
+                "PUT", f"/task/assignee/{urllib.parse.quote(task_id, safe='')}",
+                {"userId": user_id},
+            )
         read_back = self.get_task(task_id)
         if read_back.get("userId") != user_id:
             raise KaneoError(f"Task assignee read-back mismatch: {task_id}")
         return read_back
 
+    def _operation_key(self, prefix: str, *parts: str) -> dict[str, str]:
+        """Deterministic Idempotency-Key argument when ``relationIdempotency`` is advertised."""
+        if not self.require("relationIdempotency"):
+            return {}
+        digest = hashlib.sha256("\0".join(parts).encode("utf-8")).hexdigest()[:48]
+        return {"idempotency_key": f"{prefix}:{digest}"}
+
     def create_comment(self, task_id: str, content: str) -> dict[str, Any]:
+        # The key is derived from task and exact content: a replay after a lost
+        # response returns the first comment instead of writing a duplicate.
         created = self.request(
-            "POST", f"/comment/{urllib.parse.quote(task_id, safe='')}", {"content": content}
+            "POST", f"/comment/{urllib.parse.quote(task_id, safe='')}", {"content": content},
+            **self._operation_key("comment", task_id, content),
         )
         rows = self.list_comments(task_id)
         if not any(item.get("id") == created.get("id") for item in rows):
@@ -392,6 +725,7 @@ class KaneoClient:
             "POST", "/task-relation",
             {"sourceTaskId": source_id, "targetTaskId": target_id,
              "relationType": relation_type},
+            **self._operation_key("relation", source_id, target_id, relation_type),
         )
         if not any(item.get("id") == created.get("id") for item in self.relations(target_id)):
             raise KaneoError(f"Task relation read-back mismatch: {source_id} -> {target_id}")
@@ -432,6 +766,13 @@ def reconcile(client: KaneoClient, plan: dict[str, Any], *, apply: bool = False)
     Every destructive target is checked by both stable ID and human-readable
     identity.  This prevents an old plan from touching a reused or moved item.
     """
+    archive_items = plan.get("archive_tasks", [])
+    archive_workers = plan.get("archive_workers", 1)
+    if type(archive_workers) is not int or not 1 <= archive_workers <= 16:
+        raise KaneoError("Archive workers must be integer between 1 and 16")
+    archive_ids = [item["id"] for item in archive_items]
+    if len(set(archive_ids)) != len(archive_ids):
+        raise KaneoError("Archive plan contains duplicate task IDs")
     actions: list[dict[str, Any]] = []
     for relation in plan.get("delete_relations", []):
         rows = client.relations(relation["source_task_id"])
@@ -460,22 +801,49 @@ def reconcile(client: KaneoClient, plan: dict[str, Any], *, apply: bool = False)
             )
         else:
             if apply:
-                client.update_title(item["id"], item["new_title"])
+                client.update_title(item["id"], item["new_title"], version=task.get("version"))
             state = "renamed" if apply else "would_rename"
         actions.append({"action": "rename_task", "id": item["id"], "state": state,
                         "old_title": item["old_title"], "new_title": item["new_title"],
                         "reason": item["reason"]})
 
-    for item in plan.get("archive_tasks", []):
+    def archive_task(item: dict[str, Any]) -> dict[str, Any]:
         task = _expected_task(client, item["id"], item["project_id"], item["title"])
         if task.get("status") == "archived":
             state = "already_archived"
         else:
+            if "expected_status" in item and task.get("status") != item["expected_status"]:
+                raise KaneoError(f"Task status changed since archive capture: {item['id']}")
+            if "expected_version" in item and task.get("version") != item["expected_version"]:
+                raise KaneoError(f"Task version changed since archive capture: {item['id']}")
             if apply:
-                client.update_status(item["id"], "archived")
+                preserved = {field: task.get(field) for field in (
+                    "id", "projectId", "number", "title", "description", "goal", "acceptanceCriteria",
+                    "completionSummary", "workItemType", "priority", "userId",
+                )}
+                policy_fields = {}
+                for argument, field in (("goal", "goal"), ("acceptance_criteria", "acceptanceCriteria")):
+                    if argument not in item:
+                        continue
+                    value = _policy_text(item[argument], "", field)
+                    if str(task.get(field) or "").strip() and task[field] != value:
+                        raise KaneoError(f"Archive cannot replace existing policy field: {item['id']}/{field}")
+                    policy_fields[argument] = value
+                    preserved[field] = value
+                archived = client.update_status(
+                    item["id"], "archived", version=task.get("version"), **policy_fields,
+                )
+                if not isinstance(archived, dict) or any(archived.get(k) != v for k, v in preserved.items()):
+                    raise KaneoError(f"Task archive content read-back mismatch: {item['id']}")
             state = "archived" if apply else "would_archive"
-        actions.append({"action": "archive_task", "id": item["id"], "state": state,
-                        "reason": item["reason"]})
+        return {"action": "archive_task", "id": item["id"], "state": state,
+                "reason": item["reason"]}
+
+    if archive_workers == 1:
+        actions.extend(archive_task(item) for item in archive_items)
+    elif archive_items:
+        with ThreadPoolExecutor(max_workers=archive_workers) as executor:
+            actions.extend(executor.map(archive_task, archive_items))
 
     for batch in plan.get("ensure_task_batches", []):
         project = client.get_project(batch["project_id"])
@@ -586,7 +954,7 @@ def reconcile(client: KaneoClient, plan: dict[str, Any], *, apply: bool = False)
                 state = "created"
             assignee_id = item.get("assignee_id", batch.get("assignee_id"))
             if apply and assignee_id and task.get("userId") != assignee_id:
-                task = client.update_assignee(task["id"], assignee_id)
+                task = client.update_assignee(task["id"], assignee_id, version=task.get("version"))
             parent_id = item.get("parent_task_id")
             if parent_id is None and item.get("parent_task_key"):
                 parent_id = existing_by_key[item["parent_task_key"]]["id"]
@@ -820,7 +1188,9 @@ def ensure_managed_task(
         )
         adopted = {**existing, "description": adopted_description}
         if apply:
-            adopted = client.update_description(existing["id"], adopted_description)
+            adopted = client.update_description(
+                existing["id"], adopted_description, version=existing.get("version"),
+            )
         return {"action": "adopt_title", "task": adopted, "dry_run": not apply}
     if not apply:
         return {"action": "create", "dry_run": True,
@@ -833,13 +1203,63 @@ def ensure_managed_task(
     return {"action": "create", "task": task}
 
 
+RELATION_SUMMARY_FIELDS = (
+    "id", "version", "title", "status", "priority", "workItemType", "number",
+    "projectId", "userId", "assigneeName",
+)
+
+
+def _capable(client: Any, feature: str) -> bool:
+    """Capability check that leaves test doubles without discovery on legacy paths."""
+    return hasattr(client, "require") and client.require(feature)
+
+
+def _attach_relation_summaries(
+    client: Any, known_rows: list[dict[str, Any]], relations: list[dict[str, Any]],
+) -> None:
+    """Add ``sourceTask``/``targetTask`` summaries that legacy relation reads carry.
+
+    Export and context routes return bare relation rows.  Summaries are built
+    from already-read task rows; an endpoint outside them (cross-project) is
+    read once with ``GET /task/{id}``.
+    """
+    by_id = {row["id"]: row for row in known_rows if row.get("id")}
+    for relation in relations:
+        for field, endpoint in (("sourceTask", "sourceTaskId"), ("targetTask", "targetTaskId")):
+            task_id = relation.get(endpoint)
+            if field in relation or not task_id:
+                continue
+            if task_id not in by_id:
+                by_id[task_id] = client.get_task(task_id)
+            row = by_id[task_id]
+            relation[field] = {name: row.get(name) for name in RELATION_SUMMARY_FIELDS}
+
+
 def direct_task_context(
     client: KaneoClient, task: dict[str, Any], known_tasks: list[dict[str, Any]],
 ) -> dict[str, Any]:
-    """Return direct relations plus full parent chain for agent context."""
+    """Return direct relations plus full parent chain for agent context.
+
+    With ``taskContext`` one paged ``/task/agent/context`` read returns the
+    relations and the whole ancestor chain (the server rejects multiple parents
+    and cycles); otherwise relations are read once per hierarchy level.
+    """
     task_id = task["id"]
-    relations = client.relations(task_id)
     by_id = {item["id"]: item for item in known_tasks}
+    if _capable(client, "taskContext"):
+        try:
+            context = client.task_context_relations(task_id)
+        except KaneoHTTPError as exc:
+            if exc.status == 409 and "multiple hierarchy parents" in exc.body:
+                raise KaneoError(f"Task has multiple hierarchy parents: {exc.body[:200]}") from exc
+            if exc.status == 409 and "cyclic" in exc.body:
+                raise KaneoError(f"Hierarchy cycle detected at task: {task_id}") from exc
+            raise
+        relations = context["relations"]
+        return _task_context_result(
+            client, task_id, relations, context["ancestor_ids"], by_id, summarize=True,
+        )
+    relations = client.relations(task_id)
     ancestor_ids: list[str] = []
     current_id = task_id
     seen = {task_id}
@@ -859,6 +1279,14 @@ def direct_task_context(
         seen.add(parent_id)
         ancestor_ids.append(parent_id)
         current_id = parent_id
+    return _task_context_result(client, task_id, relations, ancestor_ids, by_id)
+
+
+def _task_context_result(
+    client: Any, task_id: str, relations: list[dict[str, Any]], ancestor_ids: list[str],
+    by_id: dict[str, dict[str, Any]], *, summarize: bool = False,
+) -> dict[str, Any]:
+    """Shape direct task context identically for legacy and context-route reads."""
     linked_ids = sorted({
         relation["targetTaskId"] if relation.get("sourceTaskId") == task_id
         else relation["sourceTaskId"]
@@ -872,8 +1300,11 @@ def direct_task_context(
         # visible relation target so callers receive usable context, not only
         # an opaque cross-project ID.
         linked.append(by_id.get(item_id) or client.get_task(item_id))
+    current = client.get_task(task_id)
+    if summarize:
+        _attach_relation_summaries(client, [current, *linked, *by_id.values()], relations)
     return {
-        "task": client.get_task(task_id),
+        "task": current,
         "relations": relations,
         "parent_ids": sorted({
             relation["sourceTaskId"] for relation in relations
@@ -888,6 +1319,45 @@ def direct_task_context(
             relation["targetTaskId"] if relation.get("sourceTaskId") == task_id else relation["sourceTaskId"]
             for relation in relations if relation.get("relationType") == "related"
         }),
+        "linked_tasks": linked,
+    }
+
+
+def task_record(
+    client: KaneoClient, binding: RepoBinding, task_id: str, *, deadline_seconds: int = 60,
+) -> dict[str, Any]:
+    """Read one task, its comments, relations and direct relation targets in any project.
+
+    Read-only by design: no project gate, so a close-out reader can load a task
+    owned by another repository's binding on the same Kaneo endpoint.
+    """
+    if not 1 <= deadline_seconds <= 3600:
+        raise KaneoError("Task record deadline must be between 1 and 3600 seconds")
+    deadline = client.deadline(deadline_seconds) if hasattr(client, "deadline") else nullcontext()
+    with deadline:
+        task = client.get_task(task_id)
+        relations = client.relations(task_id)
+        comments = client.list_comments(task_id)
+        linked = []
+        for relation in relations:
+            other_id = (
+                relation.get("targetTaskId") if relation.get("sourceTaskId") == task_id
+                else relation.get("sourceTaskId")
+            )
+            other = client.get_task(other_id)
+            linked.append({
+                "relation_type": relation.get("relationType"),
+                "direction": "outgoing" if relation.get("sourceTaskId") == task_id else "incoming",
+                "id": other_id, "number": other.get("number"), "title": other.get("title"),
+                "status": other.get("status"), "project_id": other.get("projectId"),
+            })
+    linked.sort(key=lambda row: (str(row["relation_type"]), row["number"] is None, row["number"] or 0))
+    return {
+        "task": task,
+        "project_id": task.get("projectId"),
+        "in_bound_project": task.get("projectId") == binding.project_id,
+        "comments": comments,
+        "relations": relations,
         "linked_tasks": linked,
     }
 
@@ -909,9 +1379,24 @@ def direct_child_completion_audit(
             raise KaneoError(
                 f"Task project mismatch: expected {binding.project_id!r}, got {parent.get('projectId')!r}"
             )
+        relation_rows = None
+        if _capable(client, "taskContext"):
+            # Paged relation read; pages beyond the child bound fail closed.
+            try:
+                relation_rows = client.task_context_relations(
+                    task_id, max_pages=max_children // CONTEXT_PAGE_LIMIT + 2,
+                )["relations"]
+            except KaneoHTTPError as exc:
+                # The context route also validates the parent's own ancestor
+                # chain; the audit only needs direct children, so a 409 there
+                # falls back to the single legacy relation read.
+                if exc.status != 409:
+                    raise
+        if relation_rows is None:
+            relation_rows = client.relations(task_id)
         child_ids = sorted({
             relation["targetTaskId"]
-            for relation in client.relations(task_id)
+            for relation in relation_rows
             if relation.get("relationType") == "subtask"
             and relation.get("sourceTaskId") == task_id
         })
@@ -935,7 +1420,8 @@ def direct_child_completion_audit(
                 "status": child.get("status"),
                 "completion_summary": child.get("completionSummary"),
                 "terminal_with_evidence": (
-                    child.get("status") == "done" and bool(child.get("completionSummary"))
+                    child.get("status") in ("done", "archived")
+                    and bool(child.get("completionSummary"))
                 ),
             })
 
@@ -1001,9 +1487,110 @@ def finish_managed_parent(
     completed = (
         parent
         if parent.get("status") == "done" and parent.get("completionSummary") == canonical_summary
-        else client.update_status(task_id, "done", completion_summary=canonical_summary)
+        else client.update_status(
+            task_id, "done", completion_summary=canonical_summary,
+            version=parent.get("version"),
+        )
     )
     return {"applied": True, "task": completed, "audit": audit, "comment": comment}
+
+
+MANAGED_KEY_PATTERN = re.compile(r"^[a-zA-Z0-9:._/-]{1,512}$")
+
+
+def _managed_description(binding: RepoBinding, key: str, level: str, title: str, area: str) -> str:
+    """Description written for a new managed task (same text as ensure_managed_task)."""
+    return (
+        f"## Outcome\n{title}\n\n"
+        f"## Context references\n- Space: `{binding.space_id}`\n- Area: `{area}`\n\n"
+        f"{marker(key, level, binding.space_id)}"
+    )
+
+
+def _managed_preview(
+    client: Any, binding: RepoBinding, specs: list[tuple[str, str, str, str]],
+    task_goal: str, task_acceptance: str,
+) -> dict[str, Any] | None:
+    """Plan a dry-run start with the server's read-only managed preview.
+
+    Uses at most three requests (capabilities, preview, leaf context) and never
+    lists the project.  Returns None when ``managedPreview`` is not advertised,
+    a key does not fit the server pattern, or the server reports a hierarchy
+    conflict (409); the caller then runs the legacy scan, which explains or
+    reuses the existing hierarchy exactly as before.
+    """
+    if not hasattr(client, "require") or not client.require("managedPreview"):
+        return None
+    work_item_types = {"epic": "epic", "sub-epic": "sub_epic", "task": "task"}
+    items = []
+    for key, level, title, area in specs:
+        if not MANAGED_KEY_PATTERN.match(key):
+            client.note(
+                f"Kaneo managed preview skipped: key {key!r} does not match the server key pattern; "
+                "fallback: dry-run start scans the project task list"
+            )
+            return None
+        leaf = level == "task"
+        items.append({
+            "key": key, "title": title,
+            "description": _managed_description(binding, key, level, title, area),
+            "goal": task_goal if leaf else title,
+            "acceptanceCriteria": task_acceptance if leaf else DEFAULT_ACCEPTANCE_CRITERIA,
+            "workItemType": work_item_types[level],
+        })
+    try:
+        payload = client.request(
+            "POST",
+            f"/task/agent/managed/{urllib.parse.quote(binding.project_id, safe='')}/preview",
+            {"items": items},
+        )
+    except KaneoHTTPError as exc:
+        if exc.status != 409:
+            raise
+        client.note(
+            f"Kaneo managed preview reported a conflict ({exc.body[:200]}); "
+            "fallback: dry-run start scans the project task list"
+        )
+        return None
+    tasks = payload.get("tasks") if isinstance(payload, dict) else None
+    actions = payload.get("actions") if isinstance(payload, dict) else None
+    if (
+        not isinstance(tasks, list) or not isinstance(actions, list)
+        or len(tasks) != 3 or len(actions) != 3
+    ):
+        raise KaneoError(f"Invalid Kaneo managed preview response: {binding.project_id}")
+    results = []
+    for action, task in zip(actions, tasks):
+        row: dict[str, Any] = {"action": action, "task": task}
+        if action != "reuse":
+            row["dry_run"] = True
+        results.append(row)
+    leaf = tasks[-1]
+    if leaf.get("id") and client.supports("taskContext"):
+        context_payload = client.request(
+            "GET", f"/task/agent/context/{urllib.parse.quote(leaf['id'], safe='')}?"
+            f"{urllib.parse.urlencode({'page': 1, 'limit': CONTEXT_PAGE_LIMIT})}",
+        )
+        context = {
+            field: context_payload.get(field, [])
+            for field in ("relations", "parent_ids", "child_ids", "ancestor_ids",
+                          "related_ids", "linked_tasks")
+        }
+        context["task"] = context_payload.get("task", leaf)
+        if context_payload.get("truncation"):
+            context["truncation"] = context_payload["truncation"]
+    else:
+        context = {"task": leaf, "relations": [], "parent_ids": [], "child_ids": [],
+                   "ancestor_ids": [], "related_ids": [], "linked_tasks": []}
+    return {
+        "applied": False,
+        "space_id": binding.space_id,
+        "project_id": binding.project_id,
+        "items": results,
+        "leaf_id": leaf.get("id"),
+        "context": context,
+        "planner": "managed_preview",
+    }
 
 
 def start_repo_work(
@@ -1034,6 +1621,10 @@ def start_repo_work(
         ),
         (leaf_key(binding.space_id, normalized_outcome), "task", normalized_outcome, selected_area),
     ]
+    if not apply:
+        previewed = _managed_preview(client, binding, specs, task_goal, task_acceptance)
+        if previewed is not None:
+            return previewed
     existing_tasks = client.list_tasks(binding.project_id)
     existing_leaf = unique_managed_task(existing_tasks, specs[-1][0])
     if existing_leaf:
@@ -1084,7 +1675,9 @@ def start_repo_work(
                 ))
             if not requested_parent_matches:
                 if apply and existing_leaf.get("status") != "in-progress":
-                    existing_leaf = client.update_status(existing_leaf["id"], "in-progress")
+                    existing_leaf = client.update_status(
+                        existing_leaf["id"], "in-progress", version=existing_leaf.get("version"),
+                    )
                 context = direct_task_context(client, existing_leaf, existing_tasks)
                 linked_by_id = {task["id"]: task for task in context["linked_tasks"]}
                 hierarchy = [
@@ -1117,7 +1710,7 @@ def start_repo_work(
         client.ensure_relation(epic["id"], subepic["id"])
         client.ensure_relation(subepic["id"], leaf["id"])
         if leaf.get("status") != "in-progress":
-            leaf = client.update_status(leaf["id"], "in-progress")
+            leaf = client.update_status(leaf["id"], "in-progress", version=leaf.get("version"))
             results[-1]["task"] = leaf
         context = direct_task_context(client, leaf, client.list_tasks(binding.project_id))
     else:
@@ -1202,7 +1795,10 @@ def finish_repo_work(
     completed = (
         task
         if task.get("status") == "done" and task.get("completionSummary") == canonical_completion
-        else client.update_status(task_id, "done", completion_summary=canonical_completion)
+        else client.update_status(
+            task_id, "done", completion_summary=canonical_completion,
+            version=task.get("version"),
+        )
     )
     return {"applied": True, "task": completed, "comment": comment}
 
@@ -1228,8 +1824,22 @@ def _snapshot_project(
     client: KaneoClient, project: dict[str, Any], max_workers: int, *,
     max_pages: int | None, max_tasks: int, progress: Callable[[str], None] | None = None,
 ) -> dict[str, Any]:
-    """Capture one project while preserving deterministic task order."""
-    tasks = client.list_tasks(project["id"], max_pages=max_pages)
+    """Capture one project while preserving deterministic task order.
+
+    With ``pagedExports`` task identities come from cursor-paged export pages
+    (ordered by number, then id); with ``projectRelationExports`` relations are
+    read once per project instead of once per task.  Task rows are still
+    hydrated with ``GET /task/{id}`` and comments per task, and exported
+    relations get the same ``sourceTask``/``targetTask`` summaries as
+    ``GET /task-relation/{id}``, so output fields do not depend on the route.
+    """
+    if _capable(client, "pagedExports"):
+        tasks = sorted(
+            client.export_task_pages(project["id"], max_pages=max_pages, max_tasks=max_tasks),
+            key=lambda row: (row.get("number") is None, row.get("number") or 0, row["id"]),
+        )
+    else:
+        tasks = client.list_tasks(project["id"], max_pages=max_pages)
     if len(tasks) > max_tasks:
         raise KaneoError(
             f"Kaneo snapshot task limit exceeded for {project['id']}: {len(tasks)} > {max_tasks}"
@@ -1237,10 +1847,21 @@ def _snapshot_project(
     if progress:
         progress(f"project {project['id']}: hydrating {len(tasks)} tasks")
 
+    exported_relations: dict[str, list[dict[str, Any]]] | None = None
+    if _capable(client, "projectRelationExports"):
+        exported_relations = {task["id"]: [] for task in tasks}
+        for relation in client.export_relations(project["id"]):
+            for endpoint in {relation.get("sourceTaskId"), relation.get("targetTaskId")}:
+                if endpoint in exported_relations:
+                    exported_relations[endpoint].append(relation)
+
     def hydrate(task: dict[str, Any]) -> dict[str, Any]:
         task_id = task["id"]
         full = client.get_task(task_id)
-        full["relations"] = client.relations(task_id)
+        full["relations"] = (
+            client.relations(task_id) if exported_relations is None
+            else exported_relations[task_id]
+        )
         full["comments"] = client.list_comments(task_id)
         return full
 
@@ -1249,6 +1870,10 @@ def _snapshot_project(
             task_rows = list(executor.map(hydrate, tasks))
     else:
         task_rows = []
+    if exported_relations is not None:
+        _attach_relation_summaries(client, task_rows, [
+            relation for row in task_rows for relation in row["relations"]
+        ])
     return {**project, "tasks": task_rows}
 
 

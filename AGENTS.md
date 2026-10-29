@@ -3,7 +3,7 @@ See `CLAUDE.md`, `docs/wiki/index.md`, and `llm-wiki/index.md`.
 <!-- AI-WORK-CONTEXT:START -->
 ## Kaneo channel rule
 
-Always use `https://admin.polyquantlabs.xyz/kaneo/api`. Bundled REST client
+Always use `https://kaneo.polyquantlabs.xyz/kaneo/api`. Bundled REST client
 needs Python 3.11+ and machine credentials, not local Kaneo or central checkout.
 Run wrapper before declaring tracker unavailable; classify missing credentials
 as authentication configuration failure.

@@ -31,7 +31,7 @@ lifecycle.
 
 ## Portable REST runtime
 
-Use `https://admin.polyquantlabs.xyz/kaneo/api` on every machine.
+Use `https://kaneo.polyquantlabs.xyz/kaneo/api` on every machine.
 Do not discover localhost, Docker, MCP, or another server.
 `manage.ps1` uses bundled standard-library client in `.ai/kaneo/runtime`.
 Central checkout is not required for Kaneo. Python 3.11+ is required;

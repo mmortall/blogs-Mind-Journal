@@ -1,9 +1,9 @@
 {
-  "config.json": "75073aac7bec272b6911db10ae095101f4bd3975e3a41a32c31f5da7dea01fbe",
+  "config.json": "05ce5256c39e173ca0587254a22b15e28d713555ce30d251fee6143fb36bcb62",
   "manage.ps1": "35878f9a46c1a377587b45ab64aad3a101e83ffb38ac6ba56d9abda5635b3f52",
   "runtime/knowledge_router/__init__.py": "e6973a12094734245c223ca31dd5796bee1237ca7086abbfe038de9e573d3bf9",
   "runtime/.gitignore": "5fcfec0ff047c4222bd53c409578877777feb1cfdb71ed1fd7e9a6ae432e75a5",
-  "runtime/config/kaneo-workspaces.yaml": "27141d39205f4d785f43cd205f3272dce7996c5003b44fc359451f46a31f5d59",
-  "runtime/knowledge_router/kaneo.py": "47314dbf200704cd9cc808e15335aec593501f9951d5ab89325bd0642a644471",
-  "runtime/knowledge_router/kaneo_cli.py": "55ce27fe3d3ae5c321088c5f9ea3594d48e594c805d83c7545ef10a8956d0597"
+  "runtime/config/kaneo-workspaces.yaml": "53dc5565e65f3d7cdf07b1d259cd20f882404c239f77cda8d562301bb1c96359",
+  "runtime/knowledge_router/kaneo.py": "4472da0403ec1ab47114943644b897f012b30d6a6132fb8050b03557e2b9d2e7",
+  "runtime/knowledge_router/kaneo_cli.py": "45a7ffc7b869b70a6a31c56db4debae1747fe55ae9c7753619135f6828e274e1"
 }

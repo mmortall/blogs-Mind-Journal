@@ -1,7 +1,10 @@
 {
   "schema_version": "1.0",
-  "api_endpoint": "https://admin.polyquantlabs.xyz/kaneo/api",
-  "mcp_endpoint": "https://admin.polyquantlabs.xyz/kaneo/api/mcp",
+  "api_endpoint": "https://kaneo.polyquantlabs.xyz/kaneo/api",
+  "mcp_endpoint": "https://kaneo.polyquantlabs.xyz/kaneo/api/mcp",
+  "legacy_api_endpoints": [
+    "https://admin.polyquantlabs.xyz/kaneo/api"
+  ],
   "authentication": {
     "kaneo_api_key_env": "KANEO_API_KEY",
     "cloudflare_access_client_id_env": "CF_ACCESS_CLIENT_ID",
@@ -12,7 +15,7 @@
     {
       "name": "trading",
       "id": "ZwLKDa81dDrEYtzBfTtB6BUqkTsG2JlA",
-      "dashboard_url": "https://admin.polyquantlabs.xyz/kaneo/dashboard/workspace/ZwLKDa81dDrEYtzBfTtB6BUqkTsG2JlA",
+      "dashboard_url": "https://kaneo.polyquantlabs.xyz/kaneo/dashboard/workspace/ZwLKDa81dDrEYtzBfTtB6BUqkTsG2JlA",
       "space_ids": [
         "repo:trading:ai-unity-trader",
         "repo:trading:onyx-oracle",
@@ -30,7 +33,7 @@
     {
       "name": "gamedev",
       "id": "YU1geeoLzb2HOnNfgAxI4kYXbpgT4um9",
-      "dashboard_url": "https://admin.polyquantlabs.xyz/kaneo/dashboard/workspace/YU1geeoLzb2HOnNfgAxI4kYXbpgT4um9",
+      "dashboard_url": "https://kaneo.polyquantlabs.xyz/kaneo/dashboard/workspace/YU1geeoLzb2HOnNfgAxI4kYXbpgT4um9",
       "space_ids": ["repo:game:star-man"],
       "path_prefixes": ["D:/ProjectsPrivate/star-man"],
       "scope_note": "Game development and game-decompile projects."
@@ -38,14 +41,14 @@
     {
       "name": "content creation and blogging",
       "id": "gnETouELw7tAd34p5WREq79HDQg07xk3",
-      "dashboard_url": "https://admin.polyquantlabs.xyz/kaneo/dashboard/workspace/gnETouELw7tAd34p5WREq79HDQg07xk3",
+      "dashboard_url": "https://kaneo.polyquantlabs.xyz/kaneo/dashboard/workspace/gnETouELw7tAd34p5WREq79HDQg07xk3",
       "space_ids": ["repo:content:staraban-blogs", "repo:content:mind-journal"],
       "path_prefixes": ["D:/ProjectsPrivate/staraban-blogs"]
     },
     {
       "name": "system and tools",
       "id": "bgFFdsIlLqTM8smsbBOB68pRwzViwxTH",
-      "dashboard_url": "https://admin.polyquantlabs.xyz/kaneo/dashboard/workspace/bgFFdsIlLqTM8smsbBOB68pRwzViwxTH",
+      "dashboard_url": "https://kaneo.polyquantlabs.xyz/kaneo/dashboard/workspace/bgFFdsIlLqTM8smsbBOB68pRwzViwxTH",
       "space_ids": [
         "repo:system:all-knowledge-platform",
         "repo:tools:system-tools-workflows-ai"

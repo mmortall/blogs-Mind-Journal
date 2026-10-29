@@ -10,10 +10,12 @@ from contextlib import nullcontext
 from pathlib import Path
 
 from .kaneo import (
+    CAPABILITY_FALLBACKS,
     KaneoClient,
     KaneoError,
     RepoBinding,
     direct_child_completion_audit,
+    task_record,
     finish_managed_parent,
     finish_repo_work,
     project_health,
@@ -63,6 +65,29 @@ def resolve_workspace_config(repo_root: Path, explicit: Path | None = None) -> P
     )
 
 
+def print_notice(message: str) -> None:
+    """Show capability fallbacks on stderr so JSON on stdout stays parseable."""
+    print(f"kaneo: {message}", file=sys.stderr)
+
+
+def capability_summary(client: KaneoClient) -> dict:
+    """Health line: advertised capability version and missing client features.
+
+    Project health is the availability verdict; a failed capability read is
+    reported here instead of turning a reachable, bound project into an error.
+    """
+    try:
+        capabilities = client.capabilities()
+    except KaneoError as exc:
+        return {"version": None, "error": str(exc)}
+    return {
+        "version": capabilities.get("version"),
+        "missing": sorted(
+            feature for feature in CAPABILITY_FALLBACKS if capabilities.get(feature) is not True
+        ),
+    }
+
+
 def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(prog="kaneo-workflow")
     result.add_argument("--repo-root", type=Path, default=Path.cwd())
@@ -98,6 +123,15 @@ def parser() -> argparse.ArgumentParser:
     hierarchy.add_argument("--max-children", type=int, default=100)
     hierarchy.add_argument("--max-pages", type=int, default=16)
     hierarchy.add_argument("--deadline-seconds", type=int, default=60)
+    record = commands.add_parser(
+        "task-record", help="Read-only task, comments and relations in any project of the endpoint",
+    )
+    record_target = record.add_mutually_exclusive_group(required=True)
+    record_target.add_argument("--task-id")
+    record_target.add_argument("--task-number", type=int)
+    record.add_argument("--project-id", help="Project for --task-number; defaults to the bound project")
+    record.add_argument("--max-pages", type=int, default=16)
+    record.add_argument("--deadline-seconds", type=int, default=60)
     finish_parent = commands.add_parser("finish-parent")
     finish_parent.add_argument("--task-id", required=True)
     finish_parent.add_argument("--completion-summary")
@@ -132,7 +166,7 @@ def main(argv: list[str] | None = None) -> int:
                 args.repo_root, getattr(args, "workspace_config", None),
             )
             endpoint = json.loads(config.read_text(encoding="utf-8"))["api_endpoint"]
-            client = KaneoClient(endpoint)
+            client = KaneoClient(endpoint, notice=print_notice)
             if args.command == "reconcile":
                 plan = json.loads(args.plan.read_text(encoding="utf-8"))
                 output = reconcile(client, plan, apply=args.apply)
@@ -156,9 +190,10 @@ def main(argv: list[str] | None = None) -> int:
             code = 0
         else:
             binding = RepoBinding.load(args.repo_root.resolve())
-            client = KaneoClient(binding.api_endpoint)
+            client = KaneoClient(binding.api_endpoint, notice=print_notice)
             if args.command == "health":
                 output = project_health(client, binding)
+                output["capabilities"] = capability_summary(client)
             elif args.command == "task-hierarchy":
                 lookup_deadline = (
                     client.deadline(args.deadline_seconds)
@@ -175,6 +210,21 @@ def main(argv: list[str] | None = None) -> int:
                         client, binding, task_id, max_children=args.max_children,
                         deadline_seconds=args.deadline_seconds,
                     )
+            elif args.command == "task-record":
+                task_id = args.task_id
+                if args.task_number is not None:
+                    lookup_deadline = (
+                        client.deadline(args.deadline_seconds) if hasattr(client, "deadline")
+                        else nullcontext()
+                    )
+                    with lookup_deadline:
+                        task_id = client.find_task_by_number(
+                            args.project_id or binding.project_id, args.task_number,
+                            max_pages=args.max_pages,
+                        )["id"]
+                output = task_record(
+                    client, binding, task_id, deadline_seconds=args.deadline_seconds,
+                )
             elif args.command == "finish-parent":
                 output = finish_managed_parent(
                     client, binding, args.task_id,

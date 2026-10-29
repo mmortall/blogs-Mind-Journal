@@ -6,7 +6,7 @@
 | Repository | `Mind-Journal-HUGO` |
 | Knowledge card | `.ai/knowledge.yaml` |
 | Space ID | `repo:content:mind-journal` |
-| API endpoint | `https://admin.polyquantlabs.xyz/kaneo/api` |
+| API endpoint | `https://kaneo.polyquantlabs.xyz/kaneo/api` |
 | MCP endpoint | Separate host-only channel; repository workflow uses local REST wrapper |
 | Workspace | `content creation and blogging` |
 | Workspace ID | `gnETouELw7tAd34p5WREq79HDQg07xk3` |
@@ -24,7 +24,7 @@ The project was created and read back from configured content workspace on
 
 ## Portable REST runtime
 
-Use `https://admin.polyquantlabs.xyz/kaneo/api` on every machine.
+Use `https://kaneo.polyquantlabs.xyz/kaneo/api` on every machine.
 Do not discover localhost, Docker, MCP, or another server.
 `manage.ps1` uses bundled standard-library client in `.ai/kaneo/runtime`.
 Central checkout is not required for Kaneo. Python 3.11+ is required;

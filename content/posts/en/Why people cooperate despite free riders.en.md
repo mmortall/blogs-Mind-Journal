@@ -36,7 +36,7 @@ In both fixed and randomly reassigned groups, average payoffs with punishment we
 
 Elinor Ostrom and Roy Gardner examined irrigation systems in Nepal, where farmers at the head and tail of a canal face different conditions. Their work combines a bargaining model with data on irrigation systems; it shows that users can create their own rules for allocating water and maintaining the system. The comparison of systems described was not a randomised experiment and does not by itself prove that self-governance is always better than external management. [Ostrom and Gardner, 1993](https://pubs.aeaweb.org/doi/pdfplus/10.1257/jep.7.4.93).
 
-Punishment does not necessarily protect a public good. In another laboratory experiment, the opportunity for mutual punishment sustained participation in actions that reduced the group's total payoff; a second experiment examined judgments about the acceptability of refusing to participate. This result concerns a particular game and shows a risk, not that punishment is universally harmful. [Abbink and colleagues, 2017](https://pmc.ncbi.nlm.nih.gov/articles/PMC5607004/).
+Punishment does not necessarily protect a public good. In another laboratory experiment, the opportunity for mutual punishment sustained contributions under two payoff rules: in one, contributions reduced the group’s total payoff; in the other, they produced no group gain before punishment costs. A second experiment examined judgments about the acceptability of not contributing under the first rule. This result concerns a particular game and shows a risk, not that punishment is universally harmful. [Abbink and colleagues, 2017](https://pmc.ncbi.nlm.nih.gov/articles/PMC5607004/).
 
 ## Culture and research conditions
 

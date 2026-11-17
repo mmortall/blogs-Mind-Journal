@@ -30,7 +30,7 @@ Participants judged whether the character in a story acted rightly by helping a 
 
 ## When pressure preserves a harmful rule
 
-A shared expectation can also sustain behaviour that harms participants as a group. In a laboratory experiment by Klaus Abbink and colleagues, the opportunity to punish one another sustained participation in actions that reduced the group's total payoff. In a second experiment, most participants judged a refusal to incur such costs to be socially inappropriate. This shows that such an outcome is possible under the conditions of a particular game, not that all punishment is harmful or that every stable norm is inefficient. [Abbink and colleagues, 2017](https://www.nature.com/articles/s41467-017-00731-0); [PubMed abstract](https://pubmed.ncbi.nlm.nih.gov/28931829/).
+A shared expectation can also sustain behaviour that harms participants as a group. In a laboratory experiment by Klaus Abbink and colleagues, contributions were higher with the opportunity for mutual punishment than without it under both payoff rules. Under one rule contributions reduced the group's total payoff; under the other they produced no group gain before punishment costs. A second experiment examined the first rule, and most participants judged refusal to contribute to be socially inappropriate. This shows that such an outcome is possible under the conditions of a particular game, not that all punishment is harmful or that every stable norm is inefficient. [Abbink and colleagues, 2017](https://www.nature.com/articles/s41467-017-00731-0); [PubMed abstract](https://pubmed.ncbi.nlm.nih.gov/28931829/).
 
 ## How to distinguish coordination from submission
 

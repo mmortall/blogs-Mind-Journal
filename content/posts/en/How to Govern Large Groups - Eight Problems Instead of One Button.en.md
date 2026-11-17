@@ -56,7 +56,7 @@ A group needs to know what it is trying to produce. Without that, coordination c
 
 Ask who checks whether the stated task matches the real outcome. If the only answer is the leadership’s own report, the goal is already entangled with the control system.
 
-This is visible in a field experiment in Indian textile factories. Researchers randomly offered some plants free management consulting: regular quality checks, inventory records, production planning and other simple routines. In the first year, productivity rose by about 17%. The point is not that consultants possess magic. The task became a set of observable actions, and managers could see where output was being lost. A metric still cannot become the whole goal: if people are rewarded only for speed, quality will suffer.
+This is visible in a field experiment in Indian textile factories. Researchers randomly assigned 17 firms to treatment or control: 14 treatment plants received implementation support for practices such as quality checks, inventory records and production planning; six control plants also received diagnostic consulting and recommendations, but not that implementation phase. In the first year, productivity rose by about 17%. The point is not that consultants possess magic. The task became a set of observable actions, and managers could see where output was being lost. A metric still cannot become the whole goal: if people are rewarded only for speed, quality will suffer.
 
 ### 2. Make the situation legible
 

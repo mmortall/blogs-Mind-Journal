@@ -261,7 +261,7 @@ SuccessionPersistenceCase = (
 )
 ```
 
-A large historical sample of European monarchies shows that a transfer of power after a ruler's natural death was associated with a higher risk of civil war; in the working version of the study the risk under primogeniture was lower than in elective monarchies. This does not mean hereditary rule is good: the finding concerns predictability of transition, not equality, rights or quality of government ([Kokkonen and Sundell, *Leader Succession and Civil War*](https://doi.org/10.1177/0010414019852712)).
+In a 2017 working paper, Kokkonen and Sundell report descriptive country-year frequencies of civil-war onset: under primogeniture, 5.1% in years with a monarch's natural death versus 2.3% in years without one; under other succession systems, 17.7% versus 3.2%. These comparisons do not establish that succession rules alone caused the differences. The authors discuss selection and alternative explanations. The working paper is a separate version; its full text has not been compared with the final 2020 article ([2017 working paper, Table 4](https://www.gu.se/sites/default/files/2020-05/2017_9_Kokkonen_Sundell.pdf)). Hereditary rule is not thereby shown to be fair, accountable or effective.
 
 A cross-regional test of more than 300 Eurasian dynasties adds an important limit to the European account. In environments of mobile mounted warfare, a system selecting the most competent military leader may win battles but lose in duration of secure rule and accumulated administrative capacity. Succession is thus a trade-off between competence in the current conflict and time to build memory and infrastructure ([Smith, *Storm from the Steppes*](https://doi.org/10.1017/S000305542510097X)).
 

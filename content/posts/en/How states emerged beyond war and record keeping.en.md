@@ -37,7 +37,7 @@ Settled farming can make it possible to store surplus, feed people who do not gr
 
 ### Grain, tax and records
 
-Resources that can be counted, collected in one place and stored are especially convenient for early administration. Studies of early state formation link intensive farming, cereals, taxation and writing, while emphasizing limits on causal inference and the role of different historical paths ([comparative study of state formation](https://pmc.ncbi.nlm.nih.gov/articles/PMC12846917/)).
+Resources that can be counted, collected in one place and stored are especially convenient for early administration. In a comparative study, Opie and Atkinson mapped data from 868 cultures onto a language tree; taxation data were available for only 83 societies, and writing data also came from a smaller subset. Their model suggests grain cultivation likely preceded state formation, while intensive farming could be either its cause or its consequence. The causal interpretation depends on the model's assumptions and limited data; the study defines a state as at least three jurisdictional levels beyond the local community ([comparative study of state formation](https://www.nature.com/articles/s41562-025-02365-5)).
 
 Writing in this account serves more than philosophy. It helps keep accounts, confirm obligations, plan deliveries and retain decisions when people change. But records increase both the capacity to govern and the capacity to extract resources.
 

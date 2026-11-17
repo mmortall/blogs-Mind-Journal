@@ -144,7 +144,7 @@ This is not one rating of a worker. The metrics answer different questions. High
 
 ### 1. Separate boundaries from room for judgment
 
-Write down what cannot be violated: a ban on violence, minimum response time, necessary conflict-of-interest controls and a basic right to an explanation. Alongside, state where departures are permitted and which facts justify them. “Act according to the situation” is too vague; “never depart” often breaks the work.
+Write down what cannot be violated: a ban on violence, response deadline, necessary conflict-of-interest controls and a basic right to an explanation. Alongside, state where departures are permitted and which facts justify them. “Act according to the situation” is too vague; “never depart” often breaks the work.
 
 ### 2. Give local decisions resources
 

@@ -26,7 +26,7 @@ This was a study of clinical vignettes, not public administration or actual trea
 
 ## Several models and one error
 
-Several answers may help reveal disagreements, but agreement does not guarantee an independent check. Kim and colleagues studied errors from more than 350 language models across benchmark datasets and a résumé-screening task and reported correlated errors. This result concerns the models and tasks studied, not a universal measure of risk or proof of consequences in actual hiring. This account uses the [abstract of the 2025 PMLR paper](https://proceedings.mlr.press/v267/kim25e.html); the full text could not be opened in this check, so numerical estimates and explanations of differences between model families are not provided.
+Several answers may help reveal disagreements, but agreement does not guarantee an independent check. Kim and colleagues studied errors from more than 350 language models across benchmark datasets and a résumé-screening task and reported correlated errors. This result concerns the models and tasks studied, not a universal measure of risk or proof of consequences in actual hiring. The methods and limitations sections of the [2025 PMLR paper](https://proceedings.mlr.press/v267/kim25e.html) distinguish agreement on multiple-choice errors from residual correlation against subjective human ratings of résumé–job pairs. Its hiring market analysis is a simulation, not a measurement of real hiring outcomes.
 
 For a particular system, it is useful to check not only model agreement but also data provenance, test conditions and cases where answers agree and are wrong. This is a proposal for evaluation, not proof that any model diversity removes shared error.
 
@@ -43,4 +43,4 @@ Designers can ask several questions that can be checked:
 
 These questions are a working framework, not an established standard of sufficiency or a guarantee of a fair outcome. The answers depend on authority, resources and the specific procedure. Automation can take part in governance, but the presence of a model alone does not determine who is responsible or how affected people's rights are protected.
 
-> Editorial limitation: the clinical study is a preprint using experimental vignettes; the findings on correlated errors are presented from the PMLR abstract. Unreproduced internal metrics and unsupported historical or normative generalizations in the original material are not used here. No author or language review has been performed.
+> Editorial limitation: the clinical study is a preprint using experimental vignettes; the findings on correlated errors concern offline benchmarks and résumé ratings, with hiring outcomes simulated. Unreproduced internal metrics and unsupported historical or normative generalizations in the original material are not used here. No author or language review has been performed.

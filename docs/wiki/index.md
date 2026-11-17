@@ -24,6 +24,7 @@ or direct-democratic collective intelligence.
 - Deepening corporate management research: [Management as a system](research/management-evidence.md)
 - Deepening AI-governance research: [AI as a governance layer: delegation, appeal, audit, and shutdown](research/ai-governance-evidence.md)
 - Applying AI-governance research: [How to test whether an appeal really works](research/ai-appeals-pilot.md)
+- Checking whether several AI checks are independent: [Signal-dependence map](research/signal-dependence-map.md)
 - Comparing regional historical trajectories: [Three historical case passports](research/historical-regional-cases.md)
 - Coding matched historical cases: [State-formation case coding](research/state-formation-case-coding.md)
 - Reading the first plain-language draft: [How to govern millions](research/articles/how-govern-millions.md)

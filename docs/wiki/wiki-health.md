@@ -4,6 +4,17 @@
 
 ## Current findings
 
+- Access-route audit (2026-11-13, task #137): all 363 bibliography records now
+  have a known access status. Snapshot: 203 open to curl, 160 restricted
+  (mostly publisher `403` behind DOIs); 56 newly routed in
+  `research/articles/publication-audit.md` appendix: 5 confirmed-open full
+  text, 26 candidate routes with full text unverified, 1 abstract seen, 2
+  metadata-only, 22 closed with no free full text found (identity by metadata). No
+  confirmed dead source. Raw CSV: `S:\AgentWork\t137\status_20261113.csv`.
+  `hugo --minify` at base commit f380e51 in the task worktree reported Pages
+  15/13/14 (EN/RU/UK); the planner's 37/34/36 came from a different count in
+  the shared checkout and is not a verified site summary.
+
 - Publication lint (2026-10-24): `features/articles.md`, `current-status.md`,
   `architecture.md`, `source-map.md` and `open-questions.md` were stale (five EN/RU
   posts, no Ukrainian, no governance digest) and are fixed. The bibliography count

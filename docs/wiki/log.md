@@ -1816,3 +1816,17 @@ Ingested the published three-language digest (commits `424b381`, `71c5d45`,
 research-to-site transfer added); corrected the bibliography count in
 `wiki-health.md`. Open: author review of Ukrainian translations; which research
 drafts to publish; `themes/ananke` submodule state.
+
+## 2026-11-13 — access-restricted source triage (#137)
+
+Ran one bounded status snapshot of all 363 bibliography records, checked the 160
+non-open ones through OpenAlex/Crossref metadata, direct OA-copy checks, Wayback
+and a sample browser route, and added an appendix with 56 new access-route rows
+to `research/articles/publication-audit.md`: 5 confirmed-open, 26 candidate/unverified, 22 closed with no free full text.
+Fixed a parser artifact (#158 parentheses gave a false 404). No source confirmed
+dead; canonical links unchanged; abstracts are not treated as full text. Raw CSV
+in `S:\AgentWork\t137\`. Refreshed `wiki-health.md`.
+
+## 2026-11-13 signal-dependence map (task #82)
+
+Added `research/signal-dependence-map.md` from public HELM/HF/resume data: shared sources, FP/FN correlation, n_eff, cosmetic-redundancy rules. B1/B2 live arms not run.

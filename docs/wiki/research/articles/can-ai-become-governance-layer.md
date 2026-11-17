@@ -486,15 +486,13 @@ AppealBundle = (
 
 Публичные данные показывают, почему эти поля нельзя заменять одним процентом
 успешных апелляций. Reddit сообщил за январь–июнь 2024 года о 162 478 апелляциях
-на content-level sanctions и 245 340 апелляциях на account-level sanctions; в
-среднем около 20,8% таких апелляций привели к отмене санкции. Но обе ступени
+на content-level sanctions и о 245 340 апелляциях на account-level sanctions;
+по его отчёту, успешность апелляций в среднем около 20,8% (первичный PDF отчёта,
+раздел Appeals; проверено в этом проходе). Обе ступени
 рассматривали администраторы самой платформы, поэтому это данные о внутреннем
 пересмотре, а не о независимом арбитраже ([Reddit Transparency Report](https://redditinc.com/policies/transparency-report-january-to-june-2024)).
 
-В европейском режиме DSA за два года почти 50 миллионов обжалованных решений
-платформ были отменены; Комиссия сообщает, что внутренние механизмы отменили 30%
-из 165 миллионов обжалованных решений, а внешние dispute-settlement bodies в
-закрытых делах первой половины 2025 года отменили 52%. Это нельзя напрямую
+В европейском режиме DSA за два года (страница Комиссии от 17 февраля 2026) платформы за два года отменили почти 50 миллионов решений, затрагивавших контент или аккаунты пользователей; Комиссия сообщает, что с начала применения внутренние механизмы платформ отменили 30% из 165 миллионов обжалованных решений, а внешние органы досудебного урегулирования рассмотрели более 1 800 споров о контенте на Facebook, Instagram и TikTok в ЕС и в закрытых делах первой половины 2025 года отменили решения платформ в 52%. Это нельзя напрямую
 сравнивать: разные выборки, правила и типы дел. Но разница полезна как гипотеза:
 независимость проверяющего и доступ к материалам могут менять не только видимость
 апелляции, но и исход ([European Commission on DSA reversals](https://digital-strategy.ec.europa.eu/en/news/two-years-digital-services-act-allows-50-million-content-moderation-decisions-platforms-be-reversed)).
@@ -705,13 +703,12 @@ judgements, чем один большой judge, и стоила существ
 ансамбля не ошибочна сама по себе: разнообразие действительно может снижать
 intra-model bias и variance. Но это результат конкретных наборов данных,
 агрегатора и human reference, а не лицензия считать любую разноимённую модель
-независимой ([Replacing Judges with Juries](https://arxiv.org/abs/2404.18796)).
+независимой ([Beck et al., Bias in the Loop](https://arxiv.org/abs/2509.08514)).
 
 Сильный отрицательный результат уточняет риск. Исследование более 350 LLM
 нашло существенную корреляцию ошибок: на одном leaderboard модели совпадали
 примерно в 60% случаев, когда обе ошибались; общие архитектуры и поставщики
-усиливали связь, но высокая корреляция оставалась и у крупных моделей из разных
-семейств и providers ([Correlated Errors in Large Language Models](https://proceedings.mlr.press/v267/kim25e.html)). В оценке
+усиливали связь, но, по абстракту, высокая корреляция остаётся у более крупных и точных моделей (разброс по семействам и провайдерам в абстракте не подтверждён) ([Correlated Errors in Large Language Models](https://proceedings.mlr.press/v267/kim25e.html)). В оценке
 безопасности 11 judge-моделей jury улучшала устойчивость и согласие с людьми,
 однако чувствительность к артефактам сохранялась; согласие панели нельзя считать
 доказательством независимой проверки ([Safer or Luckier?](https://aclanthology.org/2025.acl-long.970/)).
@@ -733,15 +730,19 @@ human labelling для задачи отбора резюме. Я пересчи
 `Hand_firm_rate_comb`. В файле 1 800 строк, human score есть только для 450;
 для выбранной панели девяти моделей из семейств Mistral, Llama, Nova, GPT и
 Claude осталось 443 полных кейса. Средняя pairwise phi-корреляция бинарных
-ошибок равна `0.281`, что даёт только грубую оценку `n_eff ≈ 2.77` вместо девяти
+ошибок, по расчёту автора, равна `0.281` (не воспроизведено, см. ниже), что дало бы грубую оценку `n_eff ≈ 2.77` вместо девяти
 голосов. Корреляция непрерывных residual между парами ещё выше: в среднем
 `0.699`.
 
 Медианный score этой панели имел `MAE=1.084` относительно human score; лучший
-одиночный judge в выбранной панели имел `MAE=1.034`. Это не доказывает, что
+одиночный judge в выбранной панели имел `MAE=1.034` (оба числа в этом проходе не воспроизведены:
+панель не записана; лучшая одиночная модель на 450 полных строках — MAE 1,036). Это не доказывает, что
 ансамбль хуже вообще: панель и метрика выбраны для этой проверки, а exact-score
 disagreement — строгий и грубый proxy. Но результат прямо опровергает
-интуицию «девять голосов автоматически надёжнее одного». Расчёт воспроизводится
+интуицию «девять голосов автоматически надёжнее одного». Расчёт в этом проходе не воспроизведён: панель из девяти моделей в артефактах не записана,
+а случайные панели из девяти моделей дают среднюю exact-mismatch phi около `0.10` (sd около `0.05`;
+`0.281` встречается примерно в 0,05% случайных панелей). Файл данных совпадает по SHA-256 с опубликованным.
+Исходный репозиторий
 по опубликованному [репозиторию с данными и кодом](https://github.com/nikhgarg/llm_correlated_errors_public);
 SHA-256 скачанного `final.csv`:
 `5277f91cfd9b656411e6f9c8c1a0ec9e622ab8d58bd53b5a4a64811c397b1ef7`.
@@ -751,9 +752,10 @@ SHA-256 скачанного `final.csv`:
 закрывает только observational часть #82; source-diverse маршрут и controlled
 общий ошибочный пакет остаются отдельным empirical шагом.
 
-Отдельно я сравнил две prompt-версии одной и той же модели. На 22 доступных
-парах средняя phi-корреляция бинарных score-ошибок была `0.259`, но разброс шёл
-от `-0.061` до `0.872`. То есть новый prompt иногда меняет ошибки, а иногда
+Утверждение о сравнении двух prompt-версий одной модели (22 пары, средняя phi `0.259`,
+разброс от `-0.061` до `0.872`) в этом проходе не подтверждено: в артефактах #82 такого
+расчёта нет (число `0.259` там есть только как max_phi executor-против-checkers, другая величина).
+Ниже приведённый вывод — гипотеза. Гипотеза состоит в том, что новый prompt иногда меняет ошибки, а иногда
 почти полностью сохраняет общий сбой. Это не source diversity и не основание
 считать ответы независимыми; это проверка того, что `prompt` должен быть полем
 в паспорте сигнала.
@@ -938,8 +940,8 @@ AIQuality = (
 | Более полное algorithmic management связано с темпом, автономией и раздражением; это не то же самое, что voice или exit | [Algorithmic management: psychological measurement and associations with work design and mental strain](https://pmc.ncbi.nlm.nih.gov/articles/PMC12670828/), [Müller et al., European workers](https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2026.1886482/full) | measurement and cross-sectional evidence, including 27,242 European workers | Cross-sectional associations нельзя читать как эффект внедрения; workload и health не заменяют прямое измерение голоса |
 | Поэтапное изменение прозрачности и оплаты на Lyft изменило engagement и часы работы, но не доказало безопасный voice или низкую цену выхода | [Platform Design, Earnings Transparency and Minimum Wage Policies](https://arxiv.org/abs/2602.08955) | natural experiment, 47 million rides, staggered difference-in-differences and border strategy | Preprint и platform behavior; engagement, retention and realized exit need separate outcomes |
 | У gig workers существуют разные комбинации требований, ресурсов и психологического капитала, связанные с turnover intention | [Hajiheydari and Soltani Delgosha, *Staying or leaving?*](https://doi.org/10.1016/j.jbusres.2026.116092) | configurational analysis using fsQCA | Turnover intention не равна realized exit; data-on-request и observational design ограничивают causal inference |
-| На опубликованном `final.csv` панель из девяти model outputs имела среднюю phi-корреляцию бинарных score-ошибок `0.281`, heuristic `n_eff≈2.77` и residual correlation `0.699` | [Replication repository and data](https://github.com/nikhgarg/llm_correlated_errors_public) | 1 800 строк, 450 human-labeled cases, 443 complete cases; strict score-mismatch proxy | Это observational reanalysis одной resume-screening задачи; нет source-diverse route, common-shock injection или причинного вывода о найме |
-| Prompt diversity внутри той же модели дала среднюю phi-корреляцию score-ошибок `0.259` при разбросе `-0.061…0.872` | [Replication repository and data](https://github.com/nikhgarg/llm_correlated_errors_public) | 22 prompt-variant pairs; оценка на общей задаче и human score | Prompt variation не равна source diversity; модель, данные и task остаются общими |
+| [НЕ ВОСПРОИЗВЕДЕНО в #82] На `final.csv` панель из девяти model outputs якобы имела среднюю phi `0.281`, heuristic `n_eff≈2.77` (арифметика верна при 9 и 0,281: 9/(1+8·0,281)) и residual correlation `0.699`; панель не записана, `1.084`/`1.034` MAE не воспроизведены (лучшая одиночная модель на полных данных — MAE 1,036) | [Replication repository and data](https://github.com/nikhgarg/llm_correlated_errors_public) | 1 800 строк, 450 human-labeled cases, 443 complete cases; strict score-mismatch proxy | Это observational reanalysis одной resume-screening задачи; нет source-diverse route, common-shock injection или причинного вывода о найме |
+| [НЕ ПОДТВЕРЖДЕНО в #82] Prompt diversity внутри той же модели дала среднюю phi `0.259` при разбросе `-0.061…0.872` (расчёт не найден в артефактах; `0.259` в executor-файле — max_phi, не среднее) | [Replication repository and data](https://github.com/nikhgarg/llm_correlated_errors_public) | 22 prompt-variant pairs; оценка на общей задаче и human score | Prompt variation не равна source diversity; модель, данные и task остаются общими |
 
 Связанные материалы: [карта исследований управления группами](../governance-of-groups.md),
 [серия статей](index.md), [коллективный выбор](how-groups-decide.md),

@@ -2448,7 +2448,7 @@ EvidenceCard = (claim, mechanism, source_type, population, context,
 15. [Dincecco: The Rise of Effective States in Europe](https://www.cambridge.org/core/journals/journal-of-economic-history/article/abs/rise-of-effective-states-in-europe/58E83BDDCDF22C28C24A1971EEBE69BB) — обзор extractive и productive power европейских государств.
 16. [No Taxation without Informational Foundation](https://www.cambridge.org/core/journals/journal-of-institutional-economics/article/no-taxation-without-informational-foundation-on-the-role-of-legibility-in-tax-state-development/5A28333CE954D59413FC38FC12B3E2C1) — legibility, переписи, кадастры и связь информационной способности с налоговой.
 17. [War Did Make States](https://www.cambridge.org/core/journals/international-organization/article/war-did-make-states-revisiting-the-bellicist-paradigm-in-early-modern-europe/03778BD632D40115AF31D06A3F81F91D) — сильная, но ограниченная версия bellicist-подхода.
-18. [Mokyr: Why China and Europe Diverged](https://onlinelibrary.wiley.com/doi/10.1111/ecca.12508) — сравнительная гипотеза о централизации, социальных организациях и countervailing powers.
+18. [Mokyr and Tabellini: Social organizations and political institutions: why China and Europe diverged](https://onlinelibrary.wiley.com/doi/10.1111/ecca.12508) (Economica, 2023; metadata checked via Crossref) — сравнительная гипотеза о централизации, социальных организациях и countervailing powers.
 19. [State Formation across Cultures](https://www.nature.com/articles/s41562-025-02365-5) — межкультурный тест связей зернового земледелия, налогов и письменности.
 
 ### История и религия

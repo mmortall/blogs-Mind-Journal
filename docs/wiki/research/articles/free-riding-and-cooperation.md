@@ -183,7 +183,7 @@ CollectiveAction = (
 
 Эксперименты Fehr и Gächter показали, что участники готовы нести личную цену,
 наказывая безбилетников, и что такая возможность может поддерживать вклад в
-public-goods game ([Altruistic punishment in humans](https://pubmed.ncbi.nlm.nih.gov/11805825/)).
+public-goods game ([Fehr and Gächter, Cooperation and Punishment in Public Goods Experiments, AER 2000](https://doi.org/10.1257/aer.90.4.980)).
 Это важный механизм, но не универсальная рекомендация «усилить наказания».
 
 Санкция работает, когда:
@@ -324,7 +324,7 @@ CooperationQuality = (
 |---|---|---|---|
 | Общий интерес не устраняет стимул безбилетничать, особенно в большой группе | [Olson, The Logic of Collective Action](https://www.ojp.gov/redirect-legacy/ncjrs/pdffiles1/Digitization/148406NCJRS.pdf) | устойчивая теоретическая рамка | Olson не утверждает, что большие группы никогда не сотрудничают |
 | Самоуправляемые пользователи могут поддерживать общие ресурсы при локальных правилах и асимметрии | [Ostrom and Gardner](https://www.aeaweb.org/articles?id=10.1257%2Fjep.7.4.93), [Ostrom Nobel lecture](https://www.nobelprize.org/prizes/economic-sciences/2009/ostrom/lecture/?lbw=1) | полевые, экспериментальные и сравнительные данные | Условия нельзя переносить без проверки границ ресурса и группы |
-| Санкция безбилетников может поддерживать кооперацию в лабораторной public-goods game | [Fehr and Gächter](https://pubmed.ncbi.nlm.nih.gov/11805825/) | экспериментальный эффект | Реальные группы различаются по нормам, ошибкам мониторинга и цене наказания |
+| Санкция безбилетников может поддерживать кооперацию в лабораторной public-goods game | [Fehr and Gächter, AER 2000](https://doi.org/10.1257/aer.90.4.980) | экспериментальный эффект | Реальные группы различаются по нормам, ошибкам мониторинга и цене наказания |
 | Культурные группы сами по себе плохо объясняют вариацию безличного сотрудничества в большом метаанализе | [Cross-cultural variation in cooperation](https://pubmed.ncbi.nlm.nih.gov/35286118/) | preregistered meta-analysis | Это ограничение одной гипотезы, а не доказательство ненужности культуры |
 | Разные формы блага требуют разных правил доступа и контроля | [Ostrom design principles](https://dlc.dlib.indiana.edu/dlc/items/b8d5c17a-7eb2-4853-aec7-03d777347cbf) | аналитическая и сравнительная рамка | Типология упрощает смешанные случаи |
 

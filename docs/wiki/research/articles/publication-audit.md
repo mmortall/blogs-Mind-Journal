@@ -445,6 +445,112 @@ access-restricted targets.
 abstract-only и вторичный хостинг. В source map это следует кодировать отдельным
 полем `access_route`, не смешивая его с `evidence_strength`.
 
+## Приложение: учёт access route для всех 363 записей (2026-11-13)
+
+Лист #137, итоговый проход. Один bounded-снимок: `curl` с browser User-Agent,
+24 workers, timeout 8 с, `HEAD`, затем `GET` с диапазоном `0-0` для не-2xx;
+сырой результат — `S:\AgentWork\t137\status_20261113.csv` (вместе с
+`records.csv`, `meta_20261113.csv`, `verify_20261113.csv`,
+`routes_20261113.csv`). Метаданные: OpenAlex и Crossref (публичные, без
+логинов и платных вызовов); открытые копии проверялись прямым запросом.
+
+| Группа | Записей | Что это значит |
+|---|---|---|
+| Открыты для `curl` (2xx/3xx) | 203 | отдельные строки не нужны; доступ не равен проверке содержания |
+| Ограничены или не открыты для `curl` | 160 | наблюдаемо: `403` на `HEAD` и `GET 0-0` от local curl; причина не установлена |
+| — из них уже имели строку маршрута | 104 | разделы выше |
+| — из них добавлены ниже | 56 | эта таблица |
+
+Исправления самого снимка: в записи #158 URL содержит скобки и был обрезан
+разбором, поэтому ложный `404`; полный адрес отвечает `200` (Crossref
+подтверждает «The executive mind and double-loop learning», 1982). #12, #105,
+#171, #330 отвечали ошибкой разово или из-за отзыва сертификата (`--ssl-no-revoke`)
+и при повторе открылись. Подтверждённых мёртвых источников нет; канонические
+ссылки не менялись.
+
+| Запись | access_route | Что установлено | evidence_strength маршрута |
+|---|---|---|---|
+| #10 Podolny and Page | abstract-only / unresolved full text | OpenAlex (1998) подтверждает работу; бесплатного полного текста не найдено | low |
+| #11 Garicano and Rossi-Hansberg | candidate route: publisher OA page, fulltext unverified | OpenAlex: bronze; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #13 Endogenous State Capacity | candidate route: publisher OA page, fulltext unverified | OpenAlex: hybrid; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #22 Henrich | abstract-only / unresolved full text | OpenAlex (2003) подтверждает работу; бесплатного полного текста не найдено | low |
+| #23 Sosis and Bressler | abstract-only / unresolved full text | OpenAlex (2003) подтверждает работу; бесплатного полного текста не найдено | low |
+| #25 Oxford | abstract-only / unresolved full text | OpenAlex (2008) подтверждает работу; бесплатного полного текста не найдено | low |
+| #26 Moon | candidate route: publisher OA page, fulltext unverified | OpenAlex: hybrid; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #29 Norm Dynamics | candidate route: publisher OA page, fulltext unverified | OpenAlex: hybrid; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #34 Conversion to New Religious Movements | abstract-only / unresolved full text | OpenAlex (2014) подтверждает работу; бесплатного полного текста не найдено | low |
+| #36 Religious Signaling and Prosociality | candidate route: publisher OA page, fulltext unverified | OpenAlex: bronze; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #39 Garicano | candidate route: publisher OA page, fulltext unverified | OpenAlex: green; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #42 Coordination in Organizations | abstract-only / unresolved full text | OpenAlex (2009) подтверждает работу; бесплатного полного текста не найдено | low |
+| #46 The Politics and Consequences of Perform | candidate route: publisher OA page, fulltext unverified | OpenAlex: bronze; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #49 Empirical Research on Polycentric Govern | candidate route: publisher OA page, fulltext unverified | OpenAlex: hybrid; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #50 Hirschman | abstract-only / unresolved full text | OpenAlex (1992) подтверждает работу; бесплатного полного текста не найдено | low |
+| #53 Experimentation–Accountability Trade-off | candidate route: publisher OA page, fulltext unverified | OpenAlex: hybrid; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #55 Stark and Bainbridge | abstract-only / unresolved full text | OpenAlex (1980) подтверждает работу; бесплатного полного текста не найдено | low |
+| #57 Zablocki | abstract-only / unresolved full text | OpenAlex (1998) подтверждает работу; бесплатного полного текста не найдено | low |
+| #65 Thelen | abstract-only / unresolved full text | OpenAlex (1999) подтверждает работу; бесплатного полного текста не найдено | low |
+| #67 Studying Incremental Institutional Chang | candidate route: publisher OA page, fulltext unverified | OpenAlex: bronze; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #68 Granovetter | institutional repository / preprint | HAL: 200, открытый текст; идентичность по OpenAlex | medium |
+| #70 Centola and Macy | abstract-only / unresolved full text | OpenAlex (2007) подтверждает работу; бесплатного полного текста не найдено | low |
+| #71 Zhang and Centola | candidate route: publisher OA page, fulltext unverified | OpenAlex: bronze; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #74 Johnson, Dowd and Ridgeway | abstract-only / unresolved full text | OpenAlex (2006) подтверждает работу; бесплатного полного текста не найдено | low |
+| #76 Perspectives on Power in Organizations | abstract-only / unresolved full text | OpenAlex (2014) подтверждает работу; бесплатного полного текста не найдено | low |
+| #77 Gailmard and Patty | abstract-only / unresolved full text | OpenAlex (2012) подтверждает работу; бесплатного полного текста не найдено | low |
+| #78 Bendor, Glazer and Hammond | abstract-only / unresolved full text | OpenAlex (2001) подтверждает работу; бесплатного полного текста не найдено | low |
+| #86 Kellogg, Valentine and Christin | abstract-only / unresolved full text | OpenAlex (2019) подтверждает работу; бесплатного полного текста не найдено | low |
+| #89 Datasheets for Datasets | institutional repository / preprint | arXiv: 200, открытый текст; идентичность по OpenAlex | medium |
+| #91 Parasuraman and Manzey | institutional repository / preprint | TU Berlin DepositOnce: 200, открытый текст; идентичность по OpenAlex | medium |
+| #94 Raji et al. | candidate route: publisher OA page, fulltext unverified | OpenAlex: hybrid; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #96 Shneiderman | institutional repository / preprint | arXiv: 200, открытый текст; идентичность по OpenAlex | medium |
+| #99 50 Years of Obedience to Authority | candidate route: publisher OA page, fulltext unverified | OpenAlex: hybrid; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #103 Morrison | candidate route: publisher OA page, fulltext unverified | OpenAlex: bronze; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #111 Lantschner | candidate route: publisher OA page, fulltext unverified | OpenAlex: hybrid; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #112 Kiser and Kane | abstract-only / unresolved full text | OpenAlex (2001) подтверждает работу; бесплатного полного текста не найдено | low |
+| #114 Zhao and Zhang | candidate route: publisher OA page, fulltext unverified | OpenAlex: diamond; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #117 Bloom et al. | candidate route: publisher OA page, fulltext unverified | OpenAlex: bronze; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #118 Bloom and Van Reenen | candidate route: publisher OA page, fulltext unverified | OpenAlex: green; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #122 Lyons et al. | abstract-only / unresolved full text | OpenAlex (2022) подтверждает работу; бесплатного полного текста не найдено | low |
+| #124 Mitigating the judicial human–AI fairnes | candidate route: publisher OA page, fulltext unverified | OpenAlex: diamond; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #131 Lu, Wang and Yin | candidate route: publisher OA page, fulltext unverified | OpenAlex: hybrid; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #139 Airoldi and Christakis | institutional repository / preprint | PubMed Central: 200, открытый текст; идентичность по OpenAlex | medium |
+| #142 McCombs and Shaw | metadata-only / abstract-only | Страница OUP открылась через браузерный маршрут: abstract виден, PDF по подписке | low |
+| #143 Entman | abstract-only / unresolved full text | OpenAlex (1993) подтверждает работу; бесплатного полного текста не найдено | low |
+| #144 Bakshy, Messing and Adamic | abstract-only / unresolved full text | OpenAlex (2015) подтверждает работу; бесплатного полного текста не найдено | low |
+| #145 Vosoughi, Roy and Aral | abstract-only / unresolved full text | OpenAlex (2018) подтверждает работу; бесплатного полного текста не найдено | low |
+| #149 Taylor and Kelly | abstract-only / unresolved full text | OpenAlex (2006) подтверждает работу; бесплатного полного текста не найдено | low |
+| #156 Ettelt, Mays and Allen | metadata-only / abstract-only | только метаданные: Crossref подтвердил название, авторов, год; abstract не читался; OA-ссылка OpenAlex относится к другой работе и отклонена | low |
+| #157 Checkland et al. | candidate route: publisher OA page, fulltext unverified | OpenAlex: hybrid; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #163 Xygalatas et al. | metadata-only / abstract-only | только метаданные: Crossref подтвердил название, авторов, год; abstract не читался; OA-ссылка OpenAlex относится к другой работе и отклонена | low |
+| #185 Australian National AI Centre | candidate route: Wayback snapshot, unverified | Availability API сообщает снимок; страница не открыта и не прочитана; прямой запрос local curl завершился таймаутом | low |
+| #215 Goulas et al. | candidate route: publisher OA page, fulltext unverified | OpenAlex: gold; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #216 Bhuller and Sigstad | candidate route: publisher OA page, fulltext unverified | OpenAlex: hybrid; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #217 Owolabi | candidate route: publisher OA page, fulltext unverified | OpenAlex: gold; curl получил 403; причина неизвестна, браузером не открыто | low |
+| #255 Royal Commission into the Robodebt Schem | candidate route: Wayback snapshot, unverified | Availability API сообщает снимок; страница не открыта и не прочитана; прямой запрос local curl завершился таймаутом | low |
+
+Итог по 56 добавленным (только наблюдаемое, без вывода о полноте):
+открытый текст реально открылся (HTTP 200, идентичность по метаданным) — 5
+(#68, #89, #91, #96, #139); кандидат-маршрут, полный текст не подтверждён — 26
+(24 издательские страницы с OA-статусом только по OpenAlex, `curl` получил
+`403`, браузером не открыто; 2 Wayback-снимка, о которых сообщает Availability
+API, страницы не прочитаны: #185, #255); abstract виден браузерным маршрутом —
+1 (#142); только метаданные Crossref — 2 (#156, #163); бесплатный полный текст
+не найден — 22. Подтверждённо читаемый полный текст: 5 из 56. Остальные 51 —
+unknown/unverified либо abstract/metadata, и не должны считаться
+подтверждённым полным текстом.
+
+**Closed, free full text not found (22)**, идентичность
+работы подтверждена по метаданным: #10, #22, #23, #25, #34, #42, #50, #55, #57, #65, #70, #74, #76, #77, #78, #86, #112, #122, #143, #144, #145, #149. Попытки: DOI → издатель (`403`),
+OpenAlex `closed`, без авторской или институциональной копии; логины, платный
+доступ и теневые библиотеки не использовались. Для этих записей утверждения
+в статьях следует держать на уровне abstract и метаданных, а не пересказа
+текста. Браузерная проверка сделана выборочно (#142: страница OUP открыла
+abstract; страница Science для #145 вернула `403`). Строки «candidate route» остаются
+непроверенными: статус OA взят из OpenAlex, Wayback — из Availability API.
+
+Короткое правило: `access_route` описывает, как читатель получает текст;
+`evidence_strength` — насколько он поддерживает утверждение. Abstract не
+подменяет полный текст.
+
 ## Приоритет следующего прохода
 
 1. Провести финальный фактчекинг каждого текста: формула, источник, причинный

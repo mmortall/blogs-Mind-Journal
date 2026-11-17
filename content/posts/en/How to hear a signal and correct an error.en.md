@@ -22,7 +22,7 @@ These possibilities can exist separately. A person may be able to warn of an err
 
 ## What work teams show
 
-Amy Edmondson defined team psychological safety as a shared belief that the team is safe for interpersonal risk-taking. In a study of 51 work teams at one manufacturing company, she found an association between psychological safety and team learning behaviour; her model also examined the association between that behaviour and team performance. [Edmondson, 1999](https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Group_Performance/Edmondson%20Psychological%20safety.pdf).
+Amy Edmondson defined team psychological safety as a shared belief that the team is safe for interpersonal risk-taking. In a study of 51 work teams at one manufacturing company, she found an association between psychological safety and team learning behaviour; her model also examined the association between that behaviour and team performance. Safety and learning were assessed using team-member questionnaires; performance was also rated by observers outside the teams. These observational measures do not establish that safety caused learning or performance. [Edmondson, 1999](https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Group_Performance/Edmondson%20Psychological%20safety.pdf).
 
 This was not an experiment on introducing a complaint channel. The author explicitly notes that the cross-sectional survey design cannot demonstrate causality; one company and 51 teams limit generalisation. Responses about safety also do not prove that independent review or an accessible exit exists.
 

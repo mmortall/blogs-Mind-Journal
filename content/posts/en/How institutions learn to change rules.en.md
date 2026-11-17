@@ -37,7 +37,7 @@ The copy examined identifies publication in *Evaluation* in 2015, but its text w
 
 ## Success depends on the question
 
-Kath Checkland and colleagues studied the Vanguard programme in England's National Health Service. They consider pilot success in terms of process, outcomes and longer-term effects, separately considering programmatic and political dimensions. Their analysis draws on documents, interviews and local case studies; the paper was published online in 2021 and in a journal issue in 2023. [Checkland and colleagues, open published text](https://onlinelibrary.wiley.com/doi/10.1111/padm.12790).
+Kath Checkland and colleagues studied the Vanguard programme in England's National Health Service. They consider pilot success in terms of process, outcomes and longer-term effects, separately considering programmatic and political dimensions. Their analysis draws on documents, interviews and local case studies; the paper was published online in 2021 and in a journal issue in 2023. The authors studied six local sites in depth and assessed success from the perspective of the pilot initiator, NHS England, while interviewing participants with varied roles. [Checkland and colleagues, open published text](https://onlinelibrary.wiley.com/doi/10.1111/padm.12790).
 
 In their analysis, assessments of the programme were mixed. For example, the authors discuss a policy document's use of one positive indicator where the source of the graph was insufficiently described. This is a study of a particular programme and the authors' interpretation, not proof that every positive indicator is unreliable or that all claimed effects are caused by political motives.
 

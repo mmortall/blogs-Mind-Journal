@@ -18,7 +18,7 @@ A model can show how a small signal spreads under specified rules. An experiment
 
 ## A threshold in a network model
 
-In Duncan Watts's model, participants occupy positions in a random network and change state according to a threshold rule based on their neighbours' actions. Under some combinations of connectivity and thresholds, a small initial shock can produce a large cascade; under others, spread is limited. [Watts, PNAS 2002, full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC122850/).
+In Duncan Watts's model, participants occupy positions in a random network and change state according to a threshold rule based on their neighbours' actions. The threshold refers to the fraction of a person's neighbours who have changed state. In the model, a small initial shock can produce a large cascade under some combinations of connectivity and thresholds. Sparse connections can limit its reach; in a highly connected network, individual nodes can be harder to activate. These are properties of the model, not a forecast that more connections always suppress real collective action. [Watts, PNAS 2002, full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC122850/).
 
 This is a property of the specified model, not a prediction that a particular appeal will cause a protest or that a cascade will necessarily be hard to reverse. In a real network, ties, visibility and reasons for participating may differ from the model's assumptions. The fact that many people acted does not automatically reveal what each of them believes.
 

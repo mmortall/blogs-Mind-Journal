@@ -32,7 +32,7 @@ The component shows how the selected characteristics vary together, not a single
 
 ## What a model of change proposes
 
-In another Seshat-based study, published in *Science Advances* in 2022, researchers compared many combinations of 17 potential predictors for three measures of social complexity. Among the terms highlighted in the best-supported models were measures of agricultural productivity and military technology, particularly the combined spread of iron metallurgy and cavalry. [Turchin and colleagues, full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC9232109/).
+In another Seshat-based study, published in *Science Advances* in 2022, researchers compared many combinations of 17 potential predictors for three measures of social complexity. Among the terms highlighted in the best-supported models were measures of agricultural productivity and military technology, particularly the combined spread of iron weapons and cavalry. The authors combined the two technology indicators because they were highly correlated, making their separate effects difficult to estimate. Their out-of-sample test is a retrodiction of historical data, not a forecast of future societies. [Turchin and colleagues, full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC9232109/).
 
 The authors interpret the results as evidence of a causal role for these factors, using dynamic models and historical time-series data. They also caution that the method is insufficient for definitive causal claims: omitted variables and other data limitations are possible. This was not a randomised experiment and does not prove that every war or population increase inevitably creates a state. Different historical trajectories cannot be reduced to a single sequence of institutions.
 
